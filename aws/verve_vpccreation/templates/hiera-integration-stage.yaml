@@ -1,0 +1,13 @@
+
+integration:
+  ops-production:
+    us-west-2:
+      image_id: ami-bff6db8f
+      key_name: js-ssh
+      images:
+        centos6.6: ami-bff6db8f
+        centos7.1: ami-50dc3a63
+      ads-integration-vpc-64:
+        security_group: vpc-integration-allow-all
+        subnet: vpc-integration-internal
+        user_data: puppet.sh

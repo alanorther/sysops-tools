@@ -1,0 +1,5929 @@
+#config-version=FGVMA6-5.04-FW-build1064-160608:opmode=0:vdom=0:user=admin
+#conf_file_ver=0
+#buildno=1064
+#global_vdom=1
+config system global
+    set admin-scp enable
+    set admin-server-cert "star_vervemobile_com_20191127"
+    set admin-sport 4443
+    set admintimeout 60
+    set alias "FGVM020000066572"
+    set fgd-alert-subscription advisory latest-threat
+    set hostname "FGVM020000066572"
+    set timezone 04
+end
+config system accprofile
+    edit "prof_admin"
+        set mntgrp read-write
+        set admingrp read-write
+        set updategrp read-write
+        set authgrp read-write
+        set sysgrp read-write
+        set netgrp read-write
+        set loggrp read-write
+        set routegrp read-write
+        set fwgrp read-write
+        set vpngrp read-write
+        set utmgrp read-write
+        set wanoptgrp read-write
+        set endpoint-control-grp read-write
+        set wifi read-write
+    next
+end
+config system interface
+    edit "port1"
+        set vdom "root"
+        set mode dhcp
+        set allowaccess ping https ssh
+        set type physical
+        set snmp-index 1
+        set dns-server-override disable
+        set macaddr 02:89:78:a5:b3:b9
+    next
+    edit "port2"
+        set vdom "root"
+        set mode dhcp
+        set allowaccess ping https ssh snmp fgfm
+        set type physical
+        set snmp-index 2
+        set defaultgw disable
+        set macaddr 02:a6:1a:3f:86:c5
+    next
+    edit "ssl.root"
+        set vdom "root"
+        set type tunnel
+        set alias "SSL VPN interface"
+        set snmp-index 3
+    next
+    edit "vpn-5de9f74f-0"
+        set vdom "root"
+        set allowaccess ping
+        set type tunnel
+        set tcp-mss 1387
+        set snmp-index 4
+        set interface "port1"
+    next
+    edit "vpn-5de9f74f-1"
+        set vdom "root"
+        set allowaccess ping
+        set type tunnel
+        set tcp-mss 1387
+        set snmp-index 5
+        set interface "port1"
+    next
+    edit "vpn-fce6f8ee-0"
+        set vdom "root"
+        set allowaccess ping
+        set type tunnel
+        set tcp-mss 1387
+        set snmp-index 6
+        set interface "port1"
+    next
+    edit "vpn-fce6f8ee-1"
+        set vdom "root"
+        set allowaccess ping
+        set type tunnel
+        set tcp-mss 1387
+        set snmp-index 7
+        set interface "port1"
+    next
+    edit "vpn-63e3fd71-0"
+        set vdom "root"
+        set allowaccess ping
+        set type tunnel
+        set tcp-mss 1387
+        set snmp-index 8
+        set interface "port1"
+    next
+    edit "vpn-63e3fd71-1"
+        set vdom "root"
+        set allowaccess ping
+        set type tunnel
+        set tcp-mss 1387
+        set snmp-index 9
+        set interface "port1"
+    next
+    edit "vpn-d12036b0-0"
+        set vdom "root"
+        set allowaccess ping
+        set type tunnel
+        set tcp-mss 1387
+        set snmp-index 10
+        set interface "port1"
+    next
+    edit "vpn-d12036b0-1"
+        set vdom "root"
+        set allowaccess ping
+        set type tunnel
+        set tcp-mss 1387
+        set snmp-index 11
+        set interface "port1"
+    next
+    edit "vpn-20dcca41-0"
+        set vdom "root"
+        set allowaccess ping
+        set type tunnel
+        set tcp-mss 1387
+        set snmp-index 12
+        set interface "port1"
+    next
+    edit "vpn-20dcca41-1"
+        set vdom "root"
+        set allowaccess ping
+        set type tunnel
+        set tcp-mss 1387
+        set snmp-index 13
+        set interface "port1"
+    next
+    edit "vpn-88bda39a-0"
+        set vdom "root"
+        set type tunnel
+        set snmp-index 14
+        set interface "port1"
+    next
+    edit "vpn-88bda39a-1"
+        set vdom "root"
+        set type tunnel
+        set snmp-index 15
+        set interface "port1"
+    next
+    edit "vpn-d189ff9a-0"
+        set vdom "root"
+        set allowaccess ping
+        set type tunnel
+        set tcp-mss 1387
+        set snmp-index 18
+        set interface "port1"
+    next
+    edit "vpn-d189ff9a-1"
+        set vdom "root"
+        set allowaccess ping
+        set type tunnel
+        set tcp-mss 1387
+        set snmp-index 19
+        set interface "port1"
+    next
+    edit "vpn-d589ff9e-0"
+        set vdom "root"
+        set allowaccess ping
+        set type tunnel
+        set tcp-mss 1387
+        set snmp-index 16
+        set interface "port1"
+    next
+    edit "vpn-d589ff9e-1"
+        set vdom "root"
+        set allowaccess ping
+        set type tunnel
+        set tcp-mss 1387
+        set snmp-index 17
+        set interface "port1"
+    next
+    edit "vpn-669c8d07-0"
+        set vdom "root"
+        set type tunnel
+        set snmp-index 20
+        set interface "port1"
+    next
+    edit "vpn-74839215-0"
+        set vdom "root"
+        set type tunnel
+        set snmp-index 21
+        set interface "port1"
+    next
+    edit "vpn-0fe9f11d-0"
+        set vdom "root"
+        set type tunnel
+        set snmp-index 22
+        set interface "port1"
+    next
+    edit "vpn-073f2515-0"
+        set vdom "root"
+        set type tunnel
+        set snmp-index 23
+        set interface "port1"
+    next
+    edit "vpn-073f2515-1"
+        set vdom "root"
+        set type tunnel
+        set snmp-index 24
+        set interface "port1"
+    next
+end
+config system custom-language
+    edit "en"
+        set filename "en"
+    next
+    edit "fr"
+        set filename "fr"
+    next
+    edit "sp"
+        set filename "sp"
+    next
+    edit "pg"
+        set filename "pg"
+    next
+    edit "x-sjis"
+        set filename "x-sjis"
+    next
+    edit "big5"
+        set filename "big5"
+    next
+    edit "GB2312"
+        set filename "GB2312"
+    next
+    edit "euc-kr"
+        set filename "euc-kr"
+    next
+end
+config system admin
+    edit "admin"
+        set accprofile "super_admin"
+        set vdom "root"
+        config dashboard
+            edit 6
+                set widget-type licinfo
+                set column 1
+            next
+            edit 1
+                set column 1
+            next
+            edit 3
+                set widget-type jsconsole
+                set column 1
+            next
+            edit 4
+                set widget-type sysres
+                set name "CPU"
+                set column 1
+                set time-period 30
+                set view-type historical
+            next
+            edit 5
+                set widget-type alert
+                set column 1
+                set top-n 10
+            next
+        end
+        set password ENC AK1jzKrg38s58UiBdx9cyPBYjMu1+HwNzFRKLPAFkSdfJs=
+    next
+end
+config system ha
+    set override disable
+end
+config system dns
+    set primary 208.91.112.53
+    set secondary 208.91.112.52
+end
+config system replacemsg-image
+    edit "logo_fnet"
+        set image-type gif
+        set image-base64 ''
+    next
+    edit "logo_fguard_wf"
+        set image-type gif
+        set image-base64 ''
+    next
+    edit "logo_fw_auth"
+        set image-type png
+        set image-base64 ''
+    next
+    edit "logo_v2_fnet"
+        set image-type png
+        set image-base64 ''
+    next
+    edit "logo_v2_fguard_wf"
+        set image-type png
+        set image-base64 ''
+    next
+    edit "logo_v2_fguard_app"
+        set image-type png
+        set image-base64 ''
+    next
+end
+config system replacemsg mail "email-block"
+end
+config system replacemsg mail "email-dlp-subject"
+end
+config system replacemsg mail "email-dlp-ban"
+end
+config system replacemsg mail "email-filesize"
+end
+config system replacemsg mail "partial"
+end
+config system replacemsg mail "smtp-block"
+end
+config system replacemsg mail "smtp-filesize"
+end
+config system replacemsg http "bannedword"
+end
+config system replacemsg http "url-block"
+end
+config system replacemsg http "urlfilter-err"
+end
+config system replacemsg http "infcache-block"
+end
+config system replacemsg http "http-block"
+end
+config system replacemsg http "http-filesize"
+end
+config system replacemsg http "http-dlp-ban"
+end
+config system replacemsg http "http-archive-block"
+end
+config system replacemsg http "http-contenttypeblock"
+end
+config system replacemsg http "https-invalid-cert-block"
+end
+config system replacemsg http "http-client-block"
+end
+config system replacemsg http "http-client-filesize"
+end
+config system replacemsg http "http-client-bannedword"
+end
+config system replacemsg http "http-post-block"
+end
+config system replacemsg http "http-client-archive-block"
+end
+config system replacemsg http "switching-protocols-block"
+end
+config system replacemsg webproxy "deny"
+end
+config system replacemsg webproxy "user-limit"
+end
+config system replacemsg webproxy "auth-challenge"
+end
+config system replacemsg webproxy "auth-login-fail"
+end
+config system replacemsg webproxy "auth-authorization-fail"
+end
+config system replacemsg webproxy "http-err"
+end
+config system replacemsg webproxy "auth-ip-blackout"
+end
+config system replacemsg ftp "ftp-dl-blocked"
+end
+config system replacemsg ftp "ftp-dl-filesize"
+end
+config system replacemsg ftp "ftp-dl-dlp-ban"
+end
+config system replacemsg ftp "ftp-explicit-banner"
+end
+config system replacemsg ftp "ftp-dl-archive-block"
+end
+config system replacemsg nntp "nntp-dl-blocked"
+end
+config system replacemsg nntp "nntp-dl-filesize"
+end
+config system replacemsg nntp "nntp-dlp-subject"
+end
+config system replacemsg nntp "nntp-dlp-ban"
+end
+config system replacemsg fortiguard-wf "ftgd-block"
+end
+config system replacemsg fortiguard-wf "http-err"
+end
+config system replacemsg fortiguard-wf "ftgd-ovrd"
+end
+config system replacemsg fortiguard-wf "ftgd-quota"
+end
+config system replacemsg fortiguard-wf "ftgd-warning"
+end
+config system replacemsg spam "ipblocklist"
+end
+config system replacemsg spam "smtp-spam-dnsbl"
+end
+config system replacemsg spam "smtp-spam-feip"
+end
+config system replacemsg spam "smtp-spam-helo"
+end
+config system replacemsg spam "smtp-spam-emailblack"
+end
+config system replacemsg spam "smtp-spam-mimeheader"
+end
+config system replacemsg spam "reversedns"
+end
+config system replacemsg spam "smtp-spam-bannedword"
+end
+config system replacemsg spam "smtp-spam-ase"
+end
+config system replacemsg spam "submit"
+end
+config system replacemsg alertmail "alertmail-virus"
+end
+config system replacemsg alertmail "alertmail-block"
+end
+config system replacemsg alertmail "alertmail-nids-event"
+end
+config system replacemsg alertmail "alertmail-crit-event"
+end
+config system replacemsg alertmail "alertmail-disk-full"
+end
+config system replacemsg admin "pre_admin-disclaimer-text"
+end
+config system replacemsg admin "post_admin-disclaimer-text"
+end
+config system replacemsg auth "auth-disclaimer-page-1"
+end
+config system replacemsg auth "auth-disclaimer-page-2"
+end
+config system replacemsg auth "auth-disclaimer-page-3"
+end
+config system replacemsg auth "auth-reject-page"
+end
+config system replacemsg auth "auth-login-page"
+end
+config system replacemsg auth "auth-login-failed-page"
+end
+config system replacemsg auth "auth-token-login-page"
+end
+config system replacemsg auth "auth-token-login-failed-page"
+end
+config system replacemsg auth "auth-success-msg"
+end
+config system replacemsg auth "auth-challenge-page"
+end
+config system replacemsg auth "auth-keepalive-page"
+end
+config system replacemsg auth "auth-portal-page"
+end
+config system replacemsg auth "auth-password-page"
+end
+config system replacemsg auth "auth-fortitoken-page"
+end
+config system replacemsg auth "auth-next-fortitoken-page"
+end
+config system replacemsg auth "auth-email-token-page"
+end
+config system replacemsg auth "auth-sms-token-page"
+end
+config system replacemsg auth "auth-email-harvesting-page"
+end
+config system replacemsg auth "auth-email-failed-page"
+end
+config system replacemsg auth "auth-cert-passwd-page"
+end
+config system replacemsg auth "auth-guest-print-page"
+end
+config system replacemsg auth "auth-guest-email-page"
+end
+config system replacemsg auth "auth-success-page"
+end
+config system replacemsg auth "auth-block-notification-page"
+end
+config system replacemsg sslvpn "sslvpn-login"
+end
+config system replacemsg sslvpn "sslvpn-header"
+end
+config system replacemsg sslvpn "sslvpn-limit"
+end
+config system replacemsg sslvpn "hostcheck-error"
+end
+config system replacemsg ec "endpt-download-portal"
+end
+config system replacemsg ec "endpt-download-portal-mac"
+end
+config system replacemsg ec "endpt-download-portal-ios"
+end
+config system replacemsg ec "endpt-download-portal-aos"
+end
+config system replacemsg ec "endpt-download-portal-other"
+end
+config system replacemsg ec "endpt-quarantine-portal"
+end
+config system replacemsg device-detection-portal "device-detection-failure"
+end
+config system replacemsg nac-quar "nac-quar-virus"
+end
+config system replacemsg nac-quar "nac-quar-dos"
+end
+config system replacemsg nac-quar "nac-quar-ips"
+end
+config system replacemsg nac-quar "nac-quar-dlp"
+end
+config system replacemsg nac-quar "nac-quar-admin"
+end
+config system replacemsg nac-quar "nac-quar-app"
+end
+config system replacemsg traffic-quota "per-ip-shaper-block"
+end
+config system replacemsg utm "virus-html"
+end
+config system replacemsg utm "client-virus-html"
+end
+config system replacemsg utm "virus-text"
+end
+config system replacemsg utm "dlp-html"
+end
+config system replacemsg utm "dlp-text"
+end
+config system replacemsg utm "appblk-html"
+end
+config system replacemsg utm "ipsblk-html"
+end
+config system replacemsg utm "exe-text"
+end
+config system replacemsg utm "waf-html"
+end
+config user device-category
+    edit "android-phone"
+    next
+    edit "android-tablet"
+    next
+    edit "blackberry-phone"
+    next
+    edit "blackberry-playbook"
+    next
+    edit "forticam"
+    next
+    edit "fortifone"
+    next
+    edit "fortinet-device"
+    next
+    edit "gaming-console"
+    next
+    edit "ip-phone"
+    next
+    edit "ipad"
+    next
+    edit "iphone"
+    next
+    edit "linux-pc"
+    next
+    edit "mac"
+    next
+    edit "media-streaming"
+    next
+    edit "printer"
+    next
+    edit "router-nat-device"
+    next
+    edit "windows-pc"
+    next
+    edit "windows-phone"
+    next
+    edit "windows-tablet"
+    next
+    edit "other-network-device"
+    next
+    edit "collected-emails"
+    next
+    edit "all"
+    next
+end
+config system cluster-sync
+end
+config system fortiguard
+    set sdns-server-ip "208.91.112.220" 
+end
+config ips global
+    set default-app-cat-mask 18446744073642442751
+end
+config ips dbinfo
+    set version 1
+end
+config system email-server
+    set server "notification.fortinet.net"
+    set port 465
+    set security smtps
+end
+config gui console
+    unset preferences
+end
+config system session-helper
+    edit 1
+        set name pptp
+        set protocol 6
+        set port 1723
+    next
+    edit 2
+        set name h323
+        set protocol 6
+        set port 1720
+    next
+    edit 3
+        set name ras
+        set protocol 17
+        set port 1719
+    next
+    edit 4
+        set name tns
+        set protocol 6
+        set port 1521
+    next
+    edit 5
+        set name tftp
+        set protocol 17
+        set port 69
+    next
+    edit 6
+        set name rtsp
+        set protocol 6
+        set port 554
+    next
+    edit 7
+        set name rtsp
+        set protocol 6
+        set port 7070
+    next
+    edit 8
+        set name rtsp
+        set protocol 6
+        set port 8554
+    next
+    edit 9
+        set name ftp
+        set protocol 6
+        set port 21
+    next
+    edit 10
+        set name mms
+        set protocol 6
+        set port 1863
+    next
+    edit 11
+        set name pmap
+        set protocol 6
+        set port 111
+    next
+    edit 12
+        set name pmap
+        set protocol 17
+        set port 111
+    next
+    edit 13
+        set name sip
+        set protocol 17
+        set port 5060
+    next
+    edit 14
+        set name dns-udp
+        set protocol 17
+        set port 53
+    next
+    edit 15
+        set name rsh
+        set protocol 6
+        set port 514
+    next
+    edit 16
+        set name rsh
+        set protocol 6
+        set port 512
+    next
+    edit 17
+        set name dcerpc
+        set protocol 6
+        set port 135
+    next
+    edit 18
+        set name dcerpc
+        set protocol 17
+        set port 135
+    next
+    edit 19
+        set name mgcp
+        set protocol 17
+        set port 2427
+    next
+    edit 20
+        set name mgcp
+        set protocol 17
+        set port 2727
+    next
+end
+config system ntp
+    set ntpsync enable
+    set syncinterval 60
+end
+config system settings
+end
+config firewall address
+    edit "SSLVPN_TUNNEL_ADDR1"
+        set uuid 142ce51a-3417-51e6-9b89-01674776e18b
+        set type iprange
+        set associated-interface "ssl.root"
+        set start-ip 10.212.134.100
+        set end-ip 10.212.134.175
+    next
+    edit "all"
+        set uuid 1431ca76-3417-51e6-32d7-59f68d7d5eaf
+    next
+    edit "none"
+        set uuid 1431d340-3417-51e6-e50f-9dd21936367e
+        set subnet 0.0.0.0 255.255.255.255
+    next
+    edit "adobe"
+        set uuid 1431dafc-3417-51e6-acb5-a960da12a5c9
+        set type wildcard-fqdn
+        set wildcard-fqdn "*.adobe.com"
+    next
+    edit "Adobe Login"
+        set uuid 1431e2f4-3417-51e6-cd5a-8d2ea9128a84
+        set type wildcard-fqdn
+        set wildcard-fqdn "*.adobelogin.com"
+    next
+    edit "android"
+        set uuid 1431ed58-3417-51e6-e67a-a561332ba918
+        set type wildcard-fqdn
+        set wildcard-fqdn "*.android.com"
+    next
+    edit "apple"
+        set uuid 1431f56e-3417-51e6-3130-dc1d3d68027d
+        set type wildcard-fqdn
+        set wildcard-fqdn "*.apple.com"
+    next
+    edit "appstore"
+        set uuid 1431fd52-3417-51e6-dd76-f856b582dfcc
+        set type wildcard-fqdn
+        set wildcard-fqdn "*.appstore.com"
+    next
+    edit "auth.gfx.ms"
+        set uuid 14320536-3417-51e6-62d3-1dc04e4d23a6
+        set type fqdn
+        set fqdn "auth.gfx.ms"
+    next
+    edit "autoupdate.opera.com"
+        set uuid 14320d2e-3417-51e6-8cfb-5c261e17bd06
+        set type fqdn
+        set fqdn "autoupdate.opera.com"
+    next
+    edit "citrix"
+        set uuid 14321526-3417-51e6-ca34-d592bcdf182a
+        set type wildcard-fqdn
+        set wildcard-fqdn "*.citrixonline.com"
+    next
+    edit "dropbox.com"
+        set uuid 14321ce2-3417-51e6-caac-2a895f9aa77e
+        set type wildcard-fqdn
+        set wildcard-fqdn "*.dropbox.com"
+    next
+    edit "eease"
+        set uuid 1432249e-3417-51e6-f452-475c93704f8c
+        set type wildcard-fqdn
+        set wildcard-fqdn "*.eease.com"
+    next
+    edit "firefox update server"
+        set uuid 14322c78-3417-51e6-a052-d11a6b6cc2b2
+        set type wildcard-fqdn
+        set wildcard-fqdn "aus*.mozilla.org"
+    next
+    edit "fortinet"
+        set uuid 1432343e-3417-51e6-c450-714fafebe619
+        set type wildcard-fqdn
+        set wildcard-fqdn "*.fortinet.com"
+    next
+    edit "googleapis.com"
+        set uuid 14323c04-3417-51e6-feb5-c685d714bdf6
+        set type wildcard-fqdn
+        set wildcard-fqdn "*.googleapis.com"
+    next
+    edit "google-drive"
+        set uuid 1432455a-3417-51e6-6948-8e96b7e30109
+        set type wildcard-fqdn
+        set wildcard-fqdn "*drive.google.com"
+    next
+    edit "google-play"
+        set uuid 14324d16-3417-51e6-dce6-f9b31e3df908
+        set type fqdn
+        set fqdn "play.google.com"
+    next
+    edit "google-play2"
+        set uuid 143254dc-3417-51e6-a6bf-7eeec9ab2f91
+        set type wildcard-fqdn
+        set wildcard-fqdn "*.ggpht.com"
+    next
+    edit "google-play3"
+        set uuid 14325c66-3417-51e6-bc90-e355b69f529a
+        set type wildcard-fqdn
+        set wildcard-fqdn "*.books.google.com"
+    next
+    edit "Gotomeeting"
+        set uuid 1432667a-3417-51e6-6804-db92c079844a
+        set type wildcard-fqdn
+        set wildcard-fqdn "*.gotomeeting.com"
+    next
+    edit "icloud"
+        set uuid 14326e18-3417-51e6-8faa-9bb246092f26
+        set type wildcard-fqdn
+        set wildcard-fqdn "*.icloud.com"
+    next
+    edit "itunes"
+        set uuid 143275ac-3417-51e6-a3e7-54664220828b
+        set type wildcard-fqdn
+        set wildcard-fqdn "*itunes.apple.com"
+    next
+    edit "microsoft"
+        set uuid 14327d40-3417-51e6-d42b-da7edf08852b
+        set type wildcard-fqdn
+        set wildcard-fqdn "*.microsoft.com"
+    next
+    edit "skype"
+        set uuid 143284d4-3417-51e6-7ac0-a30abb795bb6
+        set type wildcard-fqdn
+        set wildcard-fqdn "*.messenger.live.com"
+    next
+    edit "softwareupdate.vmware.com"
+        set uuid 14328c7c-3417-51e6-014b-b59fd61e7102
+        set type fqdn
+        set fqdn "softwareupdate.vmware.com"
+    next
+    edit "swscan.apple.com"
+        set uuid 1432946a-3417-51e6-6ed5-365ba7dc1c37
+        set type fqdn
+        set fqdn "swscan.apple.com"
+    next
+    edit "update.microsoft.com"
+        set uuid 14329c62-3417-51e6-faf0-b139174f5737
+        set type fqdn
+        set fqdn "update.microsoft.com"
+    next
+    edit "verisign"
+        set uuid 1432a41e-3417-51e6-e0a3-88d794cb93be
+        set type wildcard-fqdn
+        set wildcard-fqdn "*.verisign.com"
+    next
+    edit "Windows update 2"
+        set uuid 1432abb2-3417-51e6-233f-7a7e41684a4d
+        set type wildcard-fqdn
+        set wildcard-fqdn "*.windowsupdate.com"
+    next
+    edit "live.com"
+        set uuid 1432b404-3417-51e6-17e0-4b030b9b3c21
+        set type wildcard-fqdn
+        set wildcard-fqdn "*.live.com"
+    next
+    edit "vpn-a4821dfc-0_local_subnet_1"
+        set uuid 98ece982-341a-51e6-3d9b-845a3a915d24
+        set subnet 10.17.0.0 255.255.0.0
+    next
+    edit "vpn-a4821dfc-0_remote_subnet_1"
+        set uuid 98fe5b0e-341a-51e6-5f2c-92ed664fc40c
+        set subnet 10.60.0.0 255.255.0.0
+    next
+    edit "vpn-a4821dfc-1_local_subnet_1"
+        set uuid 082e696a-341b-51e6-3be7-76ef85d05107
+        set subnet 10.17.0.0 255.255.0.0
+    next
+    edit "vpn-a4821dfc-1_remote_subnet_1"
+        set uuid 083e2d3c-341b-51e6-b0f2-5d04a1b0bd44
+        set subnet 10.60.0.0 255.255.0.0
+    next
+    edit "vpn-5de9f74f-0_local_subnet_1"
+        set uuid 009e693e-34a2-51e6-c772-1004105dbee7
+        set subnet 10.17.0.0 255.255.0.0
+    next
+    edit "vpn-5de9f74f-0_remote_subnet_1"
+        set uuid 00b5c020-34a2-51e6-3df6-9bb723db832e
+        set subnet 10.60.0.0 255.255.0.0
+    next
+    edit "vpn-5de9f74f-1_local_subnet_1"
+        set uuid 226e5740-34a2-51e6-a99d-334d61642315
+        set subnet 10.17.0.0 255.255.0.0
+    next
+    edit "vpn-5de9f74f-1_remote_subnet_1"
+        set uuid 228524f2-34a2-51e6-86ea-8e0c53e722f1
+        set subnet 10.60.0.0 255.255.0.0
+    next
+    edit "US-East-1 Prod VPC"
+        set uuid da5f645c-3709-51e6-c2cb-0bc28a59247c
+        set subnet 10.1.0.0 255.255.0.0
+    next
+    edit "vpn-fce6f8ee-0_local_subnet_1"
+        set uuid c0839be6-389b-51e6-4398-8f702f00f2d5
+        set subnet 10.17.0.0 255.255.0.0
+    next
+    edit "vpn-fce6f8ee-0_remote_subnet_1"
+        set uuid c0937322-389b-51e6-64f2-143c22a9e8c6
+        set subnet 10.61.0.0 255.255.0.0
+    next
+    edit "vpn-fce6f8ee-1_local_subnet_1"
+        set uuid df159de8-389b-51e6-48e5-98d59c1395cf
+        set subnet 10.17.0.0 255.255.0.0
+    next
+    edit "vpn-fce6f8ee-1_remote_subnet_1"
+        set uuid df291652-389b-51e6-7e9e-17f2c787e3be
+        set subnet 10.61.0.0 255.255.0.0
+    next
+    edit "vpn-63e3fd71-0_local_subnet_1"
+        set uuid 58540228-3d5e-51e6-0f35-630f17ee951a
+        set subnet 10.17.0.0 255.255.0.0
+    next
+    edit "vpn-63e3fd71-0_remote_subnet_1"
+        set uuid 5862e7ca-3d5e-51e6-083f-1fe05075032b
+        set subnet 10.62.0.0 255.255.0.0
+    next
+    edit "vpn-63e3fd71-1_local_subnet_1"
+        set uuid 72e3121e-3d5e-51e6-c487-4ae71f039c34
+        set subnet 10.17.0.0 255.255.0.0
+    next
+    edit "vpn-63e3fd71-1_remote_subnet_1"
+        set uuid 7302cd2a-3d5e-51e6-2c34-23ed2d8c3608
+        set subnet 10.62.0.0 255.255.0.0
+    next
+    edit "vpn-d12036b0-0_local_subnet_1"
+        set uuid 74d0bbd0-4849-51e6-d465-c0429ada358c
+        set subnet 10.17.0.0 255.255.0.0
+    next
+    edit "vpn-d12036b0-0_remote_subnet_1"
+        set uuid 74e2967a-4849-51e6-64a1-4abc2a9c4b54
+        set subnet 10.2.0.0 255.255.0.0
+    next
+    edit "vpn-d12036b0-1_local_subnet_1"
+        set uuid 9092513a-4849-51e6-562b-1daf5ca4160b
+        set subnet 10.17.0.0 255.255.0.0
+    next
+    edit "vpn-d12036b0-1_remote_subnet_1"
+        set uuid 90a3e6ca-4849-51e6-e7cb-49c4394cee94
+        set subnet 10.2.0.0 255.255.0.0
+    next
+    edit "vpn-20dcca41-0_local_subnet_1"
+        set uuid ab93b6b6-559d-51e6-986e-2d04619139b2
+        set subnet 10.17.0.0 255.255.0.0
+    next
+    edit "vpn-20dcca41-0_remote_subnet_1"
+        set uuid aba009c0-559d-51e6-fe32-bf731e7e2db2
+        set subnet 10.63.0.0 255.255.0.0
+    next
+    edit "vpn-20dcca41-1_local_subnet_1"
+        set uuid c7da6838-559d-51e6-2c12-939dcca179d6
+        set subnet 10.17.0.0 255.255.0.0
+    next
+    edit "vpn-20dcca41-1_remote_subnet_1"
+        set uuid c7e89516-559d-51e6-3dbc-3b87c578b8fc
+        set subnet 10.63.0.0 255.255.0.0
+    next
+    edit "vpn-88bda39a-0_local_subnet_1"
+        set uuid e679f720-64ae-51e6-9034-972934c3bd35
+        set subnet 10.17.0.0 255.255.0.0
+    next
+    edit "vpn-88bda39a-0_remote_subnet_1"
+        set uuid e760ebe4-64ae-51e6-71f5-3a884492b4d1
+        set subnet 10.70.0.0 255.255.0.0
+    next
+    edit "vpn-88bda39a-1_local_subnet_1"
+        set uuid 05bfa99a-64af-51e6-068b-8f0d69770766
+        set subnet 10.17.0.0 255.255.0.0
+    next
+    edit "vpn-88bda39a-1_remote_subnet_1"
+        set uuid 05ccefba-64af-51e6-cfb5-fc67c4d71cd6
+        set subnet 10.70.0.0 255.255.0.0
+    next
+    edit "vpn-d189ff9a-0_local_subnet_1"
+        set uuid 8969bf10-7071-51e6-de6b-135f962c22f3
+        set subnet 10.17.0.0 255.255.0.0
+    next
+    edit "vpn-d189ff9a-0_remote_subnet_1"
+        set uuid 897a8cc8-7071-51e6-b394-6b2dd5b2c9d8
+        set subnet 10.200.0.0 255.255.0.0
+    next
+    edit "vpn-d189ff9a-1_local_subnet_1"
+        set uuid 9f94267c-7071-51e6-1605-1cbeb8ccd080
+        set subnet 10.17.0.0 255.255.0.0
+    next
+    edit "vpn-d189ff9a-1_remote_subnet_1"
+        set uuid 9fa192c6-7071-51e6-2db5-d7eb7482ead6
+        set subnet 10.200.0.0 255.255.0.0
+    next
+    edit "vpn-d589ff9e-0_local_subnet_1"
+        set uuid 497bd234-7077-51e6-6b89-34f3a38513ee
+        set subnet 10.17.0.0 255.255.0.0
+    next
+    edit "vpn-d589ff9e-0_remote_subnet_1"
+        set uuid 498b9ee4-7077-51e6-af12-d85f0596f7bc
+        set subnet 10.201.0.0 255.255.0.0
+    next
+    edit "vpn-d589ff9e-1_local_subnet_1"
+        set uuid 631f52f6-7077-51e6-2ee6-eeff4aacbe97
+        set subnet 10.17.0.0 255.255.0.0
+    next
+    edit "vpn-d589ff9e-1_remote_subnet_1"
+        set uuid 63346970-7077-51e6-5116-4e3dbf112091
+        set subnet 10.201.0.0 255.255.0.0
+    next
+    edit "vpn-669c8d07-0_local_subnet_1"
+        set uuid 38b3f688-0047-51e7-0c54-d89f8db6f7ce
+        set subnet 10.17.192.0 255.255.255.0
+    next
+    edit "vpn-669c8d07-0_remote_subnet_1"
+        set uuid 38c9f2f8-0047-51e7-82c0-76faab0247c8
+        set subnet 10.2.0.0 255.255.0.0
+    next
+    edit "vpn-74839215-0_local_subnet_1"
+        set uuid 4fb9ddb2-0050-51e7-912b-26fccd8a348c
+        set subnet 10.17.0.0 255.255.0.0
+    next
+    edit "vpn-74839215-0_remote_subnet_1"
+        set uuid 4fc8502c-0050-51e7-f7a6-8bca345f7fdf
+        set subnet 10.2.0.0 255.255.0.0
+    next
+    edit "vpn-0fe9f11d-0_local_subnet_1"
+        set uuid bac218be-3a83-51e7-497b-859b7765b9f0
+        set subnet 10.17.192.0 255.255.255.0
+    next
+    edit "vpn-0fe9f11d-0_remote_subnet_1"
+        set uuid bacfa402-3a83-51e7-74c5-fa0c614c96dd
+        set subnet 10.65.0.0 255.255.0.0
+    next
+    edit "vpn-073f2515-0_local_subnet_1"
+        set uuid 245795ea-b81c-51e7-3071-040b6c0d8a61
+        set subnet 10.17.0.0 255.255.0.0
+    next
+    edit "vpn-073f2515-0_remote_subnet_1"
+        set uuid 2464111c-b81c-51e7-0247-119274b72053
+        set subnet 10.139.0.0 255.255.0.0
+    next
+    edit "vpn-073f2515-1_local_subnet_1"
+        set uuid 8581d35a-bdb5-51e7-b592-177b5f3b4f10
+        set subnet 10.17.192.0 255.255.255.0
+    next
+    edit "vpn-073f2515-1_remote_subnet_1"
+        set uuid 8595867a-bdb5-51e7-8079-a2510ab29862
+        set subnet 10.139.0.0 255.255.0.0
+    next
+end
+config firewall multicast-address
+    edit "all"
+        set start-ip 224.0.0.0
+        set end-ip 239.255.255.255
+    next
+    edit "all_hosts"
+        set start-ip 224.0.0.1
+        set end-ip 224.0.0.1
+    next
+    edit "all_routers"
+        set start-ip 224.0.0.2
+        set end-ip 224.0.0.2
+    next
+    edit "Bonjour"
+        set start-ip 224.0.0.251
+        set end-ip 224.0.0.251
+    next
+    edit "EIGRP"
+        set start-ip 224.0.0.10
+        set end-ip 224.0.0.10
+    next
+    edit "OSPF"
+        set start-ip 224.0.0.5
+        set end-ip 224.0.0.6
+    next
+end
+config firewall address6
+    edit "SSLVPN_TUNNEL_IPv6_ADDR1"
+        set uuid 142ce772-3417-51e6-1a35-d17dc6b1e952
+        set ip6 fdff:ffff::/120
+    next
+    edit "all"
+        set uuid 1432bc92-3417-51e6-b97b-2f76e6e9188b
+    next
+    edit "none"
+        set uuid 1432c35e-3417-51e6-13f2-5e45b6448b07
+        set ip6 ::/128
+    next
+end
+config firewall multicast-address6
+    edit "all"
+        set ip6 ff00::/8
+        set visibility disable
+    next
+end
+config firewall addrgrp
+    edit "vpn-a4821dfc-0_local"
+        set uuid 98f2bbdc-341a-51e6-fb13-15950796015d
+        set member "vpn-a4821dfc-0_local_subnet_1"
+        set comment "VPN: vpn-a4821dfc-0 (Created by VPN wizard)"
+    next
+    edit "vpn-a4821dfc-0_remote"
+        set uuid 9904e668-341a-51e6-0796-7b1688cbcfc3
+        set member "vpn-a4821dfc-0_remote_subnet_1"
+        set comment "VPN: vpn-a4821dfc-0 (Created by VPN wizard)"
+    next
+    edit "vpn-a4821dfc-1_local"
+        set uuid 0833491c-341b-51e6-8ba6-0ed0432b2590
+        set member "vpn-a4821dfc-1_local_subnet_1"
+        set comment "VPN: vpn-a4821dfc-1 (Created by VPN wizard)"
+    next
+    edit "vpn-a4821dfc-1_remote"
+        set uuid 08453b36-341b-51e6-1bb2-8f1a86d4e5f1
+        set member "vpn-a4821dfc-1_remote_subnet_1"
+        set comment "VPN: vpn-a4821dfc-1 (Created by VPN wizard)"
+    next
+    edit "vpn-5de9f74f-0_local"
+        set uuid 00a64212-34a2-51e6-b09d-1178ea76f694
+        set member "vpn-5de9f74f-0_local_subnet_1"
+        set comment "VPN: vpn-5de9f74f-0 (Created by VPN wizard)"
+    next
+    edit "vpn-5de9f74f-0_remote"
+        set uuid 00bdc658-34a2-51e6-2ea9-0419f5bc229c
+        set member "vpn-5de9f74f-0_remote_subnet_1"
+        set comment "VPN: vpn-5de9f74f-0 (Created by VPN wizard)"
+    next
+    edit "vpn-5de9f74f-1_local"
+        set uuid 22760328-34a2-51e6-acc0-df0e2f3b811f
+        set member "vpn-5de9f74f-1_local_subnet_1"
+        set comment "VPN: vpn-5de9f74f-1 (Created by VPN wizard)"
+    next
+    edit "vpn-5de9f74f-1_remote"
+        set uuid 228ce6d8-34a2-51e6-699d-9e000726342b
+        set member "vpn-5de9f74f-1_remote_subnet_1"
+        set comment "VPN: vpn-5de9f74f-1 (Created by VPN wizard)"
+    next
+    edit "vpn-fce6f8ee-0_local"
+        set uuid c088ef60-389b-51e6-1657-b54dae23a363
+        set member "vpn-fce6f8ee-0_local_subnet_1"
+        set comment "VPN: vpn-fce6f8ee-0 (Created by VPN wizard)"
+    next
+    edit "vpn-fce6f8ee-0_remote"
+        set uuid c098fda6-389b-51e6-3373-316ea67ef18d
+        set member "vpn-fce6f8ee-0_remote_subnet_1"
+        set comment "VPN: vpn-fce6f8ee-0 (Created by VPN wizard)"
+    next
+    edit "vpn-fce6f8ee-1_local"
+        set uuid df1d476e-389b-51e6-a7c2-429140054fa4
+        set member "vpn-fce6f8ee-1_local_subnet_1"
+        set comment "VPN: vpn-fce6f8ee-1 (Created by VPN wizard)"
+    next
+    edit "vpn-fce6f8ee-1_remote"
+        set uuid df2f099a-389b-51e6-ed8b-1bbe31bb08c8
+        set member "vpn-fce6f8ee-1_remote_subnet_1"
+        set comment "VPN: vpn-fce6f8ee-1 (Created by VPN wizard)"
+    next
+    edit "vpn-63e3fd71-0_local"
+        set uuid 5859177c-3d5e-51e6-8721-08373714f8ed
+        set member "vpn-63e3fd71-0_local_subnet_1"
+        set comment "VPN: vpn-63e3fd71-0 (Created by VPN wizard)"
+    next
+    edit "vpn-63e3fd71-0_remote"
+        set uuid 58694a98-3d5e-51e6-4ea8-1281bb32ed8e
+        set member "vpn-63e3fd71-0_remote_subnet_1"
+        set comment "VPN: vpn-63e3fd71-0 (Created by VPN wizard)"
+    next
+    edit "vpn-63e3fd71-1_local"
+        set uuid 72e83b0e-3d5e-51e6-5c68-fd7f66ded6ce
+        set member "vpn-63e3fd71-1_local_subnet_1"
+        set comment "VPN: vpn-63e3fd71-1 (Created by VPN wizard)"
+    next
+    edit "vpn-63e3fd71-1_remote"
+        set uuid 73079e04-3d5e-51e6-c84b-cf8826900362
+        set member "vpn-63e3fd71-1_remote_subnet_1"
+        set comment "VPN: vpn-63e3fd71-1 (Created by VPN wizard)"
+    next
+    edit "vpn-d12036b0-0_local"
+        set uuid 74d6df6a-4849-51e6-b63a-f33479c743bb
+        set member "vpn-d12036b0-0_local_subnet_1"
+        set comment "VPN: vpn-d12036b0-0 (Created by VPN wizard)"
+    next
+    edit "vpn-d12036b0-0_remote"
+        set uuid 74e89084-4849-51e6-69ed-3cb17629abb8
+        set member "vpn-d12036b0-0_remote_subnet_1"
+        set comment "VPN: vpn-d12036b0-0 (Created by VPN wizard)"
+    next
+    edit "vpn-d12036b0-1_local"
+        set uuid 90986160-4849-51e6-3bd9-fa40463f2a1b
+        set member "vpn-d12036b0-1_local_subnet_1"
+        set comment "VPN: vpn-d12036b0-1 (Created by VPN wizard)"
+    next
+    edit "vpn-d12036b0-1_remote"
+        set uuid 90aa1da6-4849-51e6-548a-117c440f1027
+        set member "vpn-d12036b0-1_remote_subnet_1"
+        set comment "VPN: vpn-d12036b0-1 (Created by VPN wizard)"
+    next
+    edit "vpn-20dcca41-0_local"
+        set uuid ab981350-559d-51e6-a37a-ed0e3b76c33d
+        set member "vpn-20dcca41-0_local_subnet_1"
+        set comment "VPN: vpn-20dcca41-0 (Created by VPN wizard)"
+    next
+    edit "vpn-20dcca41-0_remote"
+        set uuid aba49e72-559d-51e6-4c53-c61d1885310a
+        set member "vpn-20dcca41-0_remote_subnet_1"
+        set comment "VPN: vpn-20dcca41-0 (Created by VPN wizard)"
+    next
+    edit "vpn-20dcca41-1_local"
+        set uuid c7de6910-559d-51e6-ce9a-a66ff42685e6
+        set member "vpn-20dcca41-1_local_subnet_1"
+        set comment "VPN: vpn-20dcca41-1 (Created by VPN wizard)"
+    next
+    edit "vpn-20dcca41-1_remote"
+        set uuid c7f3f690-559d-51e6-f53c-387eefbc5c55
+        set member "vpn-20dcca41-1_remote_subnet_1"
+        set comment "VPN: vpn-20dcca41-1 (Created by VPN wizard)"
+    next
+    edit "vpn-88bda39a-0_local"
+        set uuid e68808ec-64ae-51e6-e8af-f006fcf51862
+        set member "vpn-88bda39a-0_local_subnet_1"
+        set comment "VPN: vpn-88bda39a-0 (Created by VPN wizard)"
+    next
+    edit "vpn-88bda39a-0_remote"
+        set uuid e82b6c20-64ae-51e6-ffd2-13a54ae64179
+        set member "vpn-88bda39a-0_remote_subnet_1"
+        set comment "VPN: vpn-88bda39a-0 (Created by VPN wizard)"
+    next
+    edit "vpn-88bda39a-1_local"
+        set uuid 05c45abc-64af-51e6-b3c7-5e05a779ab3b
+        set member "vpn-88bda39a-1_local_subnet_1"
+        set comment "VPN: vpn-88bda39a-1 (Created by VPN wizard)"
+    next
+    edit "vpn-88bda39a-1_remote"
+        set uuid 05d1b004-64af-51e6-9970-5d02ab98ada2
+        set member "vpn-88bda39a-1_remote_subnet_1"
+        set comment "VPN: vpn-88bda39a-1 (Created by VPN wizard)"
+    next
+    edit "vpn-d189ff9a-0_local"
+        set uuid 896fdd8c-7071-51e6-78d3-8612e0aa3e54
+        set member "vpn-d189ff9a-0_local_subnet_1"
+        set comment "VPN: vpn-d189ff9a-0 (Created by VPN wizard)"
+    next
+    edit "vpn-d189ff9a-0_remote"
+        set uuid 897f6856-7071-51e6-7563-1d469899351e
+        set member "vpn-d189ff9a-0_remote_subnet_1"
+        set comment "VPN: vpn-d189ff9a-0 (Created by VPN wizard)"
+    next
+    edit "vpn-d189ff9a-1_local"
+        set uuid 9f98897e-7071-51e6-7da3-c44ad5a2f1b5
+        set member "vpn-d189ff9a-1_local_subnet_1"
+        set comment "VPN: vpn-d189ff9a-1 (Created by VPN wizard)"
+    next
+    edit "vpn-d189ff9a-1_remote"
+        set uuid 9fa65bee-7071-51e6-de0b-1b9a21ae3cd7
+        set member "vpn-d189ff9a-1_remote_subnet_1"
+        set comment "VPN: vpn-d189ff9a-1 (Created by VPN wizard)"
+    next
+    edit "vpn-d589ff9e-0_local"
+        set uuid 4980f886-7077-51e6-1db8-7c185eefd6ba
+        set member "vpn-d589ff9e-0_local_subnet_1"
+        set comment "VPN: vpn-d589ff9e-0 (Created by VPN wizard)"
+    next
+    edit "vpn-d589ff9e-0_remote"
+        set uuid 4995f98e-7077-51e6-083f-be8dc3bde52a
+        set member "vpn-d589ff9e-0_remote_subnet_1"
+        set comment "VPN: vpn-d589ff9e-0 (Created by VPN wizard)"
+    next
+    edit "vpn-d589ff9e-1_local"
+        set uuid 6328c2be-7077-51e6-85cb-48a2c6b8d188
+        set member "vpn-d589ff9e-1_local_subnet_1"
+        set comment "VPN: vpn-d589ff9e-1 (Created by VPN wizard)"
+    next
+    edit "vpn-d589ff9e-1_remote"
+        set uuid 6339b588-7077-51e6-7c90-b93f6583087f
+        set member "vpn-d589ff9e-1_remote_subnet_1"
+        set comment "VPN: vpn-d589ff9e-1 (Created by VPN wizard)"
+    next
+    edit "vpn-669c8d07-0_local"
+        set uuid 38ba8a8e-0047-51e7-91a2-d23857448014
+        set member "vpn-669c8d07-0_local_subnet_1"
+        set comment "VPN: vpn-669c8d07-0 (Created by VPN wizard)"
+    next
+    edit "vpn-669c8d07-0_remote"
+        set uuid 38d00882-0047-51e7-718a-96b79817604c
+        set member "vpn-669c8d07-0_remote_subnet_1"
+        set comment "VPN: vpn-669c8d07-0 (Created by VPN wizard)"
+    next
+    edit "vpn-74839215-0_local"
+        set uuid 4fc010ec-0050-51e7-dbc3-ac8e9dc7a87e
+        set member "vpn-74839215-0_local_subnet_1"
+        set comment "VPN: vpn-74839215-0 (Created by VPN wizard)"
+    next
+    edit "vpn-74839215-0_remote"
+        set uuid 4fcee068-0050-51e7-8e8f-d834c27c5805
+        set member "vpn-74839215-0_remote_subnet_1"
+        set comment "VPN: vpn-74839215-0 (Created by VPN wizard)"
+    next
+    edit "vpn-0fe9f11d-0_local"
+        set uuid bac5f164-3a83-51e7-f3cc-acc7264bc454
+        set member "vpn-0fe9f11d-0_local_subnet_1"
+        set comment "VPN: vpn-0fe9f11d-0 (Created by VPN wizard)"
+    next
+    edit "vpn-0fe9f11d-0_remote"
+        set uuid bad45402-3a83-51e7-d1c4-70bad8c356ea
+        set member "vpn-0fe9f11d-0_remote_subnet_1"
+        set comment "VPN: vpn-0fe9f11d-0 (Created by VPN wizard)"
+    next
+    edit "vpn-073f2515-0_local"
+        set uuid 245ba770-b81c-51e7-a3f0-0b7b441103a8
+        set member "vpn-073f2515-0_local_subnet_1"
+        set comment "VPN: vpn-073f2515-0 (Created by VPN wizard)"
+    next
+    edit "vpn-073f2515-0_remote"
+        set uuid 2468376a-b81c-51e7-e202-ec8df4f930fc
+        set member "vpn-073f2515-0_remote_subnet_1"
+        set comment "VPN: vpn-073f2515-0 (Created by VPN wizard)"
+    next
+    edit "vpn-073f2515-1_local"
+        set uuid 85879ca4-bdb5-51e7-b750-c0fbe2f89523
+        set member "vpn-073f2515-1_local_subnet_1"
+        set comment "VPN: vpn-073f2515-1 (Created by VPN wizard)"
+    next
+    edit "vpn-073f2515-1_remote"
+        set uuid 859af3da-bdb5-51e7-7436-442aa162e22f
+        set member "vpn-073f2515-1_remote_subnet_1"
+        set comment "VPN: vpn-073f2515-1 (Created by VPN wizard)"
+    next
+end
+config firewall service category
+    edit "General"
+        set comment "General services."
+    next
+    edit "Web Access"
+        set comment "Web access."
+    next
+    edit "File Access"
+        set comment "File access."
+    next
+    edit "Email"
+        set comment "Email services."
+    next
+    edit "Network Services"
+        set comment "Network services."
+    next
+    edit "Authentication"
+        set comment "Authentication service."
+    next
+    edit "Remote Access"
+        set comment "Remote access."
+    next
+    edit "Tunneling"
+        set comment "Tunneling service."
+    next
+    edit "VoIP, Messaging & Other Applications"
+        set comment "VoIP, messaging, and other applications."
+    next
+    edit "Web Proxy"
+        set comment "Explicit web proxy."
+    next
+end
+config firewall service custom
+    edit "ALL"
+        set category "General"
+        set protocol IP
+    next
+    edit "ALL_TCP"
+        set category "General"
+        set tcp-portrange 1-65535
+    next
+    edit "ALL_UDP"
+        set category "General"
+        set udp-portrange 1-65535
+    next
+    edit "ALL_ICMP"
+        set category "General"
+        set protocol ICMP
+        unset icmptype
+    next
+    edit "ALL_ICMP6"
+        set category "General"
+        set protocol ICMP6
+        unset icmptype
+    next
+    edit "GRE"
+        set category "Tunneling"
+        set protocol IP
+        set protocol-number 47
+    next
+    edit "AH"
+        set category "Tunneling"
+        set protocol IP
+        set protocol-number 51
+    next
+    edit "ESP"
+        set category "Tunneling"
+        set protocol IP
+        set protocol-number 50
+    next
+    edit "AOL"
+        set visibility disable
+        set tcp-portrange 5190-5194
+    next
+    edit "BGP"
+        set category "Network Services"
+        set tcp-portrange 179
+    next
+    edit "DHCP"
+        set category "Network Services"
+        set udp-portrange 67-68
+    next
+    edit "DNS"
+        set category "Network Services"
+        set tcp-portrange 53
+        set udp-portrange 53
+    next
+    edit "FINGER"
+        set visibility disable
+        set tcp-portrange 79
+    next
+    edit "FTP"
+        set category "File Access"
+        set tcp-portrange 21
+    next
+    edit "FTP_GET"
+        set category "File Access"
+        set tcp-portrange 21
+    next
+    edit "FTP_PUT"
+        set category "File Access"
+        set tcp-portrange 21
+    next
+    edit "GOPHER"
+        set visibility disable
+        set tcp-portrange 70
+    next
+    edit "H323"
+        set category "VoIP, Messaging & Other Applications"
+        set tcp-portrange 1720 1503
+        set udp-portrange 1719
+    next
+    edit "HTTP"
+        set category "Web Access"
+        set tcp-portrange 80
+    next
+    edit "HTTPS"
+        set category "Web Access"
+        set tcp-portrange 443
+    next
+    edit "IKE"
+        set category "Tunneling"
+        set udp-portrange 500 4500
+    next
+    edit "IMAP"
+        set category "Email"
+        set tcp-portrange 143
+    next
+    edit "IMAPS"
+        set category "Email"
+        set tcp-portrange 993
+    next
+    edit "Internet-Locator-Service"
+        set visibility disable
+        set tcp-portrange 389
+    next
+    edit "IRC"
+        set category "VoIP, Messaging & Other Applications"
+        set tcp-portrange 6660-6669
+    next
+    edit "L2TP"
+        set category "Tunneling"
+        set tcp-portrange 1701
+        set udp-portrange 1701
+    next
+    edit "LDAP"
+        set category "Authentication"
+        set tcp-portrange 389
+    next
+    edit "NetMeeting"
+        set visibility disable
+        set tcp-portrange 1720
+    next
+    edit "NFS"
+        set category "File Access"
+        set tcp-portrange 111 2049
+        set udp-portrange 111 2049
+    next
+    edit "NNTP"
+        set visibility disable
+        set tcp-portrange 119
+    next
+    edit "NTP"
+        set category "Network Services"
+        set tcp-portrange 123
+        set udp-portrange 123
+    next
+    edit "OSPF"
+        set category "Network Services"
+        set protocol IP
+        set protocol-number 89
+    next
+    edit "PC-Anywhere"
+        set category "Remote Access"
+        set tcp-portrange 5631
+        set udp-portrange 5632
+    next
+    edit "PING"
+        set category "Network Services"
+        set protocol ICMP
+        set icmptype 8
+        unset icmpcode
+    next
+    edit "TIMESTAMP"
+        set protocol ICMP
+        set visibility disable
+        set icmptype 13
+        unset icmpcode
+    next
+    edit "INFO_REQUEST"
+        set protocol ICMP
+        set visibility disable
+        set icmptype 15
+        unset icmpcode
+    next
+    edit "INFO_ADDRESS"
+        set protocol ICMP
+        set visibility disable
+        set icmptype 17
+        unset icmpcode
+    next
+    edit "ONC-RPC"
+        set category "Remote Access"
+        set tcp-portrange 111
+        set udp-portrange 111
+    next
+    edit "DCE-RPC"
+        set category "Remote Access"
+        set tcp-portrange 135
+        set udp-portrange 135
+    next
+    edit "POP3"
+        set category "Email"
+        set tcp-portrange 110
+    next
+    edit "POP3S"
+        set category "Email"
+        set tcp-portrange 995
+    next
+    edit "PPTP"
+        set category "Tunneling"
+        set tcp-portrange 1723
+    next
+    edit "QUAKE"
+        set visibility disable
+        set udp-portrange 26000 27000 27910 27960
+    next
+    edit "RAUDIO"
+        set visibility disable
+        set udp-portrange 7070
+    next
+    edit "REXEC"
+        set visibility disable
+        set tcp-portrange 512
+    next
+    edit "RIP"
+        set category "Network Services"
+        set udp-portrange 520
+    next
+    edit "RLOGIN"
+        set visibility disable
+        set tcp-portrange 513:512-1023
+    next
+    edit "RSH"
+        set visibility disable
+        set tcp-portrange 514:512-1023
+    next
+    edit "SCCP"
+        set category "VoIP, Messaging & Other Applications"
+        set tcp-portrange 2000
+    next
+    edit "SIP"
+        set category "VoIP, Messaging & Other Applications"
+        set tcp-portrange 5060
+        set udp-portrange 5060
+    next
+    edit "SIP-MSNmessenger"
+        set category "VoIP, Messaging & Other Applications"
+        set tcp-portrange 1863
+    next
+    edit "SAMBA"
+        set category "File Access"
+        set tcp-portrange 139
+    next
+    edit "SMTP"
+        set category "Email"
+        set tcp-portrange 25
+    next
+    edit "SMTPS"
+        set category "Email"
+        set tcp-portrange 465
+    next
+    edit "SNMP"
+        set category "Network Services"
+        set tcp-portrange 161-162
+        set udp-portrange 161-162
+    next
+    edit "SSH"
+        set category "Remote Access"
+        set tcp-portrange 22
+    next
+    edit "SYSLOG"
+        set category "Network Services"
+        set udp-portrange 514
+    next
+    edit "TALK"
+        set visibility disable
+        set udp-portrange 517-518
+    next
+    edit "TELNET"
+        set category "Remote Access"
+        set tcp-portrange 23
+    next
+    edit "TFTP"
+        set category "File Access"
+        set udp-portrange 69
+    next
+    edit "MGCP"
+        set visibility disable
+        set udp-portrange 2427 2727
+    next
+    edit "UUCP"
+        set visibility disable
+        set tcp-portrange 540
+    next
+    edit "VDOLIVE"
+        set visibility disable
+        set tcp-portrange 7000-7010
+    next
+    edit "WAIS"
+        set visibility disable
+        set tcp-portrange 210
+    next
+    edit "WINFRAME"
+        set visibility disable
+        set tcp-portrange 1494 2598
+    next
+    edit "X-WINDOWS"
+        set category "Remote Access"
+        set tcp-portrange 6000-6063
+    next
+    edit "PING6"
+        set protocol ICMP6
+        set visibility disable
+        set icmptype 128
+        unset icmpcode
+    next
+    edit "MS-SQL"
+        set category "VoIP, Messaging & Other Applications"
+        set tcp-portrange 1433 1434
+    next
+    edit "MYSQL"
+        set category "VoIP, Messaging & Other Applications"
+        set tcp-portrange 3306
+    next
+    edit "RDP"
+        set category "Remote Access"
+        set tcp-portrange 3389
+    next
+    edit "VNC"
+        set category "Remote Access"
+        set tcp-portrange 5900
+    next
+    edit "DHCP6"
+        set category "Network Services"
+        set udp-portrange 546 547
+    next
+    edit "SQUID"
+        set category "Tunneling"
+        set tcp-portrange 3128
+    next
+    edit "SOCKS"
+        set category "Tunneling"
+        set tcp-portrange 1080
+        set udp-portrange 1080
+    next
+    edit "WINS"
+        set category "Remote Access"
+        set tcp-portrange 1512
+        set udp-portrange 1512
+    next
+    edit "RADIUS"
+        set category "Authentication"
+        set udp-portrange 1812 1813
+    next
+    edit "RADIUS-OLD"
+        set visibility disable
+        set udp-portrange 1645 1646
+    next
+    edit "CVSPSERVER"
+        set visibility disable
+        set tcp-portrange 2401
+        set udp-portrange 2401
+    next
+    edit "AFS3"
+        set category "File Access"
+        set tcp-portrange 7000-7009
+        set udp-portrange 7000-7009
+    next
+    edit "TRACEROUTE"
+        set category "Network Services"
+        set udp-portrange 33434-33535
+    next
+    edit "RTSP"
+        set category "VoIP, Messaging & Other Applications"
+        set tcp-portrange 554 7070 8554
+        set udp-portrange 554
+    next
+    edit "MMS"
+        set visibility disable
+        set tcp-portrange 1755
+        set udp-portrange 1024-5000
+    next
+    edit "KERBEROS"
+        set category "Authentication"
+        set tcp-portrange 88
+        set udp-portrange 88
+    next
+    edit "LDAP_UDP"
+        set category "Authentication"
+        set udp-portrange 389
+    next
+    edit "SMB"
+        set category "File Access"
+        set tcp-portrange 445
+    next
+    edit "NONE"
+        set visibility disable
+        set tcp-portrange 0
+    next
+    edit "webproxy"
+        set explicit-proxy enable
+        set category "Web Proxy"
+        set protocol ALL
+        set tcp-portrange 0-65535:0-65535
+    next
+end
+config firewall service group
+    edit "Email Access"
+        set member "DNS" "IMAP" "IMAPS" "POP3" "POP3S" "SMTP" "SMTPS"
+    next
+    edit "Web Access"
+        set member "DNS" "HTTP" "HTTPS"
+    next
+    edit "Windows AD"
+        set member "DCE-RPC" "DNS" "KERBEROS" "LDAP" "LDAP_UDP" "SAMBA" "SMB"
+    next
+    edit "Exchange Server"
+        set member "DCE-RPC" "DNS" "HTTPS"
+    next
+end
+config webfilter ftgd-local-cat
+    edit "custom1"
+        set id 140
+    next
+    edit "custom2"
+        set id 141
+    next
+end
+config ips sensor
+    edit "sniffer-profile"
+        set comment "Monitor IPS attacks."
+        config entries
+            edit 1
+                set severity high critical 
+            next
+        end
+    next
+    edit "default"
+        set comment "Prevent critical attacks."
+        config entries
+            edit 1
+                set severity medium high critical 
+            next
+        end
+    next
+    edit "all_default"
+        set comment "All predefined signatures with default setting."
+        config entries
+            edit 1
+            next
+        end
+    next
+    edit "all_default_pass"
+        set comment "All predefined signatures with PASS action."
+        config entries
+            edit 1
+                set action pass
+            next
+        end
+    next
+    edit "protect_http_server"
+        set comment "Protect against HTTP server-side vulnerabilities."
+        config entries
+            edit 1
+                set location server 
+                set protocol HTTP 
+            next
+        end
+    next
+    edit "protect_email_server"
+        set comment "Protect against email server-side vulnerabilities."
+        config entries
+            edit 1
+                set location server 
+                set protocol SMTP POP3 IMAP 
+            next
+        end
+    next
+    edit "protect_client"
+        set comment "Protect against client-side vulnerabilities."
+        config entries
+            edit 1
+                set location client 
+            next
+        end
+    next
+    edit "high_security"
+        set comment "Blocks all Critical/High/Medium and some Low severity vulnerabilities"
+        set block-malicious-url enable
+        config entries
+            edit 1
+                set severity medium high critical 
+                set status enable
+                set action block
+            next
+            edit 2
+                set severity low 
+            next
+        end
+    next
+end
+config firewall shaper traffic-shaper
+    edit "high-priority"
+        set maximum-bandwidth 1048576
+        set per-policy enable
+    next
+    edit "medium-priority"
+        set maximum-bandwidth 1048576
+        set priority medium
+        set per-policy enable
+    next
+    edit "low-priority"
+        set maximum-bandwidth 1048576
+        set priority low
+        set per-policy enable
+    next
+    edit "guarantee-100kbps"
+        set guaranteed-bandwidth 100
+        set maximum-bandwidth 1048576
+        set per-policy enable
+    next
+    edit "shared-1M-pipe"
+        set maximum-bandwidth 1024
+    next
+end
+config web-proxy global
+    set proxy-fqdn "default.fqdn"
+end
+config application list
+    edit "sniffer-profile"
+        set comment "Monitor all applications."
+        unset options
+        config entries
+            edit 1
+                set action pass
+            next
+        end
+    next
+    edit "default"
+        set comment "Monitor all applications."
+        config entries
+            edit 1
+                set action pass
+            next
+        end
+    next
+    edit "block-botnet"
+        config entries
+            edit 1
+                set category 19
+            next
+        end
+    next
+    edit "block-high-risk"
+        config entries
+            edit 1
+                set category 2 6 19
+            next
+            edit 2
+                set action pass
+            next
+        end
+    next
+end
+config application casi profile
+    edit "sniffer-profile"
+        set comment "Monitor all applications."
+        config entries
+            edit 1
+                set action pass
+            next
+        end
+    next
+    edit "default"
+        set comment "Monitor all applications."
+        config entries
+            edit 1
+                set action pass
+            next
+        end
+    next
+end
+config dlp filepattern
+    edit 1
+        set name "builtin-patterns"
+        config entries
+            edit "*.bat"
+            next
+            edit "*.com"
+            next
+            edit "*.dll"
+            next
+            edit "*.doc"
+            next
+            edit "*.exe"
+            next
+            edit "*.gz"
+            next
+            edit "*.hta"
+            next
+            edit "*.ppt"
+            next
+            edit "*.rar"
+            next
+            edit "*.scr"
+            next
+            edit "*.tar"
+            next
+            edit "*.tgz"
+            next
+            edit "*.vb?"
+            next
+            edit "*.wps"
+            next
+            edit "*.xl?"
+            next
+            edit "*.zip"
+            next
+            edit "*.pif"
+            next
+            edit "*.cpl"
+            next
+        end
+    next
+    edit 2
+        set name "all_executables"
+        config entries
+            edit "bat"
+                set filter-type type
+                set file-type bat
+            next
+            edit "exe"
+                set filter-type type
+                set file-type exe
+            next
+            edit "elf"
+                set filter-type type
+                set file-type elf
+            next
+            edit "hta"
+                set filter-type type
+                set file-type hta
+            next
+        end
+    next
+end
+config dlp fp-sensitivity
+    edit "Private"
+    next
+    edit "Critical"
+    next
+    edit "Warning"
+    next
+end
+config dlp sensor
+    edit "sniffer-profile"
+        set comment "Log a summary of email and web traffic."
+        set flow-based enable
+        set summary-proto smtp pop3 imap http-get http-post
+    next
+    edit "default"
+        set comment "Default sensor."
+    next
+end
+config log threat-weight
+    config web
+        edit 1
+            set category 26
+            set level high
+        next
+        edit 2
+            set category 61
+            set level high
+        next
+        edit 3
+            set category 86
+            set level high
+        next
+        edit 4
+            set category 1
+            set level medium
+        next
+        edit 5
+            set category 3
+            set level medium
+        next
+        edit 6
+            set category 4
+            set level medium
+        next
+        edit 7
+            set category 5
+            set level medium
+        next
+        edit 8
+            set category 6
+            set level medium
+        next
+        edit 9
+            set category 12
+            set level medium
+        next
+        edit 10
+            set category 59
+            set level medium
+        next
+        edit 11
+            set category 62
+            set level medium
+        next
+        edit 12
+            set category 83
+            set level medium
+        next
+        edit 13
+            set category 72
+        next
+        edit 14
+            set category 14
+        next
+    end
+    config application
+        edit 1
+            set category 2
+        next
+        edit 2
+            set category 6
+            set level medium
+        next
+        edit 3
+            set category 19
+            set level critical
+        next
+    end
+end
+config icap profile
+    edit "default"
+    next
+end
+config vpn certificate ca
+end
+config vpn certificate local
+    edit "Fortinet_CA_SSL"
+        set password ENC UfjKsSGUkFrHctwxDsZpl2dj1dJJY3ONf6Zxrkuybx44zbln49bBsnStVzrFAsoqAoXJXdefM3VIOvKL+ySWeiX3SpxAVbFBBe5Vxj1iEYoi45Gm1GjppsWs/Mh7nhTOBB4YnXkuvC+Sb4fFewbh9QaCJQrK90xMJ7gMxqoxCIz9XpCgblX4A10Uhi0t/MoMmbwgDA==
+        set comments "This is the default CA certificate the SSL Inspection will use when generating new server certificates."
+        set private-key "-----BEGIN ENCRYPTED PRIVATE KEY-----
+MIIFDjBABgkqhkiG9w0BBQ0wMzAbBgkqhkiG9w0BBQwwDgQILFWLMJBTq+0CAggA
+MBQGCCqGSIb3DQMHBAg3hMLt80sNgASCBMgc9tXN6DCiMgbGrYuZ26eO84saPheg
+MBp5Wrva/s81wDnHraJgormTgQS0EpsvucCL2b/9/cjR50wKVXwAdfy7GMeZL+a4
+LO53PscE0PlkuYEIGX2lkxErK4h4T123O4jmoi2cG0heNJxsIge8rwa5Vw9PPaJc
+9Mew6rd5ZrNZXTnDLI4IzVHFHwdppMwLYYjQ2ukyQv/3s1FI+9WRfZetXBe24OBm
+ebGkV8fzXvsW3ZGh4L5kyBMkV7XE98qpgdgrjCvCUTnR+Un3T1A70y+SzapDgrZv
+UpWCysugXGboS9RymZcGCY+5WPTblRIpVQNT64nK/roWJtzfhAYyr89OrHHQFcfS
+T1UYNbqYfe8J/yVYC5H97ll6UiC9GoczwcUARrAKj3+dB1kvRNqrqiZ4Cfn/MRG8
+/6Lm46dwcTN592uSI96bugdSVy1EHaxjxSx+jKvtw0ccU3GHwx+T7fzK0zA9T5Rs
+ybHQvMMBh24glHdRfLZo0T4W7OM4e+gMXzO5ArNRBgYEiIPP1rE2/LuAo+Wb6woy
+ePt5XQnPKqrQZrEJdqIPRK+dEPd/GHLmzG+LICRdpRfWS5/Qf1MeKzUjZpQRwawn
+6WZldLeGGCBH625ZrlOBn0cbj5vyk6NIH7pMY72/rjoG92mTfUxSDDG6DlKMH8d3
+i6Ja35Lm4oJXlJwSFE8QSWlAMMeKmFXT8681DhACs8dLDn9x4uxXBJx7u3+MKpB1
+8qhy/3PpvWvPIa73+o9JP1M3x5Ijgp5j0KHywKFUWh8fdSVhw3tLqbqVOFO7UAJP
+k0TwKzpkDCGWBw7UB+3wekd81Zwo4L34/LcxXk7JL5w0fHGUhG10rhefJj336AlO
+FpLBMBYqC27rGVfuKT1eNLq941uVXPVEKVW2sLjKBa25a9w/0g/DQ/koZtkSYV7W
+iwvLDPfb0JmY0+A1rBHCdji77lcq170CKE0iSxmBcZvdSMcW4L+oUgf/c2OmPIGD
+x0wcAeT5eFsGBd62Yqvmkjar5q+QP1QwpAORZsyWPOUJ7nqxhZip+gLJ7wzDLQR4
+ixbvhRwf5XS+kXy8ax3Ra5PVrk6gQAiK+KIitUH8ouLGlQCm8OPulrwkHol7lS/e
+zf7Shy9ek4cl+Jl5gV+hnybMOe1m1+tiTxlrgAiGfJLZp+cHWozXIvbsZUmPadmF
+MNEjxJXFwHDCjpjp5lCqH2ar+6TIvxjK06bEBB4i3EFRCzWl4pL3KS1tYNNJc+KA
+He/002xGAxB3kClmMMi4PpJjtLtfmAkJfTFxek3GpcVkpl9yxa5S8N77tG7I5dZW
+BwDk0l1Vec3mgZAXFdcFkqCUILRDhUfZb7JSFh5P0Bd3v+WqV7X9o/x5veNh19oS
+eChUdZPMOrWuxstaDK8qTF92RO8jQ7C+gDzLa2kKFcfTCMwkKstbLTCO60Eky1yY
+w0+uQKTv5kFjF/aU+sADXjxTmSbN2/sm9VsjDaLy7QoOBkR0vGrKtP9A71zpu/+R
+1yGQ1iCjxpZwZHU4uA4XWtrqQzPtdxGZc4Tf6b1nsJghYY0i5tvnSw4e72EJiGUe
+HXAiLWRTLD4egaHSbDl9EvpcYZVFdVLUY/buOfrNtu8ndnlrjvxrrqLvRpviG/iq
+RhU=
+-----END ENCRYPTED PRIVATE KEY-----"
+        set certificate "-----BEGIN CERTIFICATE-----
+MIID5jCCAs6gAwIBAgIIDP1mgQr1hQUwDQYJKoZIhvcNAQELBQAwgakxCzAJBgNV
+BAYTAlVTMRMwEQYDVQQIDApDYWxpZm9ybmlhMRIwEAYDVQQHDAlTdW5ueXZhbGUx
+ETAPBgNVBAoMCEZvcnRpbmV0MR4wHAYDVQQLDBVDZXJ0aWZpY2F0ZSBBdXRob3Jp
+dHkxGTAXBgNVBAMMEEZHVk0wMjAwMDAwNjY1NzIxIzAhBgkqhkiG9w0BCQEWFHN1
+cHBvcnRAZm9ydGluZXQuY29tMB4XDTE2MDYxNjIzMjc0M1oXDTI2MDYxNzIzMjc0
+M1owgakxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApDYWxpZm9ybmlhMRIwEAYDVQQH
+DAlTdW5ueXZhbGUxETAPBgNVBAoMCEZvcnRpbmV0MR4wHAYDVQQLDBVDZXJ0aWZp
+Y2F0ZSBBdXRob3JpdHkxGTAXBgNVBAMMEEZHVk0wMjAwMDAwNjY1NzIxIzAhBgkq
+hkiG9w0BCQEWFHN1cHBvcnRAZm9ydGluZXQuY29tMIIBIjANBgkqhkiG9w0BAQEF
+AAOCAQ8AMIIBCgKCAQEA1cDLQiJkzmq3/HS+/wdjEP/SMGmEJ7Ch1G4jMMusvPP8
+Of8+IF9J+kwttXJVm9OR4GDHZGFeeMBVDBMg5ONJPKCpPMYuXfeQATc3zbrQuHEF
+q8y6jirVF/bUBJbzi4F87Le4WrMnTM7AYetxUVRv0eUF6JxRCXNolIR2IOWcYBp1
+0XbLfYkG4ihrf+7LtfAx9K9orle9Phe4uef+z88ImmmylaltXxStUPrCyG3/SuAf
+cjW2OATt3B5FqVoSjTZB5Ggpbq4rFg6F97phTcI+h4h0DyFevKiVnLK2zRl779z/
+HiDEmGOpPoJBlhKmpelXKcpzwrW/67QwpASdsc3gcwIDAQABoxAwDjAMBgNVHRME
+BTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQAmWINcW7GHheKAbzVlllqVElu+lNho
+NYVfkGVpvw5iY0m4nngArSVthOHiMDjcfn1M3+qthI3l5C9u8tJGJW4zpHVQ5sIn
+7QxfsvewG48+iNA6GWkobpiu6CwXcrJ/5IOSibS0DL93Eq+4Ptwb5POEOqAKw5Fw
+uIFLDLIY1wOingQU+sM+I/gLqRaiotWaTVebGfcEvmm66obB+lYRR4Y/Ofu4QsQn
+X732+/jl7RCEwZSSwXmMr/+PXOcltwUqQXctUmaXYUFznEZzzUR7Au6Wm4vQPs92
++JXYYaHS2LY7Y4/zY3/zut+ibqTkN2ggIFSgGPW2jPWEjLwW0kbylAcH
+-----END CERTIFICATE-----"
+        set range global
+        set source factory
+    next
+    edit "Fortinet_CA_Untrusted"
+        set password ENC kQzNLuHq96BB9T4oITOkvaA1wzADqV1RboGEWE4RWW5XWEyCijl8iimZDAM9DA9n5GYxH0svvK+dCJlRKUaPOoiYuDIScbDsfxkkOkUJOV2FimBR9ipWL0E7+Sr24l8vaUiDGkQnVPZWz6EK1Pqs/z+jmAkT0bNmThcUqCgzABHyyni96Dil3XQX4dzHIG3AEmVURA==
+        set comments "This is the default CA certificate the SSL Inspection will use when generating new server certificates."
+        set private-key "-----BEGIN ENCRYPTED PRIVATE KEY-----
+MIIFDjBABgkqhkiG9w0BBQ0wMzAbBgkqhkiG9w0BBQwwDgQIfIRX2GSPc5ICAggA
+MBQGCCqGSIb3DQMHBAisyNzd8lAgKQSCBMh1nKs3Jfxn3uPlLvXsv2d5AGxZnYaL
+IrOgqkhW9Q2nON0Tmz2gDbIm1Kyd8oS0B/wmRFdCh1rlXfig9XthHFaMCwmHH2yQ
+D8Yx9oLUHMp5FAX5eY0pt6lYiTXQo8uakYOBQOjG4gXiR0qIgNjG1QcfDXTr9lgg
+q13GM/HI4ZqCCEXclOPph+d6gV34MJf5qeKN2IETDIZ7IOV28RxGqOk4blquH+jn
+sNP7p144AWF8sL2G+3u3Kh/R8jA7XV0SgKy/fwcGl5T6R8EcApxZAzp7Gce0KYmS
+YoKFwDVAW803TPm9nFbF6c5LbCJG4UO0Y+ThElMGlqNadgZBMvFIS4mtQAx50v2q
+/6QbPRFJGvFqVYmAvP4oPSC0NHMfqUO0EJnmsyrw9W19QS4gL3OE6JFo4mXZCQUI
+RqVafwiOmXnc1Q8J6pescDgsJuh/S1nVPxzltUapc25jwwnL4qJUzKUyfvmh5Y39
+AApmL/AXDcjFp4EYxSWt9UR7/L6rc1d2VddOTw5BPj+aTQuQOOEGfC9hp98r+yFF
+QzrZq/tm3bY64J4Dqgq2WCUyO2KQMjgmsUjl4g06UJYwR/OCuVvBBQi5UZehjqHR
+XbePZtJ6myNAgTYaLqg+BGfgktD2LUEG8GTfbq0iMO9/v/APUy+DWMN/MWEWmpFO
+FqY3Np4QoAWDCNLy/a5goE1qe8OPATYWqJ4ALLJK58FxYi4KO41AcS+WcP+9AIdq
+3dT+cZ1kLnsCECm4XlLRM+utSLNlGdgAFjOo0eVRqKT3DDjMNozyxiU3nGguK0x9
+p7W09vJlRUwPWXqhMpfy9CxZrGoCDnKBRU+/8aRtGMu/kWtrB0GyfSHgnh8mS7uW
+HAnCs+oPMw5wdMgNUBYum5id3aDpdu3NY9ck2TNsoIdoJ9ga7zxRjKDYhohmk66w
+b5zlbvUFW0IEYgub91TZAUElBNy4FHl8rmZ0UXR703WMM5Xtqd40AaGo3sNUXcVW
+/5NIANJ3gnPQ4lcGv+jFlOGTm1It1IoU+Jzz+PziBz4zgX8KIXbLbaVC4UpY5JV1
+OmhlWIrbnDbqrwYl3E/u+bAMdpF4DYJhRhlgFQ9hF1bxf5tC7ZBdb50CGyxpKOss
+csnofYB0g4lWb5SariWizTkQy+0tCkydKR7GMWnSm6zrfSgV51ZsQfLH/nmo1bxr
+1ZfG8c7b2878K+ZxgQo0cibQbW7WYYWgH6wwj4RfzbJn9RalDzk970dSvpsYgfoK
+CFdT3HLNhNyoPocG8bZq74FfDZmtqbOew5IDx7UYgY/rxsvlHVgkpiGlMVyQFQI6
+Mh6fLFJHtBtaYkRw6PYpc2Xs1DGNa1a8orImwvk5czhzi0I2fqK5BLSgz7TeGRaV
+eO3vLJW5zZ/XiqFgHkXkdHMzQ9f5I966/YOvKLhchdOaVY6ZQL5jDliZp7WRpa0t
+C2Dm66JyELm005nC6Ppp+vXcmOPemS3hCqHEUvP1UqA3S2zQ//wpHcAlqVZQkJqa
+aFPGTDB51snGxDRUaO6ALEfUkBXP62rWrzv3terFp12QIoGJJkMrg2/yIqOeWw9e
+BElI1qCtEzLq3ALIa3mbhnx69HE47T3iDYzdu/A9QKoPbkA+5BCLdO1P3enDtgFE
+2ew=
+-----END ENCRYPTED PRIVATE KEY-----"
+        set certificate "-----BEGIN CERTIFICATE-----
+MIID8DCCAtigAwIBAgIIAtFWdtgPb9swDQYJKoZIhvcNAQELBQAwga4xCzAJBgNV
+BAYTAlVTMRMwEQYDVQQIDApDYWxpZm9ybmlhMRIwEAYDVQQHDAlTdW5ueXZhbGUx
+ETAPBgNVBAoMCEZvcnRpbmV0MR4wHAYDVQQLDBVDZXJ0aWZpY2F0ZSBBdXRob3Jp
+dHkxHjAcBgNVBAMMFUZvcnRpbmV0IFVudHJ1c3RlZCBDQTEjMCEGCSqGSIb3DQEJ
+ARYUc3VwcG9ydEBmb3J0aW5ldC5jb20wHhcNMTYwNjE2MjMwNzE4WhcNMjYwNjE3
+MjMwNzE4WjCBrjELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExEjAQ
+BgNVBAcMCVN1bm55dmFsZTERMA8GA1UECgwIRm9ydGluZXQxHjAcBgNVBAsMFUNl
+cnRpZmljYXRlIEF1dGhvcml0eTEeMBwGA1UEAwwVRm9ydGluZXQgVW50cnVzdGVk
+IENBMSMwIQYJKoZIhvcNAQkBFhRzdXBwb3J0QGZvcnRpbmV0LmNvbTCCASIwDQYJ
+KoZIhvcNAQEBBQADggEPADCCAQoCggEBAKBhKpSmNYkosjLJ19NR3apSQOmGY1eM
+PWKoMGyI5W+kNwK22Ln2OsVMujfVbVMqsxgK4YwW5wy72BPjWcz1z+E7CL6FByYe
++uIkchQkIViXyrK7xQmVVonU6N0pm9dfd+R//GvH2JxwDBac30K/CklgPV70OkRP
+iKDN5cwu32bco2B2rTHw7Nl1Y9RR+Cpbjyo7lhBdfhXClnUVlhdnOBO0KUuHbn1E
+cPSi/uRAiPeE7cMGCeCyeuH5WsSIqcWN2cOGfAuND++2IAKExnh3a9ZT7W/gyZJw
+GUudxXgBHP62q7PYJNFp4Mw/gd8r92jdpdyZfeYTThWWr5Jo/bhm5iECAwEAAaMQ
+MA4wDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAiZ5okp5B7+2xUJyz
+64zPzNVnyvF6eBM4fsVXR7VdS/xIvpFtEaCZoQBxFOPKfOzXlf8OOhIZdghsF3zd
+LKUyuDtAgMc93W65h6Q+PhqXZbUGNmwHYPrDzWeK65T+xAb4/lbDRwanrJ+WyV83
+rNdm1jZDruoPnZMXOahnlfXxAG5EqJxyn+SYQBgSXF7ohr2c1LHKaaMj7iyP387S
+S5AXYhAEXfXwntcggbDJV5mMb+Ojw9jv5utrWYcIzgpHsOABweh+cT7QojvlES/k
+pi0vHzE7ntblCe9PMiMXyKFE62xtDTwcJ17iPimTY0ZvWjHroEoHeFs9fWu5yrBi
+yTjIvw==
+-----END CERTIFICATE-----"
+        set range global
+        set source factory
+    next
+    edit "Fortinet_SSL"
+        set password ENC oe7eO3dJXENHoc+9O1SOCNUMzUVvAlXR3wVQWCnxKKO4baB1GJPTygh3T/an56ZbgNWRW1Othi9xxBYC2GUbynY35Qy9WfYqPkuIBWXgMluWirT7F9z9dyyPmxcReLbAp1j7XIKq8oj1KMSVI0BFQ0jiUYfRvdS7zAUxzaKDa8SSjenK/dbD+JDhQowbnX+ef63qeg==
+        set comments "This certificate is embedded in the hardware at the factory and is unique to this unit. "
+        set private-key "-----BEGIN ENCRYPTED PRIVATE KEY-----
+MIIFDjBABgkqhkiG9w0BBQ0wMzAbBgkqhkiG9w0BBQwwDgQIFt+8Grus3W8CAggA
+MBQGCCqGSIb3DQMHBAiBSVbbOd1T0wSCBMgPZgopBFxO1KMBmaiH4+XPBtHmRoBC
+rqvCgs9eGo0Sm9SecyoXRzqmz+8KIe8pAAsjySaIXhz1KYonqVXW8VGDBDRhzPab
+iviSFUllbbw+Nz09/e4D9cfnExBCS0ZMPJ10f75yTRAqeoHZ/NZ6UxEuDmOFe+3N
+BHMqf07SqAQQ2f0icY1uy9weKkNhwBvJ54gRg9LdyaDnXvNzq/e4FFrOesc9bz5Z
+RYJngq2d+OtTR/WhPeag+jmmnI9nTB7Sl8hClqwnOwwvAHQ29VbG+uBNx/GmL5e9
+xP9Vzsr28Co6URQCua9INWcaXk/xKupTNBa8bBnXkploENTtp3JzDKp1uPsQrvx6
+sQSfxRyOlYQ7+i0+TbX/b8XcLM166BmlaII6Ydmn3ApXLiLILodtLa5aPYGClAPg
+jKzqVGt2gfucvh4butSac46DmlwsCJz3fuMF8mTUfwj8fv5BzaIFRs0GOypWo8xc
+DAmLOV5yKZ90m1+riMEKJMBNZe7X7ulSsr0/St1MmHhAkPPduxy7kEXe5BVJ1GO+
+ZOidPsUF3t+0Tmh4IA4DlVU+fRCWLhUA8/usr+nv9uARrsPjUPFHmkkazhoikMJB
+IyegUumaRL8qv1W3T48Y8LN9Ds+yliWeiZUM5HHHCwvKD2x2OCTMwj64jH9O0wH7
+R+fHE4oh/8SIeErfSMp6CxPJXSlT5utCt7IpW4ly1XedpfinAl+DPvsEhAdeUjSn
+S2KMKwbRGIwB2IRI7evqTAlTbfJRYaXTo1KdZWF74JlPgaApWGpwDcqtP4/oz4tI
+6qITQi0A6rbX4gpJk02F4sSPHKXZcuh4CmifB0t+4x1z/mxRDVTLgHp77uEZvIcY
+D+yi9NvzBoHXMX+WTKmTElp1gkYmdVOmhBs6ZR1MDV1C/0Je/eg+0RYlnCLgXI2c
+R/9jq6vvvQb3CawvbrgOqvp4fdz5/JYFoW80aRKxFPUMCZATnq8WtIoGh+sJZHMB
+1rgc+u03aWPY88ShRJFd6XZThZO+glTVboqWp+VQVj1wpYbKDkNrDQGJX8vBw3e4
+IAgs92TMYcHeqTjHF6qq+NzGCsjW+iZEUS2MMcSp4v7RqF7kudGpLyO5SPQ4JwoB
+CuEQ2/SydEK0KuY/YRtIgGFPLTxDctWwb1k62GLBoVyDjv8nz0UXWtbVT+cIuIAy
+xuA5WuHZN6nyu7x4W0qo5NWwzEwU92cB6tHjFiWtUXsR6ejRgE/dolXYY18l96VG
+wgzjji6yYtwT8HHrui6JQvgHQw7i2erg7Q6f+1GLtnHWvGBYknnXOMRJXk+0Af0s
+61lxPxfBVLNvzTdA9gLts1aHJ+IiH9fPhv7miT5hs5JkR6FbRWnkKfKiKb3lNPVe
+SloMvV7FYp0cuZ50oC/afkL/7JQX0VldeGIYKR/ZvM/8sACwQnXT8A909WjztDPl
+ky7LujAN2XwdEwAJtaPIBADUlsppagYXESRk6spURkynCGzzQmEjSqCHQkSmsKHa
+7b1Y6isyy21tM7NLnQXlwv8A05Ih6i0PEGuw4xkPxBtwu8O2Cdkz8aQMXQg9NIEP
+1ONDm0wQFHors4V0oRlGEjBz8PL3QaWtiA8SjUYTsB6KFiErMcdfr+KXaWf+hqPr
+Ivw=
+-----END ENCRYPTED PRIVATE KEY-----"
+        set certificate "-----BEGIN CERTIFICATE-----
+MIIDyzCCArOgAwIBAgIINUORiwE0mqswDQYJKoZIhvcNAQELBQAwgZ0xCzAJBgNV
+BAYTAlVTMRMwEQYDVQQIDApDYWxpZm9ybmlhMRIwEAYDVQQHDAlTdW5ueXZhbGUx
+ETAPBgNVBAoMCEZvcnRpbmV0MRIwEAYDVQQLDAlGb3J0aUdhdGUxGTAXBgNVBAMM
+EEZHVk0wMjAwMDAwNjY1NzIxIzAhBgkqhkiG9w0BCQEWFHN1cHBvcnRAZm9ydGlu
+ZXQuY29tMB4XDTE2MDYxNjIzMjc0M1oXDTI2MDYxNzIzMjc0M1owgZ0xCzAJBgNV
+BAYTAlVTMRMwEQYDVQQIDApDYWxpZm9ybmlhMRIwEAYDVQQHDAlTdW5ueXZhbGUx
+ETAPBgNVBAoMCEZvcnRpbmV0MRIwEAYDVQQLDAlGb3J0aUdhdGUxGTAXBgNVBAMM
+EEZHVk0wMjAwMDAwNjY1NzIxIzAhBgkqhkiG9w0BCQEWFHN1cHBvcnRAZm9ydGlu
+ZXQuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAndpgn/u1YOvF
+tSFO//3yVB6kriVj0Ahst0rAyA2cQLa+UuTZzpniEhqkyKAtMLqZpI2A3BWSerzF
+Pec2hVEUn3GwHyum9wJC1jgTtxw6uoA6nEU1K3/KOMgs9b4BNVzcF654Vk7b5Nlt
+UN8K0MPVDb3a9UE7whhebRxRHL1A5gbiqEbxCcOcczyr/AAxNjkT9OypiagdExfR
+f5I16FAOFRxz/KxM/MJn1XEf1YnYgHQCLUlLrzcA94VEzeIQvGK9s2jqKL5xZ2eL
+h5YlBSNIIKDSBVqS5P4qpWl+DTPK8GASHMY2JJI23ekq3bcQZv4nwGHJwBPvLgK8
+gCJGCS/f7QIDAQABow0wCzAJBgNVHRMEAjAAMA0GCSqGSIb3DQEBCwUAA4IBAQAm
+mmEz3U+PTC4Hv3IEiSbdsHBb/34XAIU4mRfklHCT4Go5pgUOUcu6TZmczx1oajv3
+SWdymDHzXgCqdtS3gEcYGpMTUFkg5PiRDnr8YcqIxFjAOTL1G9yznEoCMP1HuN+M
+tN93whP/IMBErgQen+1enyvKMEHX4v0x9PnbSj97xq6WSLGF3/HYUaFXkwLadmv/
+M5Wl3D7RODK7oVoUzP9VzQe4P4ByB1x1cn/7X1dY8/UE3IZfhuI51OCkX3MftVsl
+fa2kwhKs8JotAUrduwuzceRPaBr4nlfKKDUARyASbd1lpzM9L1fKjkWRldmHv0cZ
+EFqR1twXsweMF8X80ipq
+-----END CERTIFICATE-----"
+        set range global
+        set source factory
+    next
+    edit "star_vervemobile"
+        set password ENC LV3A395se0rCF0EHDf6BMk2iq1EPZ7nSGWa9EEbmkyrZ30WJNjKxeGQSEqY4gbO+GWZqYLkOpyGhXWi8LlKDVvGgsDSI5i7yIedY+4r8PuJecWt4eKk9hGyRgp27cDBgGYVZhj49740IZakegm+HeZZseYheRVIkhfLpmZ+d36UI/DDu7i0nKkfihLgXuEya2HbLJw==
+        set private-key "-----BEGIN ENCRYPTED PRIVATE KEY-----
+MIIFDjBABgkqhkiG9w0BBQ0wMzAbBgkqhkiG9w0BBQwwDgQILPBmeZsU1AkCAggA
+MBQGCCqGSIb3DQMHBAgPylKBifSRjwSCBMgivXU3KIj1JRLd+f+VytF7IKuHZy1N
+JC2QK/i84ut70EdunRq0CJ7gijxOYVf9S7dYRNZUjcckCCcR8N5NH0AZANX2BQHD
+BHjJAMql+DFKpS/qeO0e9szOwS5uIeSBLOrnxrEk4sqSBIinwDvmwNWebnqjuObE
+lkJYk0TflHq3yUd9PuArefjdbpe1W8WapoG9Wt3N8+Yx2Y8s26ftEQlPhhl/q8Q/
+1VWjw0vdYuZPzIHz3LABDKAhYov/tcsJTIlbrEV5QQOBzvVzlQMy9QBlrWL12mvz
+03y5JZ3Xg71Ef9WcJqOh6FiL5t0x5bczCn/INppqyI2mDcmJaQCQy6bExbG7pLgl
+tfKkL6pli8HwkzF3Vi5LlUtGfJvxB4WTFmo9ltUHwkL+NHfd5c8qm87AlUV0HgnO
+BYqSD/pto4vu4KJqTlK95gGNWYH02vyBTUQJEkfe0Jj99SNZbFezU7fIBOcajJh9
+QS/zfOmYib3QBwf5Io6tm501MULxiVnBXsoqEQ4aoFHbEtIaCUr5S7DorLv2T9El
+Ae0ncKBkuQVWywFIvPT+T3I5OAsBwm3h68sc9zcEGGCJKvv0gBgHDC6dh9ZINNWp
+8hPdVMiHUUFGevoXuwZajxCal4iYIMF/ci2CRJCPJNxF/UAo0OjqOicqw7tu3jwp
+hopET+hIOnuP9mXBz23XsQm5ZCdcsz8EDQ9xuCYwLDNlDdr9UlKkYB/1KSufghtT
+rwCEVah9xNClPX/F60vkQg4OBPJacjGvvNo/xy887KE58VHNJ0YiRpwOmzF3KVHM
+M3pOVC76pADKn0FSVWYs9AwVpoUdV62VhyZ03rIJNP3TX0sxzBM1BOEiaj/tIgoJ
+Tf8XW5ZXWa9o3Dziufe2gorsFcitR2CWdw7AnkSqBC/gOo6gRwrv523HWA9iwba1
+Vhyur44M7rnVXXx6VPhe5uPeuHNKuHAmCtUzOeOrA63FaOglelJa4YFxusDa1mlu
+6Llls82wu4vSkTUcxp/7M/r6CKscAQh0z5jOCMW9XS9q49FZUyEDn3kXKiGijY5+
+U3SGtxCVE2t2uOx3gwGcBo59+zvBGAV6ycgsm9cS4LmG4G4NDDuA1Tx8EyS1xZcr
+qbvXMe88fL1AcHOafkV/4GKb7n+qrvv5rzopN2iL90IxQ8GVyHArF2KJblYUm3GG
+JJu2DMalY0U5c6ny75NqdcUUo5pJDIJ/7PXyg9WSn5yvWhBTOk/PHvLHW591Ws6+
+0c8k/7CfD6PF2WPBKesoPsQgI/ax0WKQ842buQ5RB+6gC8o3VJPVft/9dGauPZpE
+7JP1CZo4d9qZ0BTDHGoiJ8SuOt80SvKHW1gp57ehCBCYirlytfrGvCRj5FkOoxwp
+SLI1IdW6FW5/EToyWdgwQrC6jkteCHdBDxP6UMFdrOha1mMpAgAIkH6TDITQxVvm
+wsx8/HTNiUj5DAaA1Qm5rvt7V8DLELPQ2EpgZQRdru569e+7SkII6O7S+YPASuct
+JkE2k3vx276gVfD2cHMkcpDp7yVQg5rHdciP7P6Dlf8XLqFUoGif6Qak4RbGilpe
+Qwh8FJMkrA1XQXNDTGnywH/Vj+3CcPU3IGmQP3TewPtpI49kU6Gfa/9ozVvfxxCF
+Fq0=
+-----END ENCRYPTED PRIVATE KEY-----"
+        set certificate "-----BEGIN CERTIFICATE-----
+MIIFSjCCBDKgAwIBAgIQB7aNMcy6A8MVabQ8ovAaXjANBgkqhkiG9w0BAQsFADBN
+MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E
+aWdpQ2VydCBTSEEyIFNlY3VyZSBTZXJ2ZXIgQ0EwHhcNMTQxMDI3MDAwMDAwWhcN
+MTcxMTAzMTIwMDAwWjCBhzELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3Ju
+aWExETAPBgNVBAcTCENhcmxzYmFkMR0wGwYDVQQKExRWZXJ2ZSBXaXJlbGVzcywg
+SW5jLjEVMBMGA1UECxMMVmVydmUgTW9iaWxlMRowGAYDVQQDDBEqLnZlcnZlbW9i
+aWxlLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAM0JUEyLAWYw
+Y5OEj8wnizSHaAqSi9P6gJZpUmRihUmMEzbqc1TwKXw3UvZ8E2df7JyiXp9Y9GTV
+sqLp+O9CFelsNg5StFZ3H8a2m+LYhiSN133gAdvsFuA+HGzG++5nr59z34boNbvS
+DobzeonMBRqEZH33EGYQte8SIuWmz7j++J8B758VxlgF7YoZSZs6d2yg5f0XPqNw
+Tu+OqlE3aCRP6EFLCwrzqEZuzRLNaPSmSK1B/HI8yEfZqGY+DaDjNqQ7iwUqpGpD
+MRef2g4rwfEljdgFzYBKD4EW5qke17+qKeriSBZNSLef1Kx30F207C49RpCCwBwd
+v9WvPG+vOtUCAwEAAaOCAekwggHlMB8GA1UdIwQYMBaAFA+AYRyCMWHVLyjnjUY4
+tCzhxtniMB0GA1UdDgQWBBS+7uMCn5RKtpuUXANlGermBQnlSzAtBgNVHREEJjAk
+ghEqLnZlcnZlbW9iaWxlLmNvbYIPdmVydmVtb2JpbGUuY29tMA4GA1UdDwEB/wQE
+AwIFoDAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwawYDVR0fBGQwYjAv
+oC2gK4YpaHR0cDovL2NybDMuZGlnaWNlcnQuY29tL3NzY2Etc2hhMi1nNS5jcmww
+L6AtoCuGKWh0dHA6Ly9jcmw0LmRpZ2ljZXJ0LmNvbS9zc2NhLXNoYTItZzUuY3Js
+MEwGA1UdIARFMEMwNwYJYIZIAYb9bAEBMCowKAYIKwYBBQUHAgEWHGh0dHBzOi8v
+d3d3LmRpZ2ljZXJ0LmNvbS9DUFMwCAYGZ4EMAQICMHwGCCsGAQUFBwEBBHAwbjAk
+BggrBgEFBQcwAYYYaHR0cDovL29jc3AuZGlnaWNlcnQuY29tMEYGCCsGAQUFBzAC
+hjpodHRwOi8vY2FjZXJ0cy5kaWdpY2VydC5jb20vRGlnaUNlcnRTSEEyU2VjdXJl
+U2VydmVyQ0EuY3J0MAwGA1UdEwEB/wQCMAAwDQYJKoZIhvcNAQELBQADggEBAM/L
++8CdMvVxOIGpJlXuKJsQ1w/MBTovSrtbOu9Vh9Kbj00XoKBdyBM7AEWviQCWt0dJ
+mrA4jWSdV7BqVkOPaoM2zltTEpxkzFwXfufhP4BDcGDK8/aQweDtrg2lne/XU1za
+xaC0wIALdCjhxYDpn7JevJhELqvN9Fcg9q3b2qzK4ciFh6qmpBSuPw2Al88TsRnU
+zt1dHhK+cb5u7IsiHFpcofTan9ldblOK/zk0BaD4kiq1OLxCYr4CWVJnvKmCl5L8
+J86k7NfJEI1H/Vj+12aZCF4Lec0BGzoxdDYlkjsiXre0z8S+M0Liyjhryh87s8XH
+iP90Omeu2984nj3LOR8=
+-----END CERTIFICATE-----"
+        set range global
+    next
+    edit "star_vervemobile_com_20191127"
+        set password ENC 4Z3cdBRuB329CPgV0/uTtLUqz+BiaNYz9E0Yz7g+Cz2qy7sR+vcawbdmKzwmRhBW9a37R954ffSbmBejonMJoy7ap++2VQqcMA0ejQBTPG1oIGICSGYXsKSBRQKJGxGccsIvLbwoTNQLbIvjasAYYEIEihKpqHrj+8O4b7p5+2RBRdPSCqLChkTkxYByScSuYgDZFw==
+        set private-key "-----BEGIN ENCRYPTED PRIVATE KEY-----
+MIIFDjBABgkqhkiG9w0BBQ0wMzAbBgkqhkiG9w0BBQwwDgQIYaM6mDzAJFsCAggA
+MBQGCCqGSIb3DQMHBAj4uxMgvVFmCgSCBMigXjVCMAD3mLMaVVzxS3GYUbh8f5n1
+ikOljbKzOPDgqdNQa8mmuSSA5xYzrPMYl8R8krT3sJkI15MfzcdBp4vKZSaf9fQZ
+nffEew+FqbOCQnL9cQ8YNBCYcHHYIZedSWicR9Jq/9N7f2driMbGr1TZGaNBV36o
+4nELwsCwSnLinmLsp4WDvBWq8oz2GFVpsxbw2o+xTMmN+aPSe+CPQZOzsFrVNITv
+dJH6QobxNnZjKWjJNHGt4FDERM8d7P63zoxmfSmfVD97CFmrvRAPuuX14rbLMNRg
+9lQxvXp38EU7ua8Lyed49kpE6INUjVQu2cS9ip+Nyjby0C370vcnkXJ9YUzcp6Mt
+flYLM7bvt/btr+fwVW0n4Ssnw5aZhKmWTzWuW5eS9hxp1IpdznkGvJnyrJSQZXBK
+IzULa/gyPPFN8/J3ZaxPEDarsTZkzauoVLW7SKh8XhVPfnx653oQ2EMBmj6MZPvR
+Wg/01IDlgc0vGrzFvsk9rOc/7m+XbuTdnkJoC+/ZZOlVXSKYInh6wFFKpvxtMZ+s
+eaRTD+XI3Gr5AHiK5/dWpQSxHBsYnjXec8pgIzIY+ePuCWT0aqOZetFQcYGgzTct
+HtFy4Ch2zs/ed3UqdYl2uoC2v1O+akBXrZElixCFKVe2PnddC18T58+R3s/LEtrz
+mu1kk9h/DWv/uHKZWLK5eRaQIgUhavVgGzNbyiw4EE2U+MZMIdPUmxv1Yqf/bNcu
+OTBx5Mq8a3mqxREPYPh3JXt/CXhjRY1QmkY1WKMJqlfNWqWu3+2mQKyWMsBg3PSI
+ZGojMG4MRRE6DT+IBRQMGPucM+pkpcGa4/4Opxr7ZvTXe0ODpeLSO3GGtPfQblPv
+WnkvRny56DWQ3K43BYLrF9ogpN6J/RcM1wJFO3xMUFDGcfFsWR+nNX7nzRqRUM0S
+HIUVpGY0Q5XRBEwB5aDtW1vdgH3Yau1kciLQwrcgw4Oq1s7ob5RUzcNVi8yv83am
+2wWVvYyrgu0jgLcTMszTUZlCJsdVOXgxYFYID51lXh5913bBQ1rJAnBk0XElXmrd
+V51Lc86KQ+f9VmsyjXMaeT/KUSTqAoIVSCvyiOEkYqv3AeVwwn4acLNUPvcx/Qk3
+zUvAA8Oed7plodTuCkn3GoCJbkmIuus98SFZqeuIiol2ZuoD4PtxHJMrIfOK+ECy
+96UcpSVl4Q/VM4D60VSVmyw9YicwEIHHH3c4cdcd5mkyAJswNyEV4m+AUw1ivWaa
+3wnWeJfNtDoigTWN1FH0xvZxFXwFHzjoUTVH3jFk19A72TgFn/AuWFhRajZ9b7uQ
+eIOx6cQxGOZlN4nKGPxEh9IUIztBb32vFHh7CkWiP++wozNe5TjnvkTNaTwmA5Wr
+sSnMZusJZN589piWkSe5dghdZt6nauz67O0PrDxPL0wvLS1VpcF7j78SCaq4K63j
+ihnVCXgc9j04bLP0Rdhz5biyTNeH85adECbZSRNQ9tf9dJzKDvybSal0DtTv06tn
+33W0As6680HgcM1CqaQL8ghqhxrl2weIcvC9eVpbd5BGqINLtgP3IUtb6hv8iNYK
++5ZHAZR3RwtlTNLOGRgNmYMZPx/ZGHANF05nqZjNguB2A5Absu0k+8kXU9/N+Mph
+Qow=
+-----END ENCRYPTED PRIVATE KEY-----"
+        set certificate "-----BEGIN CERTIFICATE-----
+MIIFITCCBAmgAwIBAgIQB/uxkkgeOfXBwf6PNDlpGDANBgkqhkiG9w0BAQsFADBN
+MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMScwJQYDVQQDEx5E
+aWdpQ2VydCBTSEEyIFNlY3VyZSBTZXJ2ZXIgQ0EwHhcNMTcxMDI0MDAwMDAwWhcN
+MTkxMTI3MTIwMDAwWjBfMQswCQYDVQQGEwJVUzELMAkGA1UECBMCQ0ExETAPBgNV
+BAcTCENhcmxzYmFkMRQwEgYDVQQKEwtWZXJ2ZSwgSW5jLjEaMBgGA1UEAwwRKi52
+ZXJ2ZW1vYmlsZS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCd
+Yf4x0x/78+TyPU8Z4Gr15mNzc+lUYpUFrX/8PL/uHz4FiCgcyAqbOhhnlQZYO1sh
+Ftc1S0BH3cFNBoekuyIIFZudCXpJXU//PPXmEWDr1xS1mrNneGXg/r5aZ6DvAoXD
+8MBTvHOXFspfyzfGmeABvaZtsG05n3RcmeYPNSKLrsD5rzG//2Pv/OhA51cqm/as
+0CyCCiWUHC1225R9OO8s6DI/BlUiJJk6rt/hOqe12ipOqN52n4xUzu/Z2MARGTSA
+CUzMaIewxaI+4XNLUCpTKGlYRJSvwlxRD3az+BZLBwB35hIVX/HsgnwO0qDjA32/
+7W33OfpInyBeGsDaFjK9AgMBAAGjggHpMIIB5TAfBgNVHSMEGDAWgBQPgGEcgjFh
+1S8o541GOLQs4cbZ4jAdBgNVHQ4EFgQUDYviyuCtUOMl3tkLeRBvnr94ELkwLQYD
+VR0RBCYwJIIRKi52ZXJ2ZW1vYmlsZS5jb22CD3ZlcnZlbW9iaWxlLmNvbTAOBgNV
+HQ8BAf8EBAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMGsGA1Ud
+HwRkMGIwL6AtoCuGKWh0dHA6Ly9jcmwzLmRpZ2ljZXJ0LmNvbS9zc2NhLXNoYTIt
+ZzEuY3JsMC+gLaArhilodHRwOi8vY3JsNC5kaWdpY2VydC5jb20vc3NjYS1zaGEy
+LWcxLmNybDBMBgNVHSAERTBDMDcGCWCGSAGG/WwBATAqMCgGCCsGAQUFBwIBFhxo
+dHRwczovL3d3dy5kaWdpY2VydC5jb20vQ1BTMAgGBmeBDAECAjB8BggrBgEFBQcB
+AQRwMG4wJAYIKwYBBQUHMAGGGGh0dHA6Ly9vY3NwLmRpZ2ljZXJ0LmNvbTBGBggr
+BgEFBQcwAoY6aHR0cDovL2NhY2VydHMuZGlnaWNlcnQuY29tL0RpZ2lDZXJ0U0hB
+MlNlY3VyZVNlcnZlckNBLmNydDAMBgNVHRMBAf8EAjAAMA0GCSqGSIb3DQEBCwUA
+A4IBAQCKUviAvaSe05g0cp8iUE0gDWdwHKNnmdNio3guER4W6QDOXTMwBzreMagW
+s3dYA5L9fr4e9V64BXWdisfY9SMAqpTlh/Wc2zjupBSu5hmy7XmyxRQhzVJ/YOyg
+qAcGTT4xh9UPAOVSO4J+xyzVyWrImV3Tdq97PBZL9+Wtp66H4yDWrs480sRvbpQX
+R8jiiW8ZImaBRuo+w/bgWYse9oeOo11d2GccsJNEd5F8ybnZ9OLXt28CZvHftfTY
+XDIPZT9CJAQRJXl6zb2o/n8u0tDWvMGti5QL9eaaPZ88570/VbVTTiu+hN1xut9g
+Gt0qyMf8NGsR673E9+1iyH2EU3b8
+-----END CERTIFICATE-----"
+        set range global
+    next
+end
+config user ldap
+    edit "verve_azureAD"
+        set server "ds.vervemobile.com"
+        set secondary-server "40.76.198.233"
+        set cnid "userPrincipalName"
+        set dn "ou=aaddc users,dc=vervemobile,dc=com"
+        set type regular
+        set username "ldapbind@vervemobile.com"
+        set password ENC B1hjK/j+T+WxSsKdCRruGt3opSIDg+536ppg7p7zGTP32+oKiwdHjD0N1sANMvtJLHc6jj5FKAcIM06VSaG029MQzAnBMKbIdLCLGBQHyuAeLuiB3j3iB3JpDjmhoCb7tkXvBB4S9LzCEwfHGEFdhdfrnRgoq6qx1EsVkhwQi4561Gqy6Uv6/e4q/YVfmXVAXCujGA==
+        set secure ldaps
+        set port 636
+        set password-expiry-warning enable
+        set password-renewal enable
+    next
+end
+config user fortitoken
+    edit "FTKMOB66407E4A79"
+        set license "FTMTRIAL01262364"
+    next
+    edit "FTKMOB66D4ECCC19"
+        set license "FTMTRIAL01262364"
+    next
+end
+config user local
+    edit "guest"
+        set type password
+        set passwd ENC 9/to/2wCZaE33Rmd8SmwTmF2AjakDFCVU4hc55lGoXA4e0qz5N8Am/xKljiRR4egJIF9xz+VpSKehkh+nxM7LRXrvB32Zkks3mDheJ/FiAhb9qno3bIfB056TsWFCeTflO07uERIPqhdZ/EciJy6nexnqcIrzKNMKmRZn9LPY7c5/kgFyERsxPMNtPMv1QUA7Mbtrg==
+    next
+    edit "isaiah.mfa"
+        set type password
+        set email-to "isaiah.schisler@vervemobile.com"
+        set passwd-time 2016-12-30 06:03:12
+        set passwd ENC F7ViDJHVIYIDb3+g36jVsKOrJZzerSnsTirNqdNFt5LOe5fmeOcZ2sLO2MtrHGMG/qs6Z03lF9+XKfDUZXpEz+m6fST7AqYKRcY4Kn2GfcT1/vTVmpmnW6oCDXAmVbaRNhBstV57kQZVHddDcfDEb6VT34LXQUDpnEs1+2aaGOGw8JCA0UbnaWzbGY6BMMfhwWJCjQ==
+    next
+end
+config user setting
+    set auth-cert "star_vervemobile"
+end
+config user group
+    edit "SSO_Guest_Users"
+    next
+    edit "verveuser"
+        set member "verve_azureAD" "isaiah.mfa"
+        config match
+            edit 1
+                set server-name "verve_azureAD"
+                set group-name "CN=VPN,OU=AADDC Users,DC=vervemobile,DC=com"
+            next
+        end
+    next
+end
+config user device-group
+    edit "Mobile Devices"
+        set member "android-phone" "android-tablet" "blackberry-phone" "blackberry-playbook" "ipad" "iphone" "windows-phone" "windows-tablet"
+        set comment "Phones, tablets, etc."
+    next
+    edit "Network Devices"
+        set member "fortinet-device" "other-network-device" "router-nat-device"
+        set comment "Routers, firewalls, gateways, etc."
+    next
+    edit "Others"
+        set member "gaming-console" "media-streaming"
+        set comment "Other devices."
+    next
+end
+config vpn ssl web host-check-software
+    edit "FortiClient-AV"
+        set guid "C86EC76D-5A4C-40E7-BD94-59358E544D81"
+    next
+    edit "FortiClient-FW"
+        set type fw
+        set guid "528CB157-D384-4593-AAAA-E42DFF111CED"
+    next
+    edit "FortiClient-AV-Vista-Win7"
+        set guid "385618A6-2256-708E-3FB9-7E98B93F91F9"
+    next
+    edit "FortiClient-FW-Vista-Win7"
+        set type fw
+        set guid "006D9983-6839-71D6-14E6-D7AD47ECD682"
+    next
+    edit "AVG-Internet-Security-AV"
+        set guid "17DDD097-36FF-435F-9E1B-52D74245D6BF"
+    next
+    edit "AVG-Internet-Security-FW"
+        set type fw
+        set guid "8DECF618-9569-4340-B34A-D78D28969B66"
+    next
+    edit "AVG-Internet-Security-AV-Vista-Win7"
+        set guid "0C939084-9E57-CBDB-EA61-0B0C7F62AF82"
+    next
+    edit "AVG-Internet-Security-FW-Vista-Win7"
+        set type fw
+        set guid "34A811A1-D438-CA83-C13E-A23981B1E8F9"
+    next
+    edit "CA-Anti-Virus"
+        set guid "17CFD1EA-56CF-40B5-A06B-BD3A27397C93"
+    next
+    edit "CA-Internet-Security-AV"
+        set guid "6B98D35F-BB76-41C0-876B-A50645ED099A"
+    next
+    edit "CA-Internet-Security-FW"
+        set type fw
+        set guid "38102F93-1B6E-4922-90E1-A35D8DC6DAA3"
+    next
+    edit "CA-Internet-Security-AV-Vista-Win7"
+        set guid "3EED0195-0A4B-4EF3-CC4F-4F401BDC245F"
+    next
+    edit "CA-Internet-Security-FW-Vista-Win7"
+        set type fw
+        set guid "06D680B0-4024-4FAB-E710-E675E50F6324"
+    next
+    edit "CA-Personal-Firewall"
+        set type fw
+        set guid "14CB4B80-8E52-45EA-905E-67C1267B4160"
+    next
+    edit "F-Secure-Internet-Security-AV"
+        set guid "E7512ED5-4245-4B4D-AF3A-382D3F313F15"
+    next
+    edit "F-Secure-Internet-Security-FW"
+        set type fw
+        set guid "D4747503-0346-49EB-9262-997542F79BF4"
+    next
+    edit "F-Secure-Internet-Security-AV-Vista-Win7"
+        set guid "15414183-282E-D62C-CA37-EF24860A2F17"
+    next
+    edit "F-Secure-Internet-Security-FW-Vista-Win7"
+        set type fw
+        set guid "2D7AC0A6-6241-D774-E168-461178D9686C"
+    next
+    edit "Kaspersky-AV"
+        set guid "2C4D4BC6-0793-4956-A9F9-E252435469C0"
+    next
+    edit "Kaspersky-FW"
+        set type fw
+        set guid "2C4D4BC6-0793-4956-A9F9-E252435469C0"
+    next
+    edit "Kaspersky-AV-Vista-Win7"
+        set guid "AE1D740B-8F0F-D137-211D-873D44B3F4AE"
+    next
+    edit "Kaspersky-FW-Vista-Win7"
+        set type fw
+        set guid "9626F52E-C560-D06F-0A42-2E08BA60B3D5"
+    next
+    edit "McAfee-Internet-Security-Suite-AV"
+        set guid "84B5EE75-6421-4CDE-A33A-DD43BA9FAD83"
+    next
+    edit "McAfee-Internet-Security-Suite-FW"
+        set type fw
+        set guid "94894B63-8C7F-4050-BDA4-813CA00DA3E8"
+    next
+    edit "McAfee-Internet-Security-Suite-AV-Vista-Win7"
+        set guid "86355677-4064-3EA7-ABB3-1B136EB04637"
+    next
+    edit "McAfee-Internet-Security-Suite-FW-Vista-Win7"
+        set type fw
+        set guid "BE0ED752-0A0B-3FFF-80EC-B2269063014C"
+    next
+    edit "McAfee-Virus-Scan-Enterprise"
+        set guid "918A2B0B-2C60-4016-A4AB-E868DEABF7F0"
+    next
+    edit "Norton-360-2.0-AV"
+        set guid "A5F1BC7C-EA33-4247-961C-0217208396C4"
+    next
+    edit "Norton-360-2.0-FW"
+        set type fw
+        set guid "371C0A40-5A0C-4AD2-A6E5-69C02037FBF3"
+    next
+    edit "Norton-360-3.0-AV"
+        set guid "E10A9785-9598-4754-B552-92431C1C35F8"
+    next
+    edit "Norton-360-3.0-FW"
+        set type fw
+        set guid "7C21A4C9-F61F-4AC4-B722-A6E19C16F220"
+    next
+    edit "Norton-Internet-Security-AV"
+        set guid "E10A9785-9598-4754-B552-92431C1C35F8"
+    next
+    edit "Norton-Internet-Security-FW"
+        set type fw
+        set guid "7C21A4C9-F61F-4AC4-B722-A6E19C16F220"
+    next
+    edit "Norton-Internet-Security-AV-Vista-Win7"
+        set guid "88C95A36-8C3B-2F2C-1B8B-30FCCFDC4855"
+    next
+    edit "Norton-Internet-Security-FW-Vista-Win7"
+        set type fw
+        set guid "B0F2DB13-C654-2E74-30D4-99C9310F0F2E"
+    next
+    edit "Symantec-Endpoint-Protection-AV"
+        set guid "FB06448E-52B8-493A-90F3-E43226D3305C"
+    next
+    edit "Symantec-Endpoint-Protection-FW"
+        set type fw
+        set guid "BE898FE3-CD0B-4014-85A9-03DB9923DDB6"
+    next
+    edit "Symantec-Endpoint-Protection-AV-Vista-Win7"
+        set guid "88C95A36-8C3B-2F2C-1B8B-30FCCFDC4855"
+    next
+    edit "Symantec-Endpoint-Protection-FW-Vista-Win7"
+        set type fw
+        set guid "B0F2DB13-C654-2E74-30D4-99C9310F0F2E"
+    next
+    edit "Panda-Antivirus+Firewall-2008-AV"
+        set guid "EEE2D94A-D4C1-421A-AB2C-2CE8FE51747A"
+    next
+    edit "Panda-Antivirus+Firewall-2008-FW"
+        set type fw
+        set guid "7B090DC0-8905-4BAF-8040-FD98A41C8FB8"
+    next
+    edit "Panda-Internet-Security-AV"
+        set guid "4570FB70-5C9E-47E9-B16C-A3A6A06C4BF0"
+    next
+    edit "Panda-Internet-Security-2006~2007-FW"
+        set type fw
+        set guid "4570FB70-5C9E-47E9-B16C-A3A6A06C4BF0"
+    next
+    edit "Panda-Internet-Security-2008~2009-FW"
+        set type fw
+        set guid "7B090DC0-8905-4BAF-8040-FD98A41C8FB8"
+    next
+    edit "Sophos-Anti-Virus"
+        set guid "3F13C776-3CBE-4DE9-8BF6-09E5183CA2BD"
+    next
+    edit "Sophos-Enpoint-Secuirty-and-Control-FW"
+        set type fw
+        set guid "0786E95E-326A-4524-9691-41EF88FB52EA"
+    next
+    edit "Sophos-Enpoint-Secuirty-and-Control-AV-Vista-Win7"
+        set guid "479CCF92-4960-B3E0-7373-BF453B467D2C"
+    next
+    edit "Sophos-Enpoint-Secuirty-and-Control-FW-Vista-Win7"
+        set type fw
+        set guid "7FA74EB7-030F-B2B8-582C-1670C5953A57"
+    next
+    edit "Trend-Micro-AV"
+        set guid "7D2296BC-32CC-4519-917E-52E652474AF5"
+    next
+    edit "Trend-Micro-FW"
+        set type fw
+        set guid "3E790E9E-6A5D-4303-A7F9-185EC20F3EB6"
+    next
+    edit "Trend-Micro-AV-Vista-Win7"
+        set guid "48929DFC-7A52-A34F-8351-C4DBEDBD9C50"
+    next
+    edit "Trend-Micro-FW-Vista-Win7"
+        set type fw
+        set guid "70A91CD9-303D-A217-A80E-6DEE136EDB2B"
+    next
+    edit "ZoneAlarm-AV"
+        set guid "5D467B10-818C-4CAB-9FF7-6893B5B8F3CF"
+    next
+    edit "ZoneAlarm-FW"
+        set type fw
+        set guid "829BDA32-94B3-44F4-8446-F8FCFF809F8B"
+    next
+    edit "ZoneAlarm-AV-Vista-Win7"
+        set guid "D61596DF-D219-341C-49B3-AD30538CBC5B"
+    next
+    edit "ZoneAlarm-FW-Vista-Win7"
+        set type fw
+        set guid "EE2E17FA-9876-3544-62EC-0405AD5FFB20"
+    next
+    edit "ESET-Smart-Security-AV"
+        set guid "19259FAE-8396-A113-46DB-15B0E7DFA289"
+    next
+    edit "ESET-Smart-Security-FW"
+        set type fw
+        set guid "211E1E8B-C9F9-A04B-6D84-BC85190CE5F2"
+    next
+end
+config vpn ssl web portal
+    edit "full-access"
+        set tunnel-mode enable
+        set ipv6-tunnel-mode enable
+        set web-mode enable
+        set ip-pools "SSLVPN_TUNNEL_ADDR1"
+        set ipv6-pools "SSLVPN_TUNNEL_IPv6_ADDR1"
+    next
+    edit "web-access"
+        set web-mode enable
+    next
+    edit "tunnel-access"
+        set tunnel-mode enable
+        set ipv6-tunnel-mode enable
+        set auto-connect enable
+        set keep-alive enable
+        set save-password enable
+        set ip-pools "SSLVPN_TUNNEL_ADDR1"
+        set ipv6-pools "SSLVPN_TUNNEL_IPv6_ADDR1"
+    next
+end
+config vpn ssl settings
+    set servercert "star_vervemobile_com_20191127"
+    set idle-timeout 21600
+    set tunnel-ip-pools "SSLVPN_TUNNEL_ADDR1"
+    set tunnel-ipv6-pools "SSLVPN_TUNNEL_IPv6_ADDR1"
+    set dns-server1 10.17.0.232
+    set dns-server2 10.17.0.98
+    set port 443
+    set source-interface "port1"
+    set source-address "all"
+    set source-address6 "all"
+    set default-portal "tunnel-access"
+end
+config voip profile
+    edit "default"
+        set comment "Default VoIP profile."
+    next
+    edit "strict"
+        config sip
+            set malformed-request-line discard
+            set malformed-header-via discard
+            set malformed-header-from discard
+            set malformed-header-to discard
+            set malformed-header-call-id discard
+            set malformed-header-cseq discard
+            set malformed-header-rack discard
+            set malformed-header-rseq discard
+            set malformed-header-contact discard
+            set malformed-header-record-route discard
+            set malformed-header-route discard
+            set malformed-header-expires discard
+            set malformed-header-content-type discard
+            set malformed-header-content-length discard
+            set malformed-header-max-forwards discard
+            set malformed-header-allow discard
+            set malformed-header-p-asserted-identity discard
+            set malformed-header-sdp-v discard
+            set malformed-header-sdp-o discard
+            set malformed-header-sdp-s discard
+            set malformed-header-sdp-i discard
+            set malformed-header-sdp-c discard
+            set malformed-header-sdp-b discard
+            set malformed-header-sdp-z discard
+            set malformed-header-sdp-k discard
+            set malformed-header-sdp-a discard
+            set malformed-header-sdp-t discard
+            set malformed-header-sdp-r discard
+            set malformed-header-sdp-m discard
+        end
+    next
+end
+config webfilter profile
+    edit "sniffer-profile"
+        set comment "Monitor web traffic."
+        set inspection-mode flow-based
+        config ftgd-wf
+            config filters
+                edit 1
+                next
+                edit 2
+                    set category 1
+                next
+                edit 3
+                    set category 2
+                next
+                edit 4
+                    set category 3
+                next
+                edit 5
+                    set category 4
+                next
+                edit 6
+                    set category 5
+                next
+                edit 7
+                    set category 6
+                next
+                edit 8
+                    set category 7
+                next
+                edit 9
+                    set category 8
+                next
+                edit 10
+                    set category 9
+                next
+                edit 11
+                    set category 11
+                next
+                edit 12
+                    set category 12
+                next
+                edit 13
+                    set category 13
+                next
+                edit 14
+                    set category 14
+                next
+                edit 15
+                    set category 15
+                next
+                edit 16
+                    set category 16
+                next
+                edit 17
+                    set category 17
+                next
+                edit 18
+                    set category 18
+                next
+                edit 19
+                    set category 19
+                next
+                edit 20
+                    set category 20
+                next
+                edit 21
+                    set category 23
+                next
+                edit 22
+                    set category 24
+                next
+                edit 23
+                    set category 25
+                next
+                edit 24
+                    set category 26
+                next
+                edit 25
+                    set category 28
+                next
+                edit 26
+                    set category 29
+                next
+                edit 27
+                    set category 30
+                next
+                edit 28
+                    set category 31
+                next
+                edit 29
+                    set category 33
+                next
+                edit 30
+                    set category 34
+                next
+                edit 31
+                    set category 35
+                next
+                edit 32
+                    set category 36
+                next
+                edit 33
+                    set category 37
+                next
+                edit 34
+                    set category 38
+                next
+                edit 35
+                    set category 39
+                next
+                edit 36
+                    set category 40
+                next
+                edit 37
+                    set category 41
+                next
+                edit 38
+                    set category 42
+                next
+                edit 39
+                    set category 43
+                next
+                edit 40
+                    set category 44
+                next
+                edit 41
+                    set category 46
+                next
+                edit 42
+                    set category 47
+                next
+                edit 43
+                    set category 48
+                next
+                edit 44
+                    set category 49
+                next
+                edit 45
+                    set category 50
+                next
+                edit 46
+                    set category 51
+                next
+                edit 47
+                    set category 52
+                next
+                edit 48
+                    set category 53
+                next
+                edit 49
+                    set category 54
+                next
+                edit 50
+                    set category 55
+                next
+                edit 51
+                    set category 56
+                next
+                edit 52
+                    set category 57
+                next
+                edit 53
+                    set category 58
+                next
+                edit 54
+                    set category 59
+                next
+                edit 55
+                    set category 61
+                next
+                edit 56
+                    set category 62
+                next
+                edit 57
+                    set category 63
+                next
+                edit 58
+                    set category 64
+                next
+                edit 59
+                    set category 65
+                next
+                edit 60
+                    set category 66
+                next
+                edit 61
+                    set category 67
+                next
+                edit 62
+                    set category 68
+                next
+                edit 63
+                    set category 69
+                next
+                edit 64
+                    set category 70
+                next
+                edit 65
+                    set category 71
+                next
+                edit 66
+                    set category 72
+                next
+                edit 67
+                    set category 75
+                next
+                edit 68
+                    set category 76
+                next
+                edit 69
+                    set category 77
+                next
+                edit 70
+                    set category 78
+                next
+                edit 71
+                    set category 79
+                next
+                edit 72
+                    set category 80
+                next
+                edit 73
+                    set category 81
+                next
+                edit 74
+                    set category 82
+                next
+                edit 75
+                    set category 83
+                next
+                edit 76
+                    set category 84
+                next
+                edit 77
+                    set category 85
+                next
+                edit 78
+                    set category 86
+                next
+                edit 79
+                    set category 87
+                next
+                edit 80
+                    set category 88
+                next
+                edit 81
+                    set category 89
+                next
+                edit 82
+                    set category 140
+                next
+                edit 83
+                    set category 141
+                next
+            end
+        end
+    next
+    edit "default"
+        set comment "Default web filtering."
+        config ftgd-wf
+            unset options
+            config filters
+                edit 1
+                    set category 2
+                    set action warning
+                next
+                edit 2
+                    set category 7
+                    set action warning
+                next
+                edit 3
+                    set category 8
+                    set action warning
+                next
+                edit 4
+                    set category 9
+                    set action warning
+                next
+                edit 5
+                    set category 11
+                    set action warning
+                next
+                edit 6
+                    set category 12
+                    set action warning
+                next
+                edit 7
+                    set category 13
+                    set action warning
+                next
+                edit 8
+                    set category 14
+                    set action warning
+                next
+                edit 9
+                    set category 15
+                    set action warning
+                next
+                edit 10
+                    set category 16
+                    set action warning
+                next
+                edit 11
+                    set action warning
+                next
+                edit 12
+                    set category 57
+                    set action warning
+                next
+                edit 13
+                    set category 63
+                    set action warning
+                next
+                edit 14
+                    set category 64
+                    set action warning
+                next
+                edit 15
+                    set category 65
+                    set action warning
+                next
+                edit 16
+                    set category 66
+                    set action warning
+                next
+                edit 17
+                    set category 67
+                    set action warning
+                next
+                edit 18
+                    set category 26
+                    set action block
+                next
+                edit 19
+                    set category 61
+                    set action block
+                next
+                edit 20
+                    set category 86
+                    set action block
+                next
+                edit 21
+                    set category 88
+                    set action block
+                next
+            end
+        end
+    next
+    edit "monitor-all"
+        set comment "Monitor and log all visited URLs, proxy-based."
+        config ftgd-wf
+            unset options
+            config filters
+                edit 1
+                    set category 1
+                next
+                edit 2
+                    set category 3
+                next
+                edit 3
+                    set category 4
+                next
+                edit 4
+                    set category 5
+                next
+                edit 5
+                    set category 6
+                next
+                edit 6
+                    set category 12
+                next
+                edit 7
+                    set category 59
+                next
+                edit 8
+                    set category 62
+                next
+                edit 9
+                    set category 83
+                next
+                edit 10
+                    set category 2
+                next
+                edit 11
+                    set category 7
+                next
+                edit 12
+                    set category 8
+                next
+                edit 13
+                    set category 9
+                next
+                edit 14
+                    set category 11
+                next
+                edit 15
+                    set category 13
+                next
+                edit 16
+                    set category 14
+                next
+                edit 17
+                    set category 15
+                next
+                edit 18
+                    set category 16
+                next
+                edit 19
+                    set category 57
+                next
+                edit 20
+                    set category 63
+                next
+                edit 21
+                    set category 64
+                next
+                edit 22
+                    set category 65
+                next
+                edit 23
+                    set category 66
+                next
+                edit 24
+                    set category 67
+                next
+                edit 25
+                    set category 19
+                next
+                edit 26
+                    set category 24
+                next
+                edit 27
+                    set category 25
+                next
+                edit 28
+                    set category 72
+                next
+                edit 29
+                    set category 75
+                next
+                edit 30
+                    set category 76
+                next
+                edit 31
+                    set category 26
+                next
+                edit 32
+                    set category 61
+                next
+                edit 33
+                    set category 86
+                next
+                edit 34
+                    set category 17
+                next
+                edit 35
+                    set category 18
+                next
+                edit 36
+                    set category 20
+                next
+                edit 37
+                    set category 23
+                next
+                edit 38
+                    set category 28
+                next
+                edit 39
+                    set category 29
+                next
+                edit 40
+                    set category 30
+                next
+                edit 41
+                    set category 33
+                next
+                edit 42
+                    set category 34
+                next
+                edit 43
+                    set category 35
+                next
+                edit 44
+                    set category 36
+                next
+                edit 45
+                    set category 37
+                next
+                edit 46
+                    set category 38
+                next
+                edit 47
+                    set category 39
+                next
+                edit 48
+                    set category 40
+                next
+                edit 49
+                    set category 42
+                next
+                edit 50
+                    set category 44
+                next
+                edit 51
+                    set category 46
+                next
+                edit 52
+                    set category 47
+                next
+                edit 53
+                    set category 48
+                next
+                edit 54
+                    set category 54
+                next
+                edit 55
+                    set category 55
+                next
+                edit 56
+                    set category 58
+                next
+                edit 57
+                    set category 68
+                next
+                edit 58
+                    set category 69
+                next
+                edit 59
+                    set category 70
+                next
+                edit 60
+                    set category 71
+                next
+                edit 61
+                    set category 77
+                next
+                edit 62
+                    set category 78
+                next
+                edit 63
+                    set category 79
+                next
+                edit 64
+                    set category 80
+                next
+                edit 65
+                    set category 82
+                next
+                edit 66
+                    set category 85
+                next
+                edit 67
+                    set category 87
+                next
+                edit 68
+                    set category 31
+                next
+                edit 69
+                    set category 41
+                next
+                edit 70
+                    set category 43
+                next
+                edit 71
+                    set category 49
+                next
+                edit 72
+                    set category 50
+                next
+                edit 73
+                    set category 51
+                next
+                edit 74
+                    set category 52
+                next
+                edit 75
+                    set category 53
+                next
+                edit 76
+                    set category 56
+                next
+                edit 77
+                    set category 81
+                next
+                edit 78
+                    set category 84
+                next
+                edit 79
+                next
+            end
+        end
+        set log-all-url enable
+        set web-content-log disable
+        set web-filter-activex-log disable
+        set web-filter-command-block-log disable
+        set web-filter-cookie-log disable
+        set web-filter-applet-log disable
+        set web-filter-jscript-log disable
+        set web-filter-js-log disable
+        set web-filter-vbs-log disable
+        set web-filter-unknown-log disable
+        set web-filter-referer-log disable
+        set web-filter-cookie-removal-log disable
+        set web-url-log disable
+        set web-invalid-domain-log disable
+        set web-ftgd-err-log disable
+        set web-ftgd-quota-usage disable
+    next
+end
+config webfilter search-engine
+    edit "google"
+        set hostname ".*\\.google\\..*"
+        set url "^\\/((custom|search|images|videosearch|webhp)\\?)"
+        set query "q="
+        set safesearch url
+        set safesearch-str "&safe=active"
+    next
+    edit "yahoo"
+        set hostname ".*\\.yahoo\\..*"
+        set url "^\\/search(\\/video|\\/images){0,1}(\\?|;)"
+        set query "p="
+        set safesearch url
+        set safesearch-str "&vm=r"
+    next
+    edit "bing"
+        set hostname ".*\\.bing\\..*"
+        set url "^(\\/images|\\/videos)?(\\/search|\\/async|\\/asyncv2)\\?"
+        set query "q="
+        set safesearch header
+    next
+    edit "yandex"
+        set hostname "yandex\\..*"
+        set url "^\\/((yand|images\\/|video\\/)(search)|search\\/)\\?"
+        set query "text="
+        set safesearch url
+        set safesearch-str "&family=yes"
+    next
+    edit "youtube"
+        set hostname ".*\\.youtube\\..*"
+        set safesearch header
+    next
+    edit "baidu"
+        set hostname ".*\\.baidu\\.com"
+        set url "^\\/s?\\?"
+        set query "wd="
+    next
+    edit "baidu2"
+        set hostname ".*\\.baidu\\.com"
+        set url "^\\/(ns|q|m|i|v)\\?"
+        set query "word="
+    next
+    edit "baidu3"
+        set hostname "tieba\\.baidu\\.com"
+        set url "^\\/f\\?"
+        set query "kw="
+    next
+end
+config vpn ipsec phase1-interface
+    edit "vpn-5de9f74f-0"
+        set interface "port1"
+        set keylife 28800
+        set proposal aes128-sha1
+        set comments "VPN: vpn-5de9f74f-0 (Created by VPN wizard)"
+        set dhgrp 2
+        set remote-gw 52.39.170.181
+        set psksecret ENC WiSi9TKBBhMYOFYLR7iatsFfXyOeEqztxJv1h0nroiuPYpk8EBYvujeNsIt43Cm82orwmg2vNyGzRINZUAMecvJg9/cp2lbQfO7WhmmhzQnLxvSqlPNojxiEVf8/nAox0SQt4UJbk1lEQbTq8BTTlxh785uarjvkiN0UjFx0vuvqts/IUmsB/esKFHv4yVXLJIuXTg==
+        set dpd-retryinterval 10
+    next
+    edit "vpn-5de9f74f-1"
+        set interface "port1"
+        set keylife 28800
+        set proposal aes128-sha1
+        set comments "VPN: vpn-5de9f74f-1 (Created by VPN wizard)"
+        set dhgrp 2
+        set remote-gw 52.41.155.221
+        set monitor "vpn-5de9f74f-0"
+        set psksecret ENC 9lG0cPj8VJemKl52nXpFXfvb3VEsY4gBGPfqw9c381tdXbBzGdeo4qt/k2oDYEMFiXkwcGD25o/Cjld1fOXSso41nR/v9cAeqMC8Vy40FuLjxal4sgBwZ/C6CebaWTwgaq8WaC4w0Y6NPttYfu9ppncdy7gJYa8v0WPaYyYN+uK47Q3x6kACMGMQas6bMqj+6XYKlw==
+        set dpd-retryinterval 10
+    next
+    edit "vpn-fce6f8ee-0"
+        set interface "port1"
+        set keylife 28800
+        set proposal aes128-sha1
+        set comments "VPN: vpn-fce6f8ee-0 (Created by VPN wizard)"
+        set dhgrp 2
+        set remote-gw 52.41.189.200
+        set psksecret ENC K37gAxP968a0W58PJh6OTmJLN+bw/PBs5eOUqMvgChSQEldO3o8LM5J7zd5BD1W4zMHlZvn+2wjLRbCQO9u1e6BTPmk3XciAM6pjZh/eKFsh07O2dJzehtXsFoZkA1E5AsYaKCb3pFY82L7lZYlTck4/pG5/QGsNFNdeHbhZ4gEYZQQ1acrN8aC+rYh9TlTGPaRytA==
+        set dpd-retryinterval 10
+    next
+    edit "vpn-fce6f8ee-1"
+        set interface "port1"
+        set keylife 28800
+        set proposal aes128-sha1
+        set comments "VPN: vpn-fce6f8ee-1 (Created by VPN wizard)"
+        set dhgrp 2
+        set remote-gw 52.41.193.231
+        set monitor "vpn-fce6f8ee-0"
+        set psksecret ENC cDb9yh6moep5CJ8Lwhyf4QV2t8g9HkxcizJ3rLPl7Cnqbc68pIFLZkHD0mf8srIVkQqbAAv8XR609FO64apsEQ5GGFjusiXKeO/ycxS2twJ9q2rqBgv9ZKyUamQEAHUmG16BBdRgnIyCIAB5hf3i1AXKgzQ+CtbOHiNhSu6Ur6v+fypYj0cPqCxCb2q4kvYuZjb9gw==
+        set dpd-retryinterval 10
+    next
+    edit "vpn-63e3fd71-0"
+        set interface "port1"
+        set keylife 28800
+        set proposal aes128-sha1
+        set comments "VPN: vpn-63e3fd71-0 (Created by VPN wizard)"
+        set dhgrp 2
+        set remote-gw 52.36.223.92
+        set psksecret ENC HgnEOWdqw9m/8o0CWWyBzLGWDOVeN7hPlxquPGgATj5I4q9HemdXjAmHAMG8Yv2+Qgbug7ViVw5oE7xephOo9gJHuKvxx02BxBenX4Q9er6pDTkQQYb3ydAPQ+eUPOxIXr64LLN+LyJ0cWke0HV9Ao0x6OsGBHJE0uXB0xYKTUgPyZgbihT4UCr/GeVgj1Fi7mbMbw==
+        set dpd-retryinterval 10
+    next
+    edit "vpn-63e3fd71-1"
+        set interface "port1"
+        set keylife 28800
+        set proposal aes128-sha1
+        set dpd disable
+        set comments "VPN: vpn-63e3fd71-1 (Created by VPN wizard)"
+        set dhgrp 2
+        set remote-gw 52.38.187.150
+        set monitor "vpn-63e3fd71-0"
+        set psksecret ENC l8PudeJj6AET81bz4roCTneEdOn5scpSMRUNCfkqwHQ7U2dEPMakDj+StWOKvn+Z70vVzv6j3nc299ekxHQqPVdxWz36B+PQuPI8xfjJMQag2Ylu3O7povnAxFqbt7mQeDgVcZ+b4hE/6BfTeozU9+X2spP99R1efVVK+IMewa/u4ejmN9iQf37XY+1Cb9UKgrzvKQ==
+    next
+    edit "vpn-d12036b0-0"
+        set interface "port1"
+        set keylife 28800
+        set proposal aes128-sha1
+        set comments "VPN: vpn-d12036b0-0 (Created by VPN wizard)"
+        set dhgrp 2
+        set remote-gw 52.70.22.70
+        set psksecret ENC +9eBzaeqhnwu3PfBPBIfpFaK5N7giu65+/w+ODfRbrFG43w6SSLk8gUvkkR3/2L5KBQzgIysHvvSqfJRpiufJpSx5crB/uO3wS5K0D5fYw4fiPQCzTLcFq2kRjfFCRPStSBt3/i90WUnIqpFKlvg+C8Vq7yGq2aB84bxeTidgw2F77QyP2BY/J3IHW7LDadsswcLsQ==
+        set dpd-retryinterval 10
+    next
+    edit "vpn-d12036b0-1"
+        set interface "port1"
+        set keylife 28800
+        set proposal aes128-sha1
+        set comments "VPN: vpn-d12036b0-1 (Created by VPN wizard)"
+        set dhgrp 2
+        set remote-gw 52.206.26.29
+        set monitor "vpn-d12036b0-0"
+        set psksecret ENC Irp016UDDNThrwPdGcQ2sGIrtaQbbsOOtXXbr+2J2I2p6rw+LDfoxDpOq1Zgrv7vyDBmFlesMkhK7yG5hFZJuPORnY2mzh7JZeebeYsSvwh4MUmhkdJZLmiU6gYVc62NzKgMz38xzH7Bt4isRzJWTyC6byA1nU4L7mBzzztkcNSmzs09qjnORCV6Lanc5logxm8Ulw==
+        set dpd-retryinterval 10
+    next
+    edit "vpn-20dcca41-0"
+        set interface "port1"
+        set keylife 28800
+        set proposal aes128-sha1
+        set comments "VPN: vpn-20dcca41-0 (Created by VPN wizard)"
+        set dhgrp 2
+        set remote-gw 52.206.35.113
+        set psksecret ENC e+qsD0dRhpBd/4LLjKi3HIGeGuJmFQETCj5mLHBxpzub9g8qgH4QG7F0i9fPKMissu69gGPuKCJwJPdXSz5dP8N2q/ZptRI7pYHmmVtVcwUDomcux7qj9QhAa3F5SM5/+WKR6q5baT8y3JQrylJPwjdsvod5CFC9wshhW6ViWYlgc3n/+HIiRN3hQ6NMeoSIBR9yYg==
+        set dpd-retryinterval 10
+    next
+    edit "vpn-20dcca41-1"
+        set interface "port1"
+        set keylife 28800
+        set proposal aes128-sha1
+        set dpd disable
+        set comments "VPN: vpn-20dcca41-1 (Created by VPN wizard)"
+        set dhgrp 2
+        set remote-gw 52.206.35.156
+        set monitor "vpn-20dcca41-0"
+        set psksecret ENC Z70pKALBKr47xji6bKappqNUtE+THDEgxTbPtlVgrpvTwtngBsC151LbhTGAyy2v0AIE61NJ/IbzuXG23OQZryf1nsk3ATOYt4Wnxyl9NK74z4FDfNZ/4RUXl5t49cRlsH/TjbQYaz1cRxzTyLNS3xQjTrwtERzJ9nvfJchRl61Ph+mVRohV05QveG8jHeT+SG18RQ==
+    next
+    edit "vpn-88bda39a-0"
+        set interface "port1"
+        set keylife 28800
+        set proposal aes128-sha1
+        set comments "VPN: vpn-88bda39a-0 (Created by VPN wizard)"
+        set dhgrp 2
+        set remote-gw 52.25.163.251
+        set psksecret ENC ePYlf4zM1gqTGFlBhOVHzCdrTNQ8aI/1chEqObU9K1HNKPepI76CLgBVZNBT23/fFUpwijhV5z+UR0j9hPeiMbNZyChG+7yatQnGOLm2q6LBmKPUwyiSBSYQvyaR2H3eEpfJ0mER2aEYP/vI7Vo1U+n1ToZAU+o/CVtZgJWPK9fXRQloZ92bU/Qlv/bx05jpQL4SxQ==
+    next
+    edit "vpn-88bda39a-1"
+        set interface "port1"
+        set dpd disable
+        set comments "VPN: vpn-88bda39a-1 (Created by VPN wizard)"
+        set remote-gw 52.43.229.15
+        set psksecret ENC TP+HTGAwxTV05sAM2Z4ySsxhBAn2o0xK54SklBdi/ySeMq9ivYiC1xzbG1VmwaeZYhpBNctuB5vPIzs6E2XQwCyqK7xldg0ITZ4KKday+KH8EoFvcJ80UkmXqSqL2MEBtDNeSyr/uMLMOUgTJjl6Aud6WcFuR1Iwnr/nxsThbg/T4t811ajEvT18PET6fPjZMBDjDg==
+    next
+    edit "vpn-d189ff9a-0"
+        set interface "port1"
+        set keylife 28800
+        set proposal aes128-sha1
+        set comments "VPN: vpn-d189ff9a-0 (Created by VPN wizard)"
+        set dhgrp 2
+        set remote-gw 52.18.60.22
+        set psksecret ENC o3ns3CEUpcTQz/uQ49JiPF1UWIlDMPIob0cjVyuC8AGdYv70phtOKDRTl5JwXoLp6j2iYeTzPZwGZ6AvEcszjGPZn2nTVidmHOfRXwfGt5TOBChrxl/fsAc0Rr/CZZaehmHcWrjTYA2Zbpe2gTkudkHrTZFF9JP/Yhr0NijKberDw+UmjEQuCCMGQAlujzF5+rCO0g==
+        set dpd-retryinterval 10
+    next
+    edit "vpn-d189ff9a-1"
+        set interface "port1"
+        set keylife 28800
+        set proposal aes128-sha1
+        set dpd disable
+        set comments "VPN: vpn-d189ff9a-1 (Created by VPN wizard)"
+        set dhgrp 2
+        set remote-gw 52.18.201.11
+        set monitor "vpn-d189ff9a-0"
+        set psksecret ENC i9N+3NXhMabiBnMn0KUIjyHN4e911IjcPHFQ44m7cMz/tsn2A0nKaPyJmhlagwUeqB80iQ3QSfd7Ajzq4CNHHI3+thchgQQOVpRHEME0YamMEppXhAOmEkEkv8NbQ02XNdKuuSQ8wRNJZYZxoufANrZUaNjV8b/BomZNlJ7SquRVjMNkaHpNG3kc8cp5/r0vLL+0rw==
+    next
+    edit "vpn-d589ff9e-0"
+        set interface "port1"
+        set keylife 28800
+        set proposal aes128-sha1
+        set comments "VPN: vpn-d589ff9e-0 (Created by VPN wizard)"
+        set dhgrp 2
+        set remote-gw 52.17.54.85
+        set psksecret ENC QqJMUU9n8IQSh9qzXrsPCG+wq8HMitOauBkL4FxFgf/dDUYxlfONtCSA2GeI5UAiX7HwRn5jS1JZ7NTPV0VuUgegnXJIhzRdVVuIco+jxBckcrFU/m4AjAYXYUe/otnGSZ44oh3qOtWlCoy/MKqdihHkyH7PbjFcaCEhnustcifHvgtqM6TIXF1gLPZAyU9ir9mvhg==
+        set dpd-retryinterval 10
+    next
+    edit "vpn-d589ff9e-1"
+        set interface "port1"
+        set keylife 28800
+        set proposal aes128-sha1
+        set comments "VPN: vpn-d589ff9e-1 (Created by VPN wizard)"
+        set dhgrp 2
+        set remote-gw 52.209.202.226
+        set monitor "vpn-d589ff9e-0"
+        set psksecret ENC 1f3uoVOp467cxC5HabN8lfknrK8bdYf0LGFOzhsuexH65iEHdnMJhm/ZW0n8bOewMVE7wHQmSaK1OTqXR+b8+9+JkdW3hZGsI4bAaD+q7jSoIL+nvSXADERKKc/hHFZBqT5E8X31VIKZFFIZ5RQyQafEw26mD/q/7l8qur6Qmohq9KMaur2H0C27qQURQiMKPoBaBw==
+        set dpd-retryinterval 10
+    next
+    edit "vpn-669c8d07-0"
+        set interface "port1"
+        set local-gw 52.52.0.205
+        set keylife 28800
+        set proposal aes128-sha1
+        set comments "VPN: vpn-669c8d07-0 (Created by VPN wizard)"
+        set dhgrp 2
+        set remote-gw 52.201.14.230
+        set psksecret ENC qNbckxtrdZ7lZK7RazS3eNVjNcWNec1J1cZBqGThW8rSsrKFY3GWzI3LdIp6V9oBrCXyYnCZYCAs3EpMgHLLZHMWXEUfL/evdQrzBj5lnzzKdDmS1cVFCwJy5b4JtbbhzYxdKTi995eaCrUtWmGxbbSAhtcH2AeGDxMC4xMV3/ijmJyQVkUozeRTlvLCSX8WyhwBPA==
+        set dpd-retryinterval 10
+    next
+    edit "vpn-74839215-0"
+        set interface "port1"
+        set keylife 28800
+        set proposal aes128-sha1
+        set comments "VPN: vpn-74839215-0 (Created by VPN wizard)"
+        set dhgrp 2
+        set remote-gw 52.7.252.192
+        set psksecret ENC WcV/abVjssQUK6nSqSBszWi0a0NbkKxDuu0+yNBu/yxpsY49TVR+cqsLxR91wXo3oIqMV+YojsHKhaHega2r2WA3i+SYxG4jCudzv6NwdfJScPtL4fszM5FSRsvh9g4NWFtwkRWWXdrAjvb+fv21R6gKG79FntJ3Vn4KPmtqLzMidA/S87RAU8UGf/gxLTbyhFSeJA==
+        set dpd-retryinterval 10
+    next
+    edit "vpn-0fe9f11d-0"
+        set interface "port1"
+        set keylife 28800
+        set proposal aes128-sha1
+        set comments "VPN: vpn-0fe9f11d-0 (Created by VPN wizard)"
+        set dhgrp 2
+        set remote-gw 35.165.253.158
+        set psksecret ENC mGilcxEQszea7dvRt8hOtcrYiyZIU1Fz71Eyc97FLmd76UgKo1iIY76Qm8seoh7+RFRZv/DoGQOzp1AynaxcIdbOWusK6pdjFVxufRgShrvjK4wu+sTXEKea1kWpYaTULnolvT12Ak+qj6hNrWLUZBSH8Eke2CR19/OL71Tlyd4fe5jdrgBXVv+hEbaIGZirjqpbpg==
+    next
+    edit "vpn-073f2515-0"
+        set interface "port1"
+        set keylife 28800
+        set proposal aes128-sha1
+        set comments "VPN: vpn-073f2515-0 (Created by VPN wizard)"
+        set dhgrp 2
+        set remote-gw 35.164.26.116
+        set psksecret ENC IMnJhVLzd+JzV3wGmgWxPpIjHjvxFPHYlxMmPcbniGoVd4GNJSqOTw0ZpgwrLnNQKd4g5MNgapIneU7DtsPB3ZmnTdsOH8/YJ15F2sGuZ1i53297vGvAYb6n5KgP36/eoZcookoSDGhWFMyhETUtRgWXU3552pkHMkth92jlYrRVlT0zrpflchs/d1nbLl5t3twygw==
+        set dpd-retryinterval 10
+    next
+    edit "vpn-073f2515-1"
+        set interface "port1"
+        set keylife 28800
+        set proposal aes128-sha1
+        set comments "VPN: vpn-073f2515-1 (Created by VPN wizard)"
+        set dhgrp 2
+        set remote-gw 52.38.124.10
+        set monitor "vpn-073f2515-0"
+        set psksecret ENC ncVqgR5d0eOH9t+LlaR4I+EaJjVxF1Xg8HKg61Xwhuiz7nNOjwfv069XYHj1LTk25lqLtFP9ARhc+cypBqA+fkWDdtImO9DjoQWBrMDR675Tgh37x06NOo8kVSN5Jc4jGNkJdwHTnWpGDwmBonZWhacNgtoniCxy0E+RLy/b/ypynQArq/k5BE4umXDEE65KmQtW3g==
+        set dpd-retryinterval 10
+    next
+end
+config vpn ipsec phase2-interface
+    edit "vpn-5de9f74f-0"
+        set phase1name "vpn-5de9f74f-0"
+        set proposal aes128-sha1
+        set dhgrp 2
+        set comments "VPN: vpn-5de9f74f-0 (Created by VPN wizard)"
+        set keylifeseconds 3600
+        set src-subnet 10.17.0.0 255.255.0.0
+        set dst-subnet 10.60.0.0 255.255.0.0
+    next
+    edit "vpn-5de9f74f-1"
+        set phase1name "vpn-5de9f74f-1"
+        set proposal aes128-sha1
+        set dhgrp 2
+        set comments "VPN: vpn-5de9f74f-1 (Created by VPN wizard)"
+        set keylifeseconds 3600
+        set src-subnet 10.17.0.0 255.255.0.0
+        set dst-subnet 10.60.0.0 255.255.0.0
+    next
+    edit "vpn-fce6f8ee-0"
+        set phase1name "vpn-fce6f8ee-0"
+        set proposal aes128-sha1
+        set dhgrp 2
+        set comments "VPN: vpn-fce6f8ee-0 (Created by VPN wizard)"
+        set keylifeseconds 3600
+        set src-subnet 10.17.0.0 255.255.0.0
+        set dst-subnet 10.61.0.0 255.255.0.0
+    next
+    edit "vpn-fce6f8ee-1"
+        set phase1name "vpn-fce6f8ee-1"
+        set proposal aes128-sha1
+        set dhgrp 2
+        set comments "VPN: vpn-fce6f8ee-1 (Created by VPN wizard)"
+        set keylifeseconds 3600
+        set src-subnet 10.17.0.0 255.255.0.0
+        set dst-subnet 10.61.0.0 255.255.0.0
+    next
+    edit "vpn-63e3fd71-0"
+        set phase1name "vpn-63e3fd71-0"
+        set proposal aes128-sha1
+        set dhgrp 2
+        set comments "VPN: vpn-63e3fd71-0 (Created by VPN wizard)"
+        set keylifeseconds 3600
+        set src-subnet 10.17.0.0 255.255.0.0
+        set dst-subnet 10.62.0.0 255.255.0.0
+    next
+    edit "vpn-63e3fd71-1"
+        set phase1name "vpn-63e3fd71-1"
+        set proposal aes128-sha1
+        set dhgrp 2
+        set comments "VPN: vpn-63e3fd71-1 (Created by VPN wizard)"
+        set keylifeseconds 3600
+        set src-subnet 10.17.0.0 255.255.0.0
+        set dst-subnet 10.62.0.0 255.255.0.0
+    next
+    edit "vpn-d12036b0-0"
+        set phase1name "vpn-d12036b0-0"
+        set proposal aes128-sha1
+        set dhgrp 2
+        set comments "VPN: vpn-d12036b0-0 (Created by VPN wizard)"
+        set keylifeseconds 3600
+        set src-subnet 10.17.0.0 255.255.0.0
+        set dst-subnet 10.2.0.0 255.255.0.0
+    next
+    edit "vpn-d12036b0-1"
+        set phase1name "vpn-d12036b0-1"
+        set proposal aes128-sha1
+        set dhgrp 2
+        set comments "VPN: vpn-d12036b0-1 (Created by VPN wizard)"
+        set keylifeseconds 3600
+        set src-subnet 10.17.0.0 255.255.0.0
+        set dst-subnet 10.2.0.0 255.255.0.0
+    next
+    edit "vpn-20dcca41-0"
+        set phase1name "vpn-20dcca41-0"
+        set proposal aes128-sha1
+        set dhgrp 2
+        set comments "VPN: vpn-20dcca41-0 (Created by VPN wizard)"
+        set keylifeseconds 3600
+        set src-subnet 10.17.0.0 255.255.0.0
+        set dst-subnet 10.63.0.0 255.255.0.0
+    next
+    edit "vpn-20dcca41-1"
+        set phase1name "vpn-20dcca41-1"
+        set proposal aes128-sha1
+        set dhgrp 2
+        set comments "VPN: vpn-20dcca41-1 (Created by VPN wizard)"
+        set keylifeseconds 3600
+        set src-subnet 10.17.0.0 255.255.0.0
+        set dst-subnet 10.63.0.0 255.255.0.0
+    next
+    edit "vpn-88bda39a-1"
+        set phase1name "vpn-88bda39a-1"
+        set comments "VPN: vpn-88bda39a-1 (Created by VPN wizard)"
+        set src-subnet 10.17.0.0 255.255.0.0
+        set dst-subnet 10.70.0.0 255.255.0.0
+    next
+    edit "vpn-d189ff9a-0"
+        set phase1name "vpn-d189ff9a-0"
+        set proposal aes128-sha1
+        set dhgrp 2
+        set comments "VPN: vpn-d189ff9a-0 (Created by VPN wizard)"
+        set keylifeseconds 3600
+        set src-subnet 10.17.0.0 255.255.0.0
+        set dst-subnet 10.200.0.0 255.255.0.0
+    next
+    edit "vpn-d189ff9a-1"
+        set phase1name "vpn-d189ff9a-1"
+        set proposal aes128-sha1
+        set dhgrp 2
+        set comments "VPN: vpn-d189ff9a-1 (Created by VPN wizard)"
+        set keylifeseconds 3600
+        set src-subnet 10.17.0.0 255.255.0.0
+        set dst-subnet 10.200.0.0 255.255.0.0
+    next
+    edit "vpn-d589ff9e-0"
+        set phase1name "vpn-d589ff9e-0"
+        set proposal aes128-sha1
+        set dhgrp 2
+        set comments "VPN: vpn-d589ff9e-0 (Created by VPN wizard)"
+        set keylifeseconds 3600
+        set src-subnet 10.17.0.0 255.255.0.0
+        set dst-subnet 10.201.0.0 255.255.0.0
+    next
+    edit "vpn-d589ff9e-1"
+        set phase1name "vpn-d589ff9e-1"
+        set proposal aes128-sha1
+        set dhgrp 2
+        set comments "VPN: vpn-d589ff9e-1 (Created by VPN wizard)"
+        set keylifeseconds 3600
+        set src-subnet 10.17.0.0 255.255.0.0
+        set dst-subnet 10.201.0.0 255.255.0.0
+    next
+    edit "vpn-669c8d07-0"
+        set phase1name "vpn-669c8d07-0"
+        set comments "VPN: vpn-669c8d07-0 (Created by VPN wizard)"
+        set src-subnet 10.17.0.0 255.255.0.0
+        set dst-subnet 10.2.0.0 255.255.0.0
+    next
+    edit "vpn-74839215-0"
+        set phase1name "vpn-74839215-0"
+        set proposal aes128-sha1
+        set dhgrp 2
+        set comments "VPN: vpn-74839215-0 (Created by VPN wizard)"
+        set keylifeseconds 3600
+        set src-subnet 10.17.0.0 255.255.0.0
+        set dst-subnet 10.2.0.0 255.255.0.0
+    next
+    edit "vpn-0fe9f11d-0"
+        set phase1name "vpn-0fe9f11d-0"
+        set comments "VPN: vpn-0fe9f11d-0 (Created by VPN wizard)"
+        set src-subnet 10.17.192.0 255.255.255.0
+        set dst-subnet 10.65.0.0 255.255.0.0
+    next
+    edit "vpn-073f2515-0"
+        set phase1name "vpn-073f2515-0"
+        set proposal aes128-sha1
+        set dhgrp 2
+        set comments "VPN: vpn-073f2515-0 (Created by VPN wizard)"
+        set keylifeseconds 3600
+        set src-subnet 10.17.0.0 255.255.0.0
+        set dst-subnet 10.139.0.0 255.255.0.0
+    next
+    edit "vpn-073f2515-1"
+        set phase1name "vpn-073f2515-1"
+        set proposal aes128-sha1
+        set dhgrp 2
+        set comments "VPN: vpn-073f2515-1 (Created by VPN wizard)"
+        set keylifeseconds 3600
+        set src-subnet 10.17.0.0 255.255.0.0
+        set dst-subnet 10.139.0.0 255.255.0.0
+    next
+    edit "vpn-88bda39a-0"
+        set phase1name "vpn-88bda39a-0"
+        set src-subnet 10.17.0.0 255.255.0.0
+        set dst-subnet 10.70.0.0 255.255.0.0
+    next
+end
+config dnsfilter profile
+    edit "default"
+        set comment "Default dns filtering."
+        config ftgd-dns
+            config filters
+                edit 1
+                    set category 2
+                next
+                edit 2
+                    set category 7
+                next
+                edit 3
+                    set category 8
+                next
+                edit 4
+                    set category 9
+                next
+                edit 5
+                    set category 11
+                next
+                edit 6
+                    set category 12
+                next
+                edit 7
+                    set category 13
+                next
+                edit 8
+                    set category 14
+                next
+                edit 9
+                    set category 15
+                next
+                edit 10
+                    set category 16
+                next
+                edit 11
+                next
+                edit 12
+                    set category 57
+                next
+                edit 13
+                    set category 63
+                next
+                edit 14
+                    set category 64
+                next
+                edit 15
+                    set category 65
+                next
+                edit 16
+                    set category 66
+                next
+                edit 17
+                    set category 67
+                next
+                edit 18
+                    set category 26
+                    set action block
+                next
+                edit 19
+                    set category 61
+                    set action block
+                next
+                edit 20
+                    set category 86
+                    set action block
+                next
+                edit 21
+                    set category 88
+                    set action block
+                next
+            end
+        end
+        set block-botnet enable
+    next
+end
+config antivirus settings
+    set grayware enable
+end
+config antivirus profile
+    edit "sniffer-profile"
+        set comment "Scan files and monitor viruses."
+        config http
+            set options scan
+        end
+        config ftp
+            set options scan
+        end
+        config imap
+            set options scan
+            set executables virus
+        end
+        config pop3
+            set options scan
+            set executables virus
+        end
+        config smtp
+            set options scan
+            set executables virus
+        end
+    next
+    edit "default"
+        set comment "Scan files and block viruses."
+        set inspection-mode proxy
+        config http
+            set options scan
+        end
+        config ftp
+            set options scan
+        end
+        config imap
+            set options scan
+            set executables virus
+        end
+        config pop3
+            set options scan
+            set executables virus
+        end
+        config smtp
+            set options scan
+            set executables virus
+        end
+    next
+end
+config spamfilter profile
+    edit "sniffer-profile"
+        set comment "Malware and phishing URL monitoring."
+        set flow-based enable
+    next
+    edit "default"
+        set comment "Malware and phishing URL filtering."
+    next
+end
+config report layout
+    edit "default"
+        set title "FortiGate System Analysis Report"
+        set style-theme "default-report"
+        set options include-table-of-content view-chart-as-heading
+        set format pdf
+        config page
+            set paper letter
+            set page-break-before heading1
+            config header
+                config header-item
+                    edit 1
+                        set type image
+                        set style "header-image"
+                        set img-src "fortinet_logo_small.png"
+                    next
+                end
+            end
+            config footer
+                config footer-item
+                    edit 1
+                        set style "footer-text"
+                        set content "FortiGate ${schedule_type} Security Report - Host Name: ${hostname}"
+                    next
+                    edit 2
+                        set style "footer-pageno"
+                    next
+                end
+            end
+        end
+        config body-item
+            edit 101
+                set type image
+                set style "report-cover1"
+                set img-src "fortigate_log.png"
+            next
+            edit 103
+                set style "report-cover2"
+                set content "FortiGate ${schedule_type} Security Report"
+            next
+            edit 105
+                set style "report-cover3"
+                set content "Report Date: ${started_time}"
+            next
+            edit 107
+                set style "report-cover3"
+                set content "Data Range: ${report_data_range}  (${hostname})"
+            next
+            edit 109
+                set style "report-cover3"
+                set content "${vdom}"
+            next
+            edit 111
+                set type image
+                set style "report-cover4"
+                set img-src "fortinet_logo_small.png"
+            next
+            edit 121
+                set type misc
+                set misc-component page-break
+            next
+            edit 301
+                set text-component heading1
+                set content "Bandwidth and Applications"
+            next
+            edit 311
+                set type chart
+                set chart "traffic.bandwidth.history_c"
+            next
+            edit 321
+                set type chart
+                set chart "traffic.sessions.history_c"
+            next
+            edit 331
+                set type chart
+                set chart "traffic.statistics"
+            next
+            edit 411
+                set type chart
+                set chart "traffic.bandwidth.apps_c"
+            next
+            edit 421
+                set type chart
+                set chart "traffic.bandwidth.cats_c"
+            next
+            edit 511
+                set type chart
+                set chart "traffic.bandwidth.users_c"
+            next
+            edit 521
+                set type chart
+                set chart "traffic.users.history.hour_c"
+            next
+            edit 611
+                set type chart
+                set chart "traffic.bandwidth.destinations_tab"
+            next
+            edit 1001
+                set text-component heading1
+                set content "Web Usage"
+            next
+            edit 1011
+                set type chart
+                set chart "web.allowed-request.sites_c"
+            next
+            edit 1021
+                set type chart
+                set chart "web.bandwidth.sites_c"
+            next
+            edit 1031
+                set type chart
+                set chart "web.blocked-request.sites_c"
+            next
+            edit 1041
+                set type chart
+                set chart "web.blocked-request.users_c"
+            next
+            edit 1051
+                set type chart
+                set chart "web.requests.users_c"
+            next
+            edit 1061
+                set type chart
+                set chart "web.bandwidth.users_c"
+            next
+            edit 1071
+                set type chart
+                set chart "web.bandwidth.stream-sites_c"
+            next
+            edit 1301
+                set text-component heading1
+                set content "Emails"
+            next
+            edit 1311
+                set type chart
+                set chart "email.request.senders_c"
+            next
+            edit 1321
+                set type chart
+                set chart "email.bandwidth.senders_c"
+            next
+            edit 1331
+                set type chart
+                set chart "email.request.recipients_c"
+            next
+            edit 1341
+                set type chart
+                set chart "email.bandwidth.recipients_c"
+            next
+            edit 1501
+                set text-component heading1
+                set content "Threats"
+            next
+            edit 1511
+                set type chart
+                set top-n 80
+                set chart "virus.count.viruses_c"
+            next
+            edit 1531
+                set type chart
+                set top-n 80
+                set chart "virus.count.users_c"
+            next
+            edit 1541
+                set type chart
+                set top-n 80
+                set chart "virus.count.sources_c"
+            next
+            edit 1551
+                set type chart
+                set chart "virus.count.history_c"
+            next
+            edit 1561
+                set type chart
+                set top-n 80
+                set chart "botnet.count_c"
+            next
+            edit 1571
+                set type chart
+                set top-n 80
+                set chart "botnet.count.users_c"
+            next
+            edit 1581
+                set type chart
+                set top-n 80
+                set chart "botnet.count.sources_c"
+            next
+            edit 1591
+                set type chart
+                set chart "botnet.count.history_c"
+            next
+            edit 1601
+                set type chart
+                set top-n 80
+                set chart "attack.count.attacks_c"
+            next
+            edit 1611
+                set type chart
+                set top-n 80
+                set chart "attack.count.victims_c"
+            next
+            edit 1621
+                set type chart
+                set top-n 80
+                set chart "attack.count.source_bar_c"
+            next
+            edit 1631
+                set type chart
+                set chart "attack.count.blocked_attacks_c"
+            next
+            edit 1641
+                set type chart
+                set chart "attack.count.severity_c"
+            next
+            edit 1651
+                set type chart
+                set chart "attack.count.history_c"
+            next
+            edit 1701
+                set text-component heading1
+                set content "VPN Usage"
+            next
+            edit 1711
+                set type chart
+                set top-n 80
+                set chart "vpn.bandwidth.static-tunnels_c"
+            next
+            edit 1721
+                set type chart
+                set top-n 80
+                set chart "vpn.bandwidth.dynamic-tunnels_c"
+            next
+            edit 1731
+                set type chart
+                set top-n 80
+                set chart "vpn.bandwidth.ssl-tunnel.users_c"
+            next
+            edit 1741
+                set type chart
+                set top-n 80
+                set chart "vpn.bandwidth.ssl-web.users_c"
+            next
+            edit 1901
+                set text-component heading1
+                set content "Admin Login and System Events"
+            next
+            edit 1911
+                set type chart
+                set top-n 80
+                set chart "event.login.summary_c"
+            next
+            edit 1931
+                set type chart
+                set top-n 80
+                set chart "event.failed.login_c"
+            next
+            edit 1961
+                set type chart
+                set top-n 80
+                set chart "event.system.group_events_c"
+            next
+        end
+    next
+end
+config wanopt settings
+    set host-id "default-id"
+end
+config wanopt profile
+    edit "default"
+        set comments "Default WANopt profile."
+    next
+end
+config firewall schedule recurring
+    edit "always"
+        set day sunday monday tuesday wednesday thursday friday saturday
+    next
+    edit "none"
+    next
+end
+config firewall profile-protocol-options
+    edit "default"
+        set comment "All default services."
+        config http
+            set ports 80
+            unset options
+            unset post-lang
+        end
+        config ftp
+            set ports 21
+            set options splice
+        end
+        config imap
+            set ports 143
+            set options fragmail
+        end
+        config mapi
+            set ports 135
+            set options fragmail
+        end
+        config pop3
+            set ports 110
+            set options fragmail
+        end
+        config smtp
+            set ports 25
+            set options fragmail splice
+        end
+        config nntp
+            set ports 119
+            set options splice
+        end
+        config dns
+            set ports 53
+        end
+    next
+end
+config firewall ssl-ssh-profile
+    edit "deep-inspection"
+        set comment "Deep inspection."
+        config https
+            set ports 443
+        end
+        config ftps
+            set ports 990
+        end
+        config imaps
+            set ports 993
+        end
+        config pop3s
+            set ports 995
+        end
+        config smtps
+            set ports 465
+        end
+        config ssh
+            set ports 22
+        end
+        config ssl-exempt
+            edit 1
+                set fortiguard-category 31
+            next
+            edit 2
+                set fortiguard-category 33
+            next
+            edit 3
+                set type address
+                set address "android"
+            next
+            edit 4
+                set type address
+                set address "apple"
+            next
+            edit 5
+                set type address
+                set address "appstore"
+            next
+            edit 6
+                set type address
+                set address "citrix"
+            next
+            edit 7
+                set type address
+                set address "eease"
+            next
+            edit 8
+                set type address
+                set address "google-drive"
+            next
+            edit 9
+                set type address
+                set address "google-play"
+            next
+            edit 10
+                set type address
+                set address "google-play2"
+            next
+            edit 11
+                set type address
+                set address "google-play3"
+            next
+            edit 12
+                set type address
+                set address "Gotomeeting"
+            next
+            edit 13
+                set type address
+                set address "microsoft"
+            next
+            edit 14
+                set type address
+                set address "update.microsoft.com"
+            next
+            edit 15
+                set type address
+                set address "adobe"
+            next
+            edit 16
+                set type address
+                set address "Adobe Login"
+            next
+            edit 17
+                set type address
+                set address "dropbox.com"
+            next
+            edit 18
+                set type address
+                set address "fortinet"
+            next
+            edit 19
+                set type address
+                set address "googleapis.com"
+            next
+            edit 20
+                set type address
+                set address "icloud"
+            next
+            edit 21
+                set type address
+                set address "itunes"
+            next
+            edit 22
+                set type address
+                set address "skype"
+            next
+            edit 23
+                set type address
+                set address "swscan.apple.com"
+            next
+            edit 24
+                set type address
+                set address "verisign"
+            next
+            edit 25
+                set type address
+                set address "Windows update 2"
+            next
+            edit 26
+                set type address
+                set address "auth.gfx.ms"
+            next
+            edit 27
+                set type address
+                set address "autoupdate.opera.com"
+            next
+            edit 28
+                set type address
+                set address "softwareupdate.vmware.com"
+            next
+            edit 29
+                set type address
+                set address "firefox update server"
+            next
+        end
+    next
+    edit "certificate-inspection"
+        set comment "SSL handshake inspection."
+        config https
+            set ports 443
+            set status certificate-inspection
+        end
+        config ftps
+            set ports 990
+            set status disable
+        end
+        config imaps
+            set ports 993
+            set status disable
+        end
+        config pop3s
+            set ports 995
+            set status disable
+        end
+        config smtps
+            set ports 465
+            set status disable
+        end
+        config ssh
+            set ports 22
+            set status disable
+        end
+    next
+end
+config waf profile
+    edit "default"
+        config signature
+            config main-class 100000000
+                set action block
+                set severity high
+            end
+            config main-class 20000000
+            end
+            config main-class 30000000
+                set status enable
+                set action block
+                set severity high
+            end
+            config main-class 40000000
+            end
+            config main-class 50000000
+                set status enable
+                set action block
+                set severity high
+            end
+            config main-class 60000000
+            end
+            config main-class 70000000
+                set status enable
+                set action block
+                set severity high
+            end
+            config main-class 80000000
+                set status enable
+                set severity low
+            end
+            config main-class 110000000
+                set status enable
+                set severity high
+            end
+            config main-class 90000000
+                set status enable
+                set action block
+                set severity high
+            end
+            set disabled-signature 80080005 80200001 60030001 60120001 80080003 90410001 90410002
+        end
+        config constraint
+            config header-length
+                set status enable
+                set log enable
+                set severity low
+            end
+            config content-length
+                set status enable
+                set log enable
+                set severity low
+            end
+            config param-length
+                set status enable
+                set log enable
+                set severity low
+            end
+            config line-length
+                set status enable
+                set log enable
+                set severity low
+            end
+            config url-param-length
+                set status enable
+                set log enable
+                set severity low
+            end
+            config version
+                set log enable
+            end
+            config method
+                set action block
+                set log enable
+            end
+            config hostname
+                set action block
+                set log enable
+            end
+            config malformed
+                set log enable
+            end
+            config max-cookie
+                set status enable
+                set log enable
+                set severity low
+            end
+            config max-header-line
+                set status enable
+                set log enable
+                set severity low
+            end
+            config max-url-param
+                set status enable
+                set log enable
+                set severity low
+            end
+            config max-range-segment
+                set status enable
+                set log enable
+                set severity high
+            end
+        end
+    next
+end
+config firewall policy
+    edit 1
+        set name "vpn_vpn-5de9f74f-0_local"
+        set uuid 00c67cee-34a2-51e6-97c2-d0627ca1b85f
+        set srcintf "port1"
+        set dstintf "vpn-5de9f74f-0"
+        set srcaddr "vpn-5de9f74f-0_local"
+        set dstaddr "vpn-5de9f74f-0_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-5de9f74f-0 (Created by VPN wizard)"
+    next
+    edit 2
+        set name "vpn_vpn-5de9f74f-0_remote"
+        set uuid 00d02866-34a2-51e6-7f0e-09c1bd460dc0
+        set srcintf "vpn-5de9f74f-0"
+        set dstintf "port1"
+        set srcaddr "vpn-5de9f74f-0_remote"
+        set dstaddr "vpn-5de9f74f-0_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-5de9f74f-0 (Created by VPN wizard)"
+    next
+    edit 3
+        set name "vpn_vpn-5de9f74f-1_local"
+        set uuid 229699b2-34a2-51e6-ff9f-994a58c50592
+        set srcintf "port1"
+        set dstintf "vpn-5de9f74f-1"
+        set srcaddr "vpn-5de9f74f-1_local"
+        set dstaddr "vpn-5de9f74f-1_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-5de9f74f-1 (Created by VPN wizard)"
+    next
+    edit 4
+        set name "vpn_vpn-5de9f74f-1_remote"
+        set uuid 229ff566-34a2-51e6-ce72-4a4f591e27d5
+        set srcintf "vpn-5de9f74f-1"
+        set dstintf "port1"
+        set srcaddr "vpn-5de9f74f-1_remote"
+        set dstaddr "vpn-5de9f74f-1_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-5de9f74f-1 (Created by VPN wizard)"
+    next
+    edit 5
+        set name "SSL VPN Full Access"
+        set uuid fa20ba14-36fc-51e6-ccf8-d052cfcfcb56
+        set srcintf "ssl.root"
+        set dstintf "port1"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "vpn-5de9f74f-0_local_subnet_1" "vpn-5de9f74f-0_remote_subnet_1" "US-East-1 Prod VPC" "vpn-fce6f8ee-0_remote_subnet_1"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set groups "verveuser"
+        set nat enable
+    next
+    edit 14
+        set name "SSL VPN To 10.61 (Primary)"
+        set uuid e1b65242-38a3-51e6-6e63-91e04aff089e
+        set srcintf "ssl.root"
+        set dstintf "vpn-fce6f8ee-0"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "vpn-fce6f8ee-1_remote_subnet_1"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set groups "verveuser"
+        set comments "Clone of SSL VPN To 10.60 (Primary)"
+        set nat enable
+    next
+    edit 6
+        set name "SSL VPN To 10.60 (Primary)"
+        set uuid a7dec83c-370a-51e6-29bb-ccc9012a47d4
+        set srcintf "ssl.root"
+        set dstintf "vpn-5de9f74f-0"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "vpn-5de9f74f-0_remote_subnet_1"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set groups "verveuser"
+        set nat enable
+    next
+    edit 15
+        set name "SSL VPN To 10.61 (Secondary"
+        set uuid 11f79772-38a4-51e6-8542-4f87a779bde9
+        set srcintf "ssl.root"
+        set dstintf "ssl.root"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "vpn-fce6f8ee-0_remote_subnet_1"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set groups "verveuser"
+        set comments "Clone of SSL VPN To 10.60 (Secondary)"
+        set nat enable
+    next
+    edit 7
+        set name "SSL VPN To 10.60 (Secondary)"
+        set uuid c1250eb4-370a-51e6-27de-d2b034c5c3c4
+        set srcintf "ssl.root"
+        set dstintf "ssl.root"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "vpn-5de9f74f-0_remote_subnet_1"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set groups "verveuser"
+        set nat enable
+    next
+    edit 8
+        set name "SSL VPN To 10.1 (Primary)"
+        set uuid bc48416c-370b-51e6-f8dc-bdd5387ae204
+        set srcintf "ssl.root"
+        set dstintf "vpn-5de9f74f-0"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "US-East-1 Prod VPC"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set groups "verveuser"
+        set nat enable
+    next
+    edit 9
+        set name "SSL VPN To 10.1 (Secondary)"
+        set uuid d176c46e-370b-51e6-098f-64adf78d67bd
+        set srcintf "ssl.root"
+        set dstintf "vpn-5de9f74f-1"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "US-East-1 Prod VPC"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set groups "verveuser"
+        set nat enable
+    next
+    edit 10
+        set name "vpn_vpn-fce6f8ee-0_local"
+        set uuid c09e8c94-389b-51e6-e830-fe77abf95428
+        set srcintf "port1"
+        set dstintf "vpn-fce6f8ee-0"
+        set srcaddr "vpn-fce6f8ee-0_local"
+        set dstaddr "vpn-fce6f8ee-0_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-fce6f8ee-0 (Created by VPN wizard)"
+    next
+    edit 11
+        set name "vpn_vpn-fce6f8ee-0_remote"
+        set uuid c0a53288-389b-51e6-fc02-a41bdeffbe9f
+        set srcintf "vpn-fce6f8ee-0"
+        set dstintf "port1"
+        set srcaddr "vpn-fce6f8ee-0_remote"
+        set dstaddr "vpn-fce6f8ee-0_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-fce6f8ee-0 (Created by VPN wizard)"
+    next
+    edit 12
+        set name "vpn_vpn-fce6f8ee-1_local"
+        set uuid df35e06c-389b-51e6-554d-57d752111be0
+        set srcintf "port1"
+        set dstintf "vpn-fce6f8ee-1"
+        set srcaddr "vpn-fce6f8ee-1_local"
+        set dstaddr "vpn-fce6f8ee-1_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-fce6f8ee-1 (Created by VPN wizard)"
+    next
+    edit 13
+        set name "vpn_vpn-fce6f8ee-1_remote"
+        set uuid df3e128c-389b-51e6-4916-5e418736f9b2
+        set srcintf "vpn-fce6f8ee-1"
+        set dstintf "port1"
+        set srcaddr "vpn-fce6f8ee-1_remote"
+        set dstaddr "vpn-fce6f8ee-1_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-fce6f8ee-1 (Created by VPN wizard)"
+    next
+    edit 16
+        set name "vpn_vpn-63e3fd71-0_local"
+        set uuid 586f0d48-3d5e-51e6-1d83-2a2d76041d7b
+        set srcintf "port1"
+        set dstintf "vpn-63e3fd71-0"
+        set srcaddr "vpn-63e3fd71-0_local"
+        set dstaddr "vpn-63e3fd71-0_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-63e3fd71-0 (Created by VPN wizard)"
+    next
+    edit 17
+        set name "vpn_vpn-63e3fd71-0_remote"
+        set uuid 588bb20e-3d5e-51e6-a4ad-1a9a79ef08e3
+        set srcintf "vpn-63e3fd71-0"
+        set dstintf "port1"
+        set srcaddr "vpn-63e3fd71-0_remote"
+        set dstaddr "vpn-63e3fd71-0_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-63e3fd71-0 (Created by VPN wizard)"
+    next
+    edit 18
+        set name "vpn_vpn-63e3fd71-1_local"
+        set uuid 730d1fd2-3d5e-51e6-6dbf-c461e989cdec
+        set srcintf "port1"
+        set dstintf "vpn-63e3fd71-1"
+        set srcaddr "vpn-63e3fd71-1_local"
+        set dstaddr "vpn-63e3fd71-1_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-63e3fd71-1 (Created by VPN wizard)"
+    next
+    edit 19
+        set name "vpn_vpn-63e3fd71-1_remote"
+        set uuid 731aa6e8-3d5e-51e6-539c-05e18d5cc047
+        set srcintf "vpn-63e3fd71-1"
+        set dstintf "port1"
+        set srcaddr "vpn-63e3fd71-1_remote"
+        set dstaddr "vpn-63e3fd71-1_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-63e3fd71-1 (Created by VPN wizard)"
+    next
+    edit 20
+        set name "SSL To 10.62 (Primary)"
+        set uuid 98c1d998-3d5e-51e6-fbec-fbacbdea82ab
+        set srcintf "ssl.root"
+        set dstintf "vpn-63e3fd71-0"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "vpn-63e3fd71-1_remote_subnet_1"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set groups "verveuser"
+        set nat enable
+    next
+    edit 21
+        set name "VPN To 10.62 (Secondary)"
+        set uuid af2034e6-3d5e-51e6-7121-b2c0f98d417a
+        set srcintf "ssl.root"
+        set dstintf "vpn-63e3fd71-1"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "vpn-63e3fd71-1_remote_subnet_1"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set groups "verveuser"
+        set nat enable
+    next
+    edit 22
+        set name "vpn_vpn-d12036b0-0_local"
+        set uuid 74efb666-4849-51e6-ff8f-46ca24842f6d
+        set srcintf "port1"
+        set dstintf "vpn-d12036b0-0"
+        set srcaddr "vpn-d12036b0-0_local"
+        set dstaddr "vpn-d12036b0-0_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-d12036b0-0 (Created by VPN wizard)"
+    next
+    edit 23
+        set name "vpn_vpn-d12036b0-0_remote"
+        set uuid 74fee546-4849-51e6-539b-9db4716b1a62
+        set srcintf "vpn-d12036b0-0"
+        set dstintf "port1"
+        set srcaddr "vpn-d12036b0-0_remote"
+        set dstaddr "vpn-d12036b0-0_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-d12036b0-0 (Created by VPN wizard)"
+    next
+    edit 24
+        set name "vpn_vpn-d12036b0-1_local"
+        set uuid 90b447c2-4849-51e6-c842-b073a606f482
+        set srcintf "port1"
+        set dstintf "vpn-d12036b0-1"
+        set srcaddr "vpn-d12036b0-1_local"
+        set dstaddr "vpn-d12036b0-1_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-d12036b0-1 (Created by VPN wizard)"
+    next
+    edit 25
+        set name "vpn_vpn-d12036b0-1_remote"
+        set uuid 90bf2160-4849-51e6-3e1b-341162e109bd
+        set srcintf "vpn-d12036b0-1"
+        set dstintf "port1"
+        set srcaddr "vpn-d12036b0-1_remote"
+        set dstaddr "vpn-d12036b0-1_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-d12036b0-1 (Created by VPN wizard)"
+    next
+    edit 26
+        set name "SSL VPN To 10.2 (Primary)"
+        set uuid bcf7d100-4849-51e6-847b-bfb64eb937f0
+        set srcintf "ssl.root"
+        set dstintf "vpn-74839215-0"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "vpn-74839215-0_remote_subnet_1"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set groups "verveuser"
+        set nat enable
+    next
+    edit 27
+        set name "SSL VPN To 10.2 (Secondary)"
+        set uuid d3b73340-4849-51e6-ea26-312318a677cb
+        set srcintf "ssl.root"
+        set dstintf "vpn-d12036b0-1"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "vpn-d12036b0-1_remote_subnet_1"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set groups "verveuser"
+        set nat enable
+    next
+    edit 28
+        set name "vpn_vpn-20dcca41-0_local"
+        set uuid aba99c38-559d-51e6-239f-50313cb9fc6c
+        set srcintf "port1"
+        set dstintf "vpn-20dcca41-0"
+        set srcaddr "vpn-20dcca41-0_local"
+        set dstaddr "vpn-20dcca41-0_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-20dcca41-0 (Created by VPN wizard)"
+    next
+    edit 29
+        set name "vpn_vpn-20dcca41-0_remote"
+        set uuid abaeeb48-559d-51e6-4499-e97faec68085
+        set srcintf "vpn-20dcca41-0"
+        set dstintf "port1"
+        set srcaddr "vpn-20dcca41-0_remote"
+        set dstaddr "vpn-20dcca41-0_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-20dcca41-0 (Created by VPN wizard)"
+    next
+    edit 30
+        set name "vpn_vpn-20dcca41-1_local"
+        set uuid c8019160-559d-51e6-94b4-f182486deeef
+        set srcintf "port1"
+        set dstintf "vpn-20dcca41-1"
+        set srcaddr "vpn-20dcca41-1_local"
+        set dstaddr "vpn-20dcca41-1_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-20dcca41-1 (Created by VPN wizard)"
+    next
+    edit 31
+        set name "vpn_vpn-20dcca41-1_remote"
+        set uuid c80d0144-559d-51e6-2e6f-79ef0c6a0ab7
+        set srcintf "vpn-20dcca41-1"
+        set dstintf "port1"
+        set srcaddr "vpn-20dcca41-1_remote"
+        set dstaddr "vpn-20dcca41-1_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-20dcca41-1 (Created by VPN wizard)"
+    next
+    edit 32
+        set name "SSL VPN To 10.63 (Primary)"
+        set uuid b7d76ba6-559e-51e6-f3a2-83c3f0f0b515
+        set srcintf "ssl.root"
+        set dstintf "vpn-20dcca41-0"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "vpn-20dcca41-0_remote_subnet_1"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set groups "verveuser"
+        set nat enable
+    next
+    edit 33
+        set name "SSL VPN To 10.63 (Secondary)"
+        set uuid d239fc66-559e-51e6-1a35-8ddf87751547
+        set srcintf "ssl.root"
+        set dstintf "vpn-20dcca41-1"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "vpn-20dcca41-1_remote_subnet_1"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set groups "verveuser"
+        set nat enable
+    next
+    edit 34
+        set name "vpn_vpn-88bda39a-0_local"
+        set uuid e83c088c-64ae-51e6-73de-8c716936ba6c
+        set srcintf "port1"
+        set dstintf "vpn-88bda39a-0"
+        set srcaddr "vpn-88bda39a-0_local"
+        set dstaddr "vpn-88bda39a-0_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-88bda39a-0 (Created by VPN wizard)"
+    next
+    edit 35
+        set name "vpn_vpn-88bda39a-0_remote"
+        set uuid e847b1e6-64ae-51e6-0e7d-834d61febe3b
+        set srcintf "vpn-88bda39a-0"
+        set dstintf "port1"
+        set srcaddr "vpn-88bda39a-0_remote"
+        set dstaddr "vpn-88bda39a-0_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-88bda39a-0 (Created by VPN wizard)"
+    next
+    edit 36
+        set name "vpn_vpn-88bda39a-1_local"
+        set uuid 05d6c44a-64af-51e6-426e-c586510e10e7
+        set srcintf "port1"
+        set dstintf "vpn-88bda39a-1"
+        set srcaddr "vpn-88bda39a-1_local"
+        set dstaddr "vpn-88bda39a-1_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-88bda39a-1 (Created by VPN wizard)"
+    next
+    edit 37
+        set name "vpn_vpn-88bda39a-1_remote"
+        set uuid 05dd418a-64af-51e6-9312-cb2cd2d7ca25
+        set srcintf "vpn-88bda39a-1"
+        set dstintf "port1"
+        set srcaddr "vpn-88bda39a-1_remote"
+        set dstaddr "vpn-88bda39a-1_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-88bda39a-1 (Created by VPN wizard)"
+    next
+    edit 38
+        set name "SSL VPN to 10.70 (Primary)"
+        set uuid 2f42c1b2-64af-51e6-69c4-d605d93abbb6
+        set srcintf "ssl.root"
+        set dstintf "vpn-88bda39a-0"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "vpn-88bda39a-0_remote_subnet_1"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set groups "verveuser"
+        set nat enable
+    next
+    edit 39
+        set name "SSL VPN to 10.70 (Secondary)"
+        set uuid 44230682-64af-51e6-1b00-e6817d047a54
+        set srcintf "ssl.root"
+        set dstintf "vpn-88bda39a-1"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "vpn-88bda39a-1_remote_subnet_1"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set groups "verveuser"
+        set nat enable
+    next
+    edit 46
+        set name "vpn_vpn-d189ff9a-0_local"
+        set uuid 8984f992-7071-51e6-e759-6319d05b4fa6
+        set srcintf "port1"
+        set dstintf "vpn-d189ff9a-0"
+        set srcaddr "vpn-d189ff9a-0_local"
+        set dstaddr "vpn-d189ff9a-0_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-d189ff9a-0 (Created by VPN wizard)"
+    next
+    edit 47
+        set name "vpn_vpn-d189ff9a-0_remote"
+        set uuid 898d2694-7071-51e6-f8fe-e4cb8e0fe05d
+        set srcintf "vpn-d189ff9a-0"
+        set dstintf "port1"
+        set srcaddr "vpn-d189ff9a-0_remote"
+        set dstaddr "vpn-d189ff9a-0_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-d189ff9a-0 (Created by VPN wizard)"
+    next
+    edit 48
+        set name "vpn_vpn-d189ff9a-1_local"
+        set uuid 9fab851a-7071-51e6-4ada-9059d6aa2e6d
+        set srcintf "port1"
+        set dstintf "vpn-d189ff9a-1"
+        set srcaddr "vpn-d189ff9a-1_local"
+        set dstaddr "vpn-d189ff9a-1_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-d189ff9a-1 (Created by VPN wizard)"
+    next
+    edit 49
+        set name "vpn_vpn-d189ff9a-1_remote"
+        set uuid 9fb1d028-7071-51e6-99c0-94a1289f26ba
+        set srcintf "vpn-d189ff9a-1"
+        set dstintf "port1"
+        set srcaddr "vpn-d189ff9a-1_remote"
+        set dstaddr "vpn-d189ff9a-1_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-d189ff9a-1 (Created by VPN wizard)"
+    next
+    edit 50
+        set name "SSL VPN To 10.200 (Primary)"
+        set uuid 89055786-7072-51e6-28c0-f692a60183a9
+        set srcintf "ssl.root"
+        set dstintf "vpn-d189ff9a-0"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "vpn-d189ff9a-0_remote_subnet_1"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set groups "verveuser"
+        set nat enable
+    next
+    edit 51
+        set name "SSL VPN To 10.200 (Secondary)"
+        set uuid a25cadd8-7072-51e6-08a6-06725fa6359b
+        set srcintf "ssl.root"
+        set dstintf "vpn-d189ff9a-1"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "vpn-d189ff9a-1_remote_subnet_1"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set groups "verveuser"
+        set nat enable
+    next
+    edit 52
+        set name "vpn_vpn-d589ff9e-0_local"
+        set uuid 49a320a0-7077-51e6-7734-317398682fe7
+        set srcintf "port1"
+        set dstintf "vpn-d589ff9e-0"
+        set srcaddr "vpn-d589ff9e-0_local"
+        set dstaddr "vpn-d589ff9e-0_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-d589ff9e-0 (Created by VPN wizard)"
+    next
+    edit 53
+        set name "vpn_vpn-d589ff9e-0_remote"
+        set uuid 49ad43be-7077-51e6-9d58-6d28e59118c3
+        set srcintf "vpn-d589ff9e-0"
+        set dstintf "port1"
+        set srcaddr "vpn-d589ff9e-0_remote"
+        set dstaddr "vpn-d589ff9e-0_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-d589ff9e-0 (Created by VPN wizard)"
+    next
+    edit 54
+        set name "vpn_vpn-d589ff9e-1_local"
+        set uuid 633ee620-7077-51e6-f5db-bcfe527ee37c
+        set srcintf "port1"
+        set dstintf "vpn-d589ff9e-1"
+        set srcaddr "vpn-d589ff9e-1_local"
+        set dstaddr "vpn-d589ff9e-1_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-d589ff9e-1 (Created by VPN wizard)"
+    next
+    edit 55
+        set name "vpn_vpn-d589ff9e-1_remote"
+        set uuid 634a8a3e-7077-51e6-4db2-23aa5d5d8295
+        set srcintf "vpn-d589ff9e-1"
+        set dstintf "port1"
+        set srcaddr "vpn-d589ff9e-1_remote"
+        set dstaddr "vpn-d589ff9e-1_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-d589ff9e-1 (Created by VPN wizard)"
+    next
+    edit 56
+        set name "SSL VPN To 10.201 (Primary)"
+        set uuid 8825fcbc-7077-51e6-1706-bddefef6d1ce
+        set srcintf "ssl.root"
+        set dstintf "vpn-d589ff9e-0"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "vpn-d589ff9e-0_remote_subnet_1"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set groups "verveuser"
+        set nat enable
+    next
+    edit 57
+        set name "SSL VPN To 10.201 (Secondary)"
+        set uuid a27472ec-7077-51e6-f004-44b3e9d1e667
+        set srcintf "ssl.root"
+        set dstintf "vpn-d589ff9e-1"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "vpn-d589ff9e-1_remote_subnet_1"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set groups "verveuser"
+        set nat enable
+    next
+    edit 58
+        set name "vpn_vpn-669c8d07-0_local"
+        set uuid 38d87b7a-0047-51e7-dac5-c3ee15a40c5b
+        set srcintf "port1"
+        set dstintf "vpn-669c8d07-0"
+        set srcaddr "vpn-669c8d07-0_local"
+        set dstaddr "vpn-669c8d07-0_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-669c8d07-0 (Created by VPN wizard)"
+    next
+    edit 59
+        set name "vpn_vpn-669c8d07-0_remote"
+        set uuid 38e1d238-0047-51e7-c2db-834a1991ac60
+        set srcintf "vpn-669c8d07-0"
+        set dstintf "port1"
+        set srcaddr "vpn-669c8d07-0_remote"
+        set dstaddr "vpn-669c8d07-0_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-669c8d07-0 (Created by VPN wizard)"
+    next
+    edit 60
+        set name "vpn_vpn-74839215-0_local"
+        set uuid 4fd6664e-0050-51e7-a112-eda92ed5e1ed
+        set srcintf "port1"
+        set dstintf "vpn-74839215-0"
+        set srcaddr "vpn-74839215-0_local"
+        set dstaddr "vpn-74839215-0_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-74839215-0 (Created by VPN wizard)"
+    next
+    edit 61
+        set name "vpn_vpn-74839215-0_remote"
+        set uuid 4fddc9d4-0050-51e7-da24-090859d253ad
+        set srcintf "vpn-74839215-0"
+        set dstintf "port1"
+        set srcaddr "vpn-74839215-0_remote"
+        set dstaddr "vpn-74839215-0_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-74839215-0 (Created by VPN wizard)"
+    next
+    edit 62
+        set name "vpn_vpn-0fe9f11d-0_local"
+        set uuid bad99c0a-3a83-51e7-5b49-a9f180dbb80f
+        set srcintf "port1"
+        set dstintf "vpn-0fe9f11d-0"
+        set srcaddr "vpn-0fe9f11d-0_local"
+        set dstaddr "vpn-0fe9f11d-0_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-0fe9f11d-0 (Created by VPN wizard)"
+    next
+    edit 63
+        set name "vpn_vpn-0fe9f11d-0_remote"
+        set uuid bae091f4-3a83-51e7-928e-0c846cb481bc
+        set srcintf "vpn-0fe9f11d-0"
+        set dstintf "port1"
+        set srcaddr "vpn-0fe9f11d-0_remote"
+        set dstaddr "vpn-0fe9f11d-0_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-0fe9f11d-0 (Created by VPN wizard)"
+    next
+    edit 64
+        set name "SSL VPN to 10.65"
+        set uuid e7c35e62-3a84-51e7-ad53-72990b349c54
+        set srcintf "ssl.root"
+        set dstintf "vpn-0fe9f11d-0"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "vpn-0fe9f11d-0_remote_subnet_1"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set logtraffic disable
+        set groups "verveuser"
+        set nat enable
+    next
+    edit 65
+        set name "vpn_vpn-073f2515-0_local"
+        set uuid 246cd342-b81c-51e7-96a1-c66c638a280a
+        set srcintf "port1"
+        set dstintf "vpn-073f2515-0"
+        set srcaddr "vpn-073f2515-0_local"
+        set dstaddr "vpn-073f2515-0_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-073f2515-0 (Created by VPN wizard)"
+    next
+    edit 66
+        set name "vpn_vpn-073f2515-0_remote"
+        set uuid 2471f656-b81c-51e7-5a9a-6b7c0de20e5e
+        set srcintf "vpn-073f2515-0"
+        set dstintf "port1"
+        set srcaddr "vpn-073f2515-0_remote"
+        set dstaddr "vpn-073f2515-0_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-073f2515-0 (Created by VPN wizard)"
+    next
+    edit 67
+        set name "vpn_vpn-073f2515-1_local"
+        set uuid 85a4b0b4-bdb5-51e7-e5cd-b5435059044b
+        set srcintf "port1"
+        set dstintf "vpn-073f2515-1"
+        set srcaddr "vpn-073f2515-1_local"
+        set dstaddr "vpn-073f2515-1_remote"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-073f2515-1 (Created by VPN wizard)"
+    next
+    edit 68
+        set name "vpn_vpn-073f2515-1_remote"
+        set uuid 85b3b064-bdb5-51e7-59fb-fc502f1d2033
+        set srcintf "vpn-073f2515-1"
+        set dstintf "port1"
+        set srcaddr "vpn-073f2515-1_remote"
+        set dstaddr "vpn-073f2515-1_local"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: vpn-073f2515-1 (Created by VPN wizard)"
+    next
+    edit 69
+        set name "SSL VPN to 10.129"
+        set uuid 6f52b15a-bdb8-51e7-8289-98475459b50f
+        set srcintf "ssl.root"
+        set dstintf "vpn-073f2515-0"
+        set srcaddr "SSLVPN_TUNNEL_ADDR1"
+        set dstaddr "vpn-073f2515-1_remote_subnet_1"
+        set action accept
+        set schedule "always"
+        set service "ALL"
+        set groups "verveuser"
+        set nat enable
+    next
+end
+config endpoint-control profile
+    edit "default"
+        config forticlient-winmac-settings
+        end
+        config forticlient-android-settings
+        end
+        config forticlient-ios-settings
+        end
+    next
+end
+config wireless-controller wids-profile
+    edit "default"
+        set comment "Default WIDS profile."
+        set ap-scan enable
+        set wireless-bridge enable
+        set deauth-broadcast enable
+        set null-ssid-probe-resp enable
+        set long-duration-attack enable
+        set invalid-mac-oui enable
+        set weak-wep-iv enable
+        set auth-frame-flood enable
+        set assoc-frame-flood enable
+        set spoofed-deauth enable
+        set asleap-attack enable
+        set eapol-start-flood enable
+        set eapol-logoff-flood enable
+        set eapol-succ-flood enable
+        set eapol-fail-flood enable
+        set eapol-pre-succ-flood enable
+        set eapol-pre-fail-flood enable
+    next
+    edit "default-wids-apscan-enabled"
+        set ap-scan enable
+    next
+end
+config wireless-controller wtp-profile
+    edit "FAPS423E-default"
+        config platform
+            set type S423E
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set band 802.11ac
+        end
+    next
+    edit "FAPS422E-default"
+        config platform
+            set type S422E
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set band 802.11ac
+        end
+    next
+    edit "FAPS421E-default"
+        config platform
+            set type S421E
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set band 802.11ac
+        end
+    next
+    edit "FAPS323CR-default"
+        config platform
+            set type S323CR
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set band 802.11ac
+        end
+    next
+    edit "FAPS322CR-default"
+        config platform
+            set type S322CR
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set band 802.11ac
+        end
+    next
+    edit "FAPS321CR-default"
+        config platform
+            set type S321CR
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set band 802.11ac
+        end
+    next
+    edit "FAPS313C-default"
+        config platform
+            set type S313C
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11ac
+        end
+        config radio-2
+            set mode disabled
+        end
+    next
+    edit "FAPS311C-default"
+        config platform
+            set type S311C
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11ac
+        end
+        config radio-2
+            set mode disabled
+        end
+    next
+    edit "FAPS323C-default"
+        config platform
+            set type S323C
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set band 802.11ac
+        end
+    next
+    edit "FAPS322C-default"
+        config platform
+            set type S322C
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set band 802.11ac
+        end
+    next
+    edit "FAPS321C-default"
+        config platform
+            set type S321C
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set band 802.11ac
+        end
+    next
+    edit "FAP321C-default"
+        config platform
+            set type 321C
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set band 802.11ac
+        end
+    next
+    edit "FAP223C-default"
+        config platform
+            set type 223C
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set band 802.11ac
+        end
+    next
+    edit "FAP112D-default"
+        config platform
+            set type 112D
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set mode disabled
+        end
+    next
+    edit "FAP24D-default"
+        config platform
+            set type 24D
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set mode disabled
+        end
+    next
+    edit "FAP21D-default"
+        config platform
+            set type 21D
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set mode disabled
+        end
+    next
+    edit "FK214B-default"
+        config platform
+            set type 214B
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set mode disabled
+        end
+    next
+    edit "FAP224D-default"
+        config platform
+            set type 224D
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n-5G
+        end
+        config radio-2
+            set band 802.11n
+        end
+    next
+    edit "FAP222C-default"
+        config platform
+            set type 222C
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set band 802.11ac
+        end
+    next
+    edit "FAP25D-default"
+        config platform
+            set type 25D
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set mode disabled
+        end
+    next
+    edit "FAP221C-default"
+        config platform
+            set type 221C
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set band 802.11ac
+        end
+    next
+    edit "FAP320C-default"
+        config platform
+            set type 320C
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set band 802.11ac
+        end
+    next
+    edit "FAP28C-default"
+        config platform
+            set type 28C
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set mode disabled
+        end
+    next
+    edit "FAP223B-default"
+        config platform
+            set type 223B
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n-5G
+        end
+        config radio-2
+            set band 802.11n
+        end
+    next
+    edit "FAP14C-default"
+        config platform
+            set type 14C
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set mode disabled
+        end
+    next
+    edit "FAP11C-default"
+        config platform
+            set type 11C
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set mode disabled
+        end
+    next
+    edit "FAP320B-default"
+        config platform
+            set type 320B
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n-5G
+        end
+        config radio-2
+            set band 802.11n
+        end
+    next
+    edit "FAP112B-default"
+        config platform
+            set type 112B
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set mode disabled
+        end
+    next
+    edit "FAP222B-default"
+        config platform
+            set type 222B
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set band 802.11n-5G
+        end
+    next
+    edit "FAP210B-default"
+        config platform
+            set type 210B
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set mode disabled
+        end
+    next
+    edit "FAP220B-default"
+        set ap-country US
+        config radio-1
+            set band 802.11n-5G
+        end
+        config radio-2
+            set band 802.11n
+        end
+    next
+    edit "AP-11N-default"
+        config platform
+            set type AP-11N
+        end
+        set ap-country US
+        config radio-1
+            set band 802.11n
+        end
+        config radio-2
+            set mode disabled
+        end
+    next
+end
+config log memory setting
+    set status disable
+end
+config log disk setting
+    set status enable
+end
+config log null-device setting
+    set status disable
+end
+config log setting
+    set local-in-allow enable
+    set local-in-deny-unicast enable
+    set local-in-deny-broadcast enable
+    set local-out enable
+end
+config log gui-display
+    set location memory
+end
+config alertemail setting
+    set username "it_alerts@verve.com"
+    set mailto1 "security@verve.com"
+    set mailto2 "chris@verve.com"
+    set IPS-logs enable
+    set firewall-authentication-failure-logs enable
+    set sslvpn-authentication-errors-logs enable
+    set violation-traffic-logs enable
+    set admin-login-logs enable
+    set FDS-license-expiring-warning enable
+    set FDS-license-expiring-days 30
+end
+config router rip
+    config redistribute "connected"
+    end
+    config redistribute "static"
+    end
+    config redistribute "ospf"
+    end
+    config redistribute "bgp"
+    end
+    config redistribute "isis"
+    end
+end
+config router ripng
+    config redistribute "connected"
+    end
+    config redistribute "static"
+    end
+    config redistribute "ospf"
+    end
+    config redistribute "bgp"
+    end
+    config redistribute "isis"
+    end
+end
+config router static
+    edit 1
+        set dst 10.60.0.0 255.255.0.0
+        set distance 20
+        set device "vpn-5de9f74f-0"
+        set comment "VPN: vpn-5de9f74f-0 (Created by VPN wizard)"
+    next
+    edit 2
+        set dst 10.60.0.0 255.255.0.0
+        set distance 20
+        set device "vpn-5de9f74f-1"
+        set comment "VPN: vpn-5de9f74f-1 (Created by VPN wizard)"
+    next
+    edit 3
+        set dst 10.61.0.0 255.255.0.0
+        set distance 20
+        set device "vpn-fce6f8ee-0"
+        set comment "VPN: vpn-fce6f8ee-0 (Created by VPN wizard)"
+    next
+    edit 4
+        set dst 10.61.0.0 255.255.0.0
+        set distance 20
+        set device "vpn-fce6f8ee-1"
+        set comment "VPN: vpn-fce6f8ee-1 (Created by VPN wizard)"
+    next
+    edit 5
+        set dst 10.62.0.0 255.255.0.0
+        set distance 20
+        set device "vpn-63e3fd71-0"
+        set comment "VPN: vpn-63e3fd71-0 (Created by VPN wizard)"
+    next
+    edit 6
+        set dst 10.62.0.0 255.255.0.0
+        set device "vpn-63e3fd71-1"
+        set comment "VPN: vpn-63e3fd71-1 (Created by VPN wizard)"
+    next
+    edit 7
+        set status disable
+        set dst 10.2.0.0 255.255.0.0
+        set distance 20
+        set device "vpn-d12036b0-0"
+        set comment "VPN: vpn-d12036b0-0 (Created by VPN wizard)"
+    next
+    edit 8
+        set status disable
+        set dst 10.2.0.0 255.255.0.0
+        set distance 20
+        set device "vpn-d12036b0-1"
+        set comment "VPN: vpn-d12036b0-1 (Created by VPN wizard)"
+    next
+    edit 9
+        set dst 10.63.0.0 255.255.0.0
+        set distance 20
+        set device "vpn-20dcca41-0"
+        set comment "VPN: vpn-20dcca41-0 (Created by VPN wizard)"
+    next
+    edit 10
+        set dst 10.63.0.0 255.255.0.0
+        set distance 20
+        set device "vpn-20dcca41-1"
+        set comment "VPN: vpn-20dcca41-1 (Created by VPN wizard)"
+    next
+    edit 11
+        set dst 10.70.0.0 255.255.0.0
+        set device "vpn-88bda39a-0"
+        set comment "VPN: vpn-88bda39a-0 (Created by VPN wizard)"
+    next
+    edit 12
+        set dst 10.70.0.0 255.255.0.0
+        set device "vpn-88bda39a-1"
+        set comment "VPN: vpn-88bda39a-1 (Created by VPN wizard)"
+    next
+    edit 15
+        set dst 10.200.0.0 255.255.0.0
+        set device "vpn-d189ff9a-0"
+        set comment "VPN: vpn-d189ff9a-0 (Created by VPN wizard)"
+    next
+    edit 16
+        set dst 10.200.0.0 255.255.0.0
+        set device "vpn-d189ff9a-1"
+        set comment "VPN: vpn-d189ff9a-1 (Created by VPN wizard)"
+    next
+    edit 17
+        set dst 10.201.0.0 255.255.0.0
+        set device "vpn-d589ff9e-0"
+        set comment "VPN: vpn-d589ff9e-0 (Created by VPN wizard)"
+    next
+    edit 18
+        set dst 10.201.0.0 255.255.0.0
+        set device "vpn-d589ff9e-1"
+        set comment "VPN: vpn-d589ff9e-1 (Created by VPN wizard)"
+    next
+    edit 19
+        set status disable
+        set dst 10.2.0.0 255.255.0.0
+        set device "vpn-669c8d07-0"
+        set comment "VPN: vpn-669c8d07-0 (Created by VPN wizard)"
+    next
+    edit 20
+        set dst 10.2.0.0 255.255.0.0
+        set device "vpn-74839215-0"
+        set comment "VPN: vpn-74839215-0 (Created by VPN wizard)"
+    next
+    edit 21
+        set dst 10.65.0.0 255.255.0.0
+        set device "vpn-0fe9f11d-0"
+        set comment "VPN: vpn-0fe9f11d-0 (Created by VPN wizard)"
+    next
+    edit 22
+        set dst 10.139.0.0 255.255.0.0
+        set device "vpn-073f2515-0"
+        set comment "VPN: vpn-073f2515-0 (Created by VPN wizard)"
+    next
+    edit 23
+        set dst 10.139.0.0 255.255.0.0
+        set device "vpn-073f2515-1"
+        set comment "VPN: vpn-073f2515-1 (Created by VPN wizard)"
+    next
+end
+config router ospf
+    config redistribute "connected"
+    end
+    config redistribute "static"
+    end
+    config redistribute "rip"
+    end
+    config redistribute "bgp"
+    end
+    config redistribute "isis"
+    end
+end
+config router ospf6
+    config redistribute "connected"
+    end
+    config redistribute "static"
+    end
+    config redistribute "rip"
+    end
+    config redistribute "bgp"
+    end
+    config redistribute "isis"
+    end
+end
+config router bgp
+    config redistribute "connected"
+    end
+    config redistribute "rip"
+    end
+    config redistribute "ospf"
+    end
+    config redistribute "static"
+    end
+    config redistribute "isis"
+    end
+    config redistribute6 "connected"
+    end
+    config redistribute6 "rip"
+    end
+    config redistribute6 "ospf"
+    end
+    config redistribute6 "static"
+    end
+    config redistribute6 "isis"
+    end
+end
+config router isis
+    config redistribute "connected"
+    end
+    config redistribute "rip"
+    end
+    config redistribute "ospf"
+    end
+    config redistribute "bgp"
+    end
+    config redistribute "static"
+    end
+end
+config router multicast
+end

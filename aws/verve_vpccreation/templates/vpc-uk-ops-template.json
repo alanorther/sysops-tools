@@ -1,0 +1,397 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    "adsSTACKNAMEvpcSECOCT": {
+      "Type": "AWS::EC2::VPC",
+      "Properties": {
+        "CidrBlock": "NETWORK/16",
+        "InstanceTenancy": "default",
+        "EnableDnsSupport": "true",
+        "EnableDnsHostnames": "false",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-STACKNAME"
+          }
+        ]
+      }
+    },
+    "vpcSTACKNAMEeip": {
+      "Type": "AWS::EC2::EIP",
+      "Properties": {
+        "Domain": "vpc"
+      }
+    },
+    "vpcSTACKNAMEinternal": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.SECOCT.1.0/24",
+        "AvailabilityZone": "AZ",
+        "VpcId": {
+          "Ref": "adsSTACKNAMEvpcSECOCT"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-STACKNAME-internal"
+          }
+        ]
+      }
+    },
+    "vpcSTACKNAMEdmz": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "NETWORK/24",
+        "AvailabilityZone": "AZ",
+        "VpcId": {
+          "Ref": "adsSTACKNAMEvpcSECOCT"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-STACKNAME-dmz"
+          }
+        ]
+      }
+    },
+    "vpcSTACKNAMEgateway": {
+      "Type": "AWS::EC2::InternetGateway",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-STACKNAME-gateway"
+          }
+        ]
+      }
+    },
+    "vpcSTACKNAMEoptionsset": {
+      "Type": "AWS::EC2::DHCPOptions",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-STACKNAME-options-set"
+          }
+        ],
+        "DomainName": "STACKNAME.REG.aws.vrv ops.REG.aws.vrv"
+      }
+    },
+    "peernetstage": {
+      "Type": "AWS::EC2::VPCPeeringConnection",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "peer STACKNAME and stage"
+          }
+        ],
+        "VpcId": {
+          "Ref": "adsSTACKNAMEvpcSECOCT"
+        },
+        "PeerVpcId": "PEERVPC"
+      }
+    },
+    "aclSTACKNAME": {
+      "Type": "AWS::EC2::NetworkAcl",
+      "Properties": {
+        "VpcId": {
+          "Ref": "adsSTACKNAMEvpcSECOCT"
+        }
+      }
+    },
+    "rtbSTACKNAMEdmz": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "adsSTACKNAMEvpcSECOCT"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-STACKNAME-dmz"
+          }
+        ]
+      }
+    },
+    "rtbSTACKNAMEint": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "adsSTACKNAMEvpcSECOCT"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-STACKNAME-internal"
+          }
+        ]
+      }
+    },
+    "eniSTACKNAME": {
+      "Type": "AWS::EC2::NetworkInterface",
+      "Properties": {
+        "SubnetId": {
+          "Ref": "vpcSTACKNAMEdmz"
+        },
+        "PrivateIpAddresses": [
+          {
+            "PrivateIpAddress": "10.SECOCT.0.20",
+            "Primary": "true"
+          }
+        ],
+        "GroupSet": [
+          {
+            "Ref": "sgvpcSTACKNAMEallowall"
+          }
+        ]
+      }
+    },
+    "STACKNAMEgw1": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "DisableApiTermination": "false",
+        "InstanceInitiatedShutdownBehavior": "stop",
+        "ImageId": "AMIID",
+        "InstanceType": "t2.micro",
+        "KeyName": "KEYNAME",
+        "Monitoring": "false",
+        "Tags": [
+          {
+            "Key": "role",
+            "Value": "gateway"
+          },
+          {
+            "Key": "Name",
+            "Value": "STACKNAME-gw1"
+          },
+          {
+            "Key": "host",
+            "Value": "gw1"
+          },
+          {
+            "Key": "env",
+            "Value": "STACKNAME"
+          }
+        ],
+        "NetworkInterfaces": [
+          {
+            "DeleteOnTermination": "true",
+            "Description": "Primary network interface",
+            "DeviceIndex": 0,
+            "SubnetId": {
+              "Ref": "vpcSTACKNAMEinternal"
+            },
+            "PrivateIpAddresses": [
+              {
+                "PrivateIpAddress": "10.SECOCT.1.20",
+                "Primary": "true"
+              }
+            ],
+            "GroupSet": [
+              {
+                "Ref": "sgvpcSTACKNAMEallowall"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "sgvpcSTACKNAMEallowall": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "VPC allow all",
+        "VpcId": {
+          "Ref": "adsSTACKNAMEvpcSECOCT"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-STACKNAME-default"
+          }
+        ]
+      }
+    },
+    "acl1": {
+      "Type": "AWS::EC2::NetworkAclEntry",
+      "Properties": {
+        "CidrBlock": "0.0.0.0/0",
+        "Egress": "true",
+        "Protocol": "-1",
+        "RuleAction": "allow",
+        "RuleNumber": "100",
+        "NetworkAclId": {
+          "Ref": "aclSTACKNAME"
+        }
+      }
+    },
+    "acl2": {
+      "Type": "AWS::EC2::NetworkAclEntry",
+      "Properties": {
+        "CidrBlock": "0.0.0.0/0",
+        "Protocol": "-1",
+        "RuleAction": "allow",
+        "RuleNumber": "100",
+        "NetworkAclId": {
+          "Ref": "aclSTACKNAME"
+        }
+      }
+    },
+    "subnetacl1": {
+      "Type": "AWS::EC2::SubnetNetworkAclAssociation",
+      "Properties": {
+        "NetworkAclId": {
+          "Ref": "aclSTACKNAME"
+        },
+        "SubnetId": {
+          "Ref": "vpcSTACKNAMEinternal"
+        }
+      }
+    },
+    "subnetacl2": {
+      "Type": "AWS::EC2::SubnetNetworkAclAssociation",
+      "Properties": {
+        "NetworkAclId": {
+          "Ref": "aclSTACKNAME"
+        },
+        "SubnetId": {
+          "Ref": "vpcSTACKNAMEdmz"
+        }
+      }
+    },
+    "gw1": {
+      "Type": "AWS::EC2::VPCGatewayAttachment",
+      "Properties": {
+        "VpcId": {
+          "Ref": "adsSTACKNAMEvpcSECOCT"
+        },
+        "InternetGatewayId": {
+          "Ref": "vpcSTACKNAMEgateway"
+        }
+      }
+    },
+    "subnetroute1": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "rtbSTACKNAMEdmz"
+        },
+        "SubnetId": {
+          "Ref": "vpcSTACKNAMEdmz"
+        }
+      }
+    },
+    "subnetroute3": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "rtbSTACKNAMEint"
+        },
+        "SubnetId": {
+          "Ref": "vpcSTACKNAMEinternal"
+        }
+      }
+    },
+    "route1": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "VpcPeeringConnectionId": { 
+          "Ref": "peernetstage"
+        },
+        "DestinationCidrBlock": "ROUTEDEST/16",
+        "RouteTableId": {
+          "Ref": "rtbSTACKNAMEdmz"
+        }
+      }
+    },
+    "route2": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "RouteTableId": {
+          "Ref": "rtbSTACKNAMEdmz"
+        },
+        "GatewayId": {
+          "Ref": "vpcSTACKNAMEgateway"
+        }
+      },
+      "DependsOn": "gw1"
+    },
+    "route4": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "RouteTableId": {
+          "Ref": "rtbSTACKNAMEint"
+        },
+        "InstanceId": {
+          "Ref": "STACKNAMEgw1"
+        }
+      }
+    },
+    "dchpassoc1": {
+      "Type": "AWS::EC2::VPCDHCPOptionsAssociation",
+      "Properties": {
+        "VpcId": {
+          "Ref": "adsSTACKNAMEvpcSECOCT"
+        },
+        "DhcpOptionsId": {
+          "Ref": "vpcSTACKNAMEoptionsset"
+        }
+      }
+    },
+    "assoc1": {
+      "Type": "AWS::EC2::EIPAssociation",
+      "Properties": {
+        "AllocationId": {
+          "Fn::GetAtt" : [ "vpcSTACKNAMEeip", "AllocationId" ]
+        },
+        "NetworkInterfaceId": {
+          "Ref": "eniSTACKNAME"
+        }
+      }
+    },
+    "eniattach1": {
+      "Type": "AWS::EC2::NetworkInterfaceAttachment",
+      "Properties": {
+        "DeleteOnTermination": "true",
+        "DeviceIndex": "1",
+        "NetworkInterfaceId": {
+          "Ref": "eniSTACKNAME"
+        },
+        "InstanceId": {
+          "Ref": "STACKNAMEgw1"
+        }
+      },
+      "DependsOn": "route4"
+    },
+    "ingress1": {
+      "Type": "AWS::EC2::SecurityGroupIngress",
+      "Properties": {
+        "GroupId": {
+          "Ref": "sgvpcSTACKNAMEallowall"
+        },
+        "IpProtocol": "-1",
+        "CidrIp": "0.0.0.0/0"
+      }
+    },
+    "egress1": {
+      "Type": "AWS::EC2::SecurityGroupEgress",
+      "Properties": {
+        "GroupId": {
+          "Ref": "sgvpcSTACKNAMEallowall"
+        },
+        "IpProtocol": "-1",
+        "CidrIp": "0.0.0.0/0"
+      }
+    }
+  },
+  "Description": "Template for VPC creation",
+  "Outputs": {
+    "adsSTACKNAMEvpcSECOCTId": {
+      "Value": {
+        "Ref": "adsSTACKNAMEvpcSECOCT"
+      }
+    }
+  }
+}

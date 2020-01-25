@@ -1,0 +1,13 @@
+
+STACKNAME:
+  ops-production:
+    us-west-2:
+      image_id: ami-bff6db8f
+      key_name: js-ssh
+      images:
+        centos6.6: ami-bff6db8f
+        centos7.1: ami-50dc3a63
+      vpc-STACKNAME:
+        security_group: vpc-STACKNAME-allow-all
+        subnet: vpc-STACKNAME-internal
+        user_data: puppet.sh

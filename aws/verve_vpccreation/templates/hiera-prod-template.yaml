@@ -1,0 +1,13 @@
+
+STACKNAME:
+  ops-production:
+    us-east-1:
+      image_id: ami-59dc3132
+      key_name: vrv-prod-app
+      images:
+        centos6.6: ami-59dc3132
+        centos7.1: ami-2380cb46
+      vpc-STACKNAME:
+        security_group: vpc-STACKNAME-allow-all
+        subnet: vpc-STACKNAME-internal
+        user_data: puppet.sh

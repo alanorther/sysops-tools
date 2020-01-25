@@ -1,0 +1,422 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    "adsbetavpc65": {
+      "Type": "AWS::EC2::VPC",
+      "Properties": {
+        "CidrBlock": "10.65.0.0/16",
+        "InstanceTenancy": "default",
+        "EnableDnsSupport": "true",
+        "EnableDnsHostnames": "false",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-beta"
+          }
+        ]
+      }
+    },
+    "vpcbetaeip": {
+      "Type": "AWS::EC2::EIP",
+      "Properties": {
+        "Domain": "vpc"
+      }
+    },
+    "vpcbetainternal": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.65.1.0/24",
+        "AvailabilityZone": "us-west-2c",
+        "VpcId": {
+          "Ref": "adsbetavpc65"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-beta-internal"
+          }
+        ]
+      }
+    },
+    "vpcbetadmz": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.65.0.0/24",
+        "AvailabilityZone": "us-west-2c",
+        "VpcId": {
+          "Ref": "adsbetavpc65"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-beta-dmz"
+          }
+        ]
+      }
+    },
+    "vpcbetagateway": {
+      "Type": "AWS::EC2::InternetGateway",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-beta-gateway"
+          }
+        ]
+      }
+    },
+    "vpcbetaoptionsset": {
+      "Type": "AWS::EC2::DHCPOptions",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-beta-options-set"
+          }
+        ],
+        "DomainName": "beta.us-west-2.aws.vrv ops.us-west-2.aws.vrv",
+        "DomainNameServers": [
+          "10.61.1.103"
+        ]
+      }
+    },
+    "peernetstage": {
+      "Type": "AWS::EC2::VPCPeeringConnection",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "peer beta and stage"
+          }
+        ],
+        "VpcId": {
+          "Ref": "adsbetavpc65"
+        },
+        "PeerVpcId": "vpc-6583f500"
+      }
+    },
+    "aclbeta": {
+      "Type": "AWS::EC2::NetworkAcl",
+      "Properties": {
+        "VpcId": {
+          "Ref": "adsbetavpc65"
+        }
+      }
+    },
+    "rtbbetadmz": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "adsbetavpc65"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-beta-dmz"
+          }
+        ]
+      }
+    },
+    "rtbbetaint": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "adsbetavpc65"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-beta-internal"
+          }
+        ]
+      }
+    },
+    "enibeta": {
+      "Type": "AWS::EC2::NetworkInterface",
+      "Properties": {
+        "SubnetId": {
+          "Ref": "vpcbetadmz"
+        },
+        "PrivateIpAddresses": [
+          {
+            "PrivateIpAddress": "10.65.0.20",
+            "Primary": "true"
+          }
+        ],
+        "GroupSet": [
+          {
+            "Ref": "sgvpcbetaallowall"
+          }
+        ]
+      }
+    },
+    "betagw1": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "DisableApiTermination": "false",
+        "InstanceInitiatedShutdownBehavior": "stop",
+        "ImageId": "ami-0f21323f",
+        "InstanceType": "t2.micro",
+        "KeyName": "js-ssh",
+        "Monitoring": "false",
+        "Tags": [
+          {
+            "Key": "role",
+            "Value": "gateway"
+          },
+          {
+            "Key": "Name",
+            "Value": "beta-gw1"
+          },
+          {
+            "Key": "host",
+            "Value": "gw1"
+          },
+          {
+            "Key": "env",
+            "Value": "beta"
+          }
+        ],
+        "NetworkInterfaces": [
+          {
+            "DeleteOnTermination": "true",
+            "Description": "Primary network interface",
+            "DeviceIndex": 0,
+            "SubnetId": {
+              "Ref": "vpcbetainternal"
+            },
+            "PrivateIpAddresses": [
+              {
+                "PrivateIpAddress": "10.65.1.20",
+                "Primary": "true"
+              }
+            ],
+            "GroupSet": [
+              {
+                "Ref": "sgvpcbetaallowall"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "sgvpcbetaallowall": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "VPC allow all",
+        "VpcId": {
+          "Ref": "adsbetavpc65"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-beta-default"
+          }
+        ]
+      }
+    },
+    "acl1": {
+      "Type": "AWS::EC2::NetworkAclEntry",
+      "Properties": {
+        "CidrBlock": "0.0.0.0/0",
+        "Egress": "true",
+        "Protocol": "-1",
+        "RuleAction": "allow",
+        "RuleNumber": "100",
+        "NetworkAclId": {
+          "Ref": "aclbeta"
+        }
+      }
+    },
+    "acl2": {
+      "Type": "AWS::EC2::NetworkAclEntry",
+      "Properties": {
+        "CidrBlock": "0.0.0.0/0",
+        "Protocol": "-1",
+        "RuleAction": "allow",
+        "RuleNumber": "100",
+        "NetworkAclId": {
+          "Ref": "aclbeta"
+        }
+      }
+    },
+    "subnetacl1": {
+      "Type": "AWS::EC2::SubnetNetworkAclAssociation",
+      "Properties": {
+        "NetworkAclId": {
+          "Ref": "aclbeta"
+        },
+        "SubnetId": {
+          "Ref": "vpcbetainternal"
+        }
+      }
+    },
+    "subnetacl2": {
+      "Type": "AWS::EC2::SubnetNetworkAclAssociation",
+      "Properties": {
+        "NetworkAclId": {
+          "Ref": "aclbeta"
+        },
+        "SubnetId": {
+          "Ref": "vpcbetadmz"
+        }
+      }
+    },
+    "gw1": {
+      "Type": "AWS::EC2::VPCGatewayAttachment",
+      "Properties": {
+        "VpcId": {
+          "Ref": "adsbetavpc65"
+        },
+        "InternetGatewayId": {
+          "Ref": "vpcbetagateway"
+        }
+      }
+    },
+    "subnetroute1": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "rtbbetadmz"
+        },
+        "SubnetId": {
+          "Ref": "vpcbetadmz"
+        }
+      }
+    },
+    "subnetroute3": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "rtbbetaint"
+        },
+        "SubnetId": {
+          "Ref": "vpcbetainternal"
+        }
+      }
+    },
+    "route1": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "VpcPeeringConnectionId": { 
+          "Ref": "peernetstage"
+        },
+        "DestinationCidrBlock": "10.61.0.0/16",
+        "RouteTableId": {
+          "Ref": "rtbbetadmz"
+        }
+      }
+    },
+    "route2": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "RouteTableId": {
+          "Ref": "rtbbetadmz"
+        },
+        "GatewayId": {
+          "Ref": "vpcbetagateway"
+        }
+      },
+      "DependsOn": "gw1"
+    },
+    "route3": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "VpcPeeringConnectionId": {
+          "Ref": "peernetstage"
+        }, 
+        "DestinationCidrBlock": "10.61.0.0/16",
+        "RouteTableId": {
+          "Ref": "rtbbetaint"
+        }
+      }
+    },
+    "route4": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "RouteTableId": {
+          "Ref": "rtbbetaint"
+        },
+        "InstanceId": {
+          "Ref": "betagw1"
+        }
+      }
+    },
+    "route5": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "VpcPeeringConnectionId": {
+          "Ref": "peernetstage"
+        },
+        "DestinationCidrBlock": "10.65.0.0/16",
+        "RouteTableId": "rtb-b3cbb4d6"
+      }
+    },
+    "dchpassoc1": {
+      "Type": "AWS::EC2::VPCDHCPOptionsAssociation",
+      "Properties": {
+        "VpcId": {
+          "Ref": "adsbetavpc65"
+        },
+        "DhcpOptionsId": {
+          "Ref": "vpcbetaoptionsset"
+        }
+      }
+    },
+    "assoc1": {
+      "Type": "AWS::EC2::EIPAssociation",
+      "Properties": {
+        "AllocationId": {
+          "Fn::GetAtt" : [ "vpcbetaeip", "AllocationId" ]
+        },
+        "NetworkInterfaceId": {
+          "Ref": "enibeta"
+        }
+      }
+    },
+    "eniattach1": {
+      "Type": "AWS::EC2::NetworkInterfaceAttachment",
+      "Properties": {
+        "DeleteOnTermination": "true",
+        "DeviceIndex": "1",
+        "NetworkInterfaceId": {
+          "Ref": "enibeta"
+        },
+        "InstanceId": {
+          "Ref": "betagw1"
+        }
+      },
+      "DependsOn": "route4"
+    },
+    "ingress1": {
+      "Type": "AWS::EC2::SecurityGroupIngress",
+      "Properties": {
+        "GroupId": {
+          "Ref": "sgvpcbetaallowall"
+        },
+        "IpProtocol": "-1",
+        "CidrIp": "0.0.0.0/0"
+      }
+    },
+    "egress1": {
+      "Type": "AWS::EC2::SecurityGroupEgress",
+      "Properties": {
+        "GroupId": {
+          "Ref": "sgvpcbetaallowall"
+        },
+        "IpProtocol": "-1",
+        "CidrIp": "0.0.0.0/0"
+      }
+    }
+  },
+  "Description": "Template for VPC creation",
+  "Outputs": {
+    "adsbetavpc65Id": {
+      "Value": {
+        "Ref": "adsbetavpc65"
+      }
+    }
+  }
+}

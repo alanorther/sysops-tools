@@ -1,0 +1,216 @@
+# Nmap 7.60 scan initiated Mon Jun  4 10:17:52 2018 as: nmap -sV -p 5984 -iL temp_ip.txt -oN couchdb_nodes.txt -vv
+Nmap scan report for 54.243.218.240 [host down, received no-response]
+Nmap scan report for 107.20.245.132 [host down, received no-response]
+Nmap scan report for 34.193.249.174 [host down, received no-response]
+Nmap scan report for 34.225.58.138 [host down, received no-response]
+Nmap scan report for 34.227.132.6 [host down, received no-response]
+Nmap scan report for 52.1.222.246 [host down, received no-response]
+Nmap scan report for 52.1.85.187 [host down, received no-response]
+Nmap scan report for 52.202.42.22 [host down, received no-response]
+Nmap scan report for 52.203.17.95 [host down, received no-response]
+Nmap scan report for 52.71.34.232 [host down, received no-response]
+Nmap scan report for 54.173.106.16 [host down, received no-response]
+Nmap scan report for 13.56.117.71 [host down, received no-response]
+Nmap scan report for 52.52.216.114 [host down, received no-response]
+Nmap scan report for 52.8.143.42 [host down, received no-response]
+Nmap scan report for 52.9.163.90 [host down, received no-response]
+Nmap scan report for 54.183.166.172 [host down, received no-response]
+Nmap scan report for 54.67.73.251 [host down, received no-response]
+Nmap scan report for 34.215.167.18 [host down, received no-response]
+Nmap scan report for 35.164.10.233 [host down, received no-response]
+Nmap scan report for 35.164.24.1 [host down, received no-response]
+Nmap scan report for 52.38.141.240 [host down, received no-response]
+Nmap scan report for 52.88.52.135 [host down, received no-response]
+Nmap scan report for 34.241.60.20 [host down, received no-response]
+Nmap scan report for 54.227.246.1 [host down, received no-response]
+Nmap scan report for 174.129.41.131 [host down, received no-response]
+Nmap scan report for 34.225.87.149 [host down, received no-response]
+Nmap scan report for 52.6.2.26 [host down, received no-response]
+Nmap scan report for 54.83.207.104 [host down, received no-response]
+Nmap scan report for 54.235.215.129 [host down, received no-response]
+Nmap scan report for 54.243.116.157 [host down, received no-response]
+Nmap scan report for 107.22.225.237 [host down, received no-response]
+Nmap scan report for 184.73.163.208 [host down, received no-response]
+Nmap scan report for 52.1.25.144 [host down, received no-response]
+Nmap scan report for 54.165.134.215 [host down, received no-response]
+Nmap scan report for 52.8.109.52 [host down, received no-response]
+Nmap scan report for 50.112.164.161 [host down, received no-response]
+Nmap scan report for 107.21.14.68 [host down, received no-response]
+Nmap scan report for 107.21.46.175 [host down, received no-response]
+Nmap scan report for 107.21.51.153 [host down, received no-response]
+Nmap scan report for 107.23.48.106 [host down, received no-response]
+Nmap scan report for 107.23.62.50 [host down, received no-response]
+Nmap scan report for 107.23.65.17 [host down, received no-response]
+Nmap scan report for 107.23.72.239 [host down, received no-response]
+Nmap scan report for 107.23.79.41 [host down, received no-response]
+Nmap scan report for 34.235.97.123 [host down, received no-response]
+Nmap scan report for 35.169.28.212 [host down, received no-response]
+Nmap scan report for 52.44.192.60 [host down, received no-response]
+Nmap scan report for 34.241.44.33 [host down, received no-response]
+Nmap scan report for 34.250.61.142 [host down, received no-response]
+Nmap scan report for 52.209.118.91 [host down, received no-response]
+Nmap scan report for 23.23.175.5 [host down, received no-response]
+Nmap scan report for ec2-107-23-192-55.compute-1.amazonaws.com (107.23.192.55)
+Host is up, received echo-reply ttl 33 (0.076s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 3s
+
+PORT     STATE    SERVICE REASON                 VERSION
+5984/tcp filtered couchdb host-prohibited ttl 33
+
+Nmap scan report for ec2-52-204-222-213.compute-1.amazonaws.com (52.204.222.213)
+Host is up, received echo-reply ttl 232 (0.076s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 4s
+
+PORT     STATE    SERVICE REASON      VERSION
+5984/tcp filtered couchdb no-response
+
+Nmap scan report for ec2-52-4-248-51.compute-1.amazonaws.com (52.4.248.51)
+Host is up, received echo-reply ttl 41 (0.078s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 3s
+
+PORT     STATE    SERVICE REASON      VERSION
+5984/tcp filtered couchdb no-response
+
+Nmap scan report for ec2-54-209-102-153.compute-1.amazonaws.com (54.209.102.153)
+Host is up, received echo-reply ttl 41 (0.079s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 3s
+
+PORT     STATE    SERVICE REASON                 VERSION
+5984/tcp filtered couchdb host-prohibited ttl 41
+
+Nmap scan report for ec2-54-236-224-25.compute-1.amazonaws.com (54.236.224.25)
+Host is up, received echo-reply ttl 41 (0.077s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 3s
+
+PORT     STATE    SERVICE REASON      VERSION
+5984/tcp filtered couchdb no-response
+
+Nmap scan report for ec2-54-86-163-196.compute-1.amazonaws.com (54.86.163.196)
+Host is up, received echo-reply ttl 35 (0.076s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 3s
+
+PORT     STATE    SERVICE REASON                 VERSION
+5984/tcp filtered couchdb host-prohibited ttl 35
+
+Nmap scan report for ec2-52-52-0-205.us-west-1.compute.amazonaws.com (52.52.0.205)
+Host is up, received echo-reply ttl 231 (0.017s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 3s
+
+PORT     STATE    SERVICE REASON      VERSION
+5984/tcp filtered couchdb no-response
+
+Nmap scan report for ec2-54-153-2-43.us-west-1.compute.amazonaws.com (54.153.2.43)
+Host is up, received echo-reply ttl 41 (0.023s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 3s
+
+PORT     STATE    SERVICE REASON      VERSION
+5984/tcp filtered couchdb no-response
+
+Nmap scan report for ec2-54-183-78-160.us-west-1.compute.amazonaws.com (54.183.78.160)
+Host is up, received echo-reply ttl 40 (0.020s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 3s
+
+PORT     STATE    SERVICE REASON                 VERSION
+5984/tcp filtered couchdb host-prohibited ttl 40
+
+Nmap scan report for ec2-52-11-214-84.us-west-2.compute.amazonaws.com (52.11.214.84)
+Host is up, received echo-reply ttl 44 (0.034s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 3s
+
+PORT     STATE    SERVICE REASON              VERSION
+5984/tcp filtered couchdb port-unreach ttl 44
+
+Nmap scan report for ec2-52-11-41-13.us-west-2.compute.amazonaws.com (52.11.41.13)
+Host is up, received echo-reply ttl 44 (0.039s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 3s
+
+PORT     STATE    SERVICE REASON      VERSION
+5984/tcp filtered couchdb no-response
+
+Nmap scan report for ec2-52-26-61-184.us-west-2.compute.amazonaws.com (52.26.61.184)
+Host is up, received echo-reply ttl 44 (0.042s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 3s
+
+PORT     STATE    SERVICE REASON      VERSION
+5984/tcp filtered couchdb no-response
+
+Nmap scan report for ec2-52-42-116-226.us-west-2.compute.amazonaws.com (52.42.116.226)
+Host is up, received echo-reply ttl 44 (0.038s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 3s
+
+PORT     STATE    SERVICE REASON              VERSION
+5984/tcp filtered couchdb port-unreach ttl 44
+
+Nmap scan report for ec2-54-191-225-208.us-west-2.compute.amazonaws.com (54.191.225.208)
+Host is up, received echo-reply ttl 44 (0.035s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 3s
+
+PORT     STATE    SERVICE REASON      VERSION
+5984/tcp filtered couchdb no-response
+
+Nmap scan report for ec2-52-49-157-168.eu-west-1.compute.amazonaws.com (52.49.157.168)
+Host is up, received echo-reply ttl 31 (0.16s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 3s
+
+PORT     STATE    SERVICE REASON              VERSION
+5984/tcp filtered couchdb port-unreach ttl 31
+
+Nmap scan report for ec2-52-50-11-94.eu-west-1.compute.amazonaws.com (52.50.11.94)
+Host is up, received echo-reply ttl 31 (0.16s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 3s
+
+PORT     STATE    SERVICE REASON              VERSION
+5984/tcp filtered couchdb port-unreach ttl 31
+
+Nmap scan report for ec2-54-208-0-245.compute-1.amazonaws.com (54.208.0.245)
+Host is up, received echo-reply ttl 41 (0.077s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 4s
+
+PORT     STATE    SERVICE REASON      VERSION
+5984/tcp filtered couchdb no-response
+
+Nmap scan report for ec2-54-236-173-99.compute-1.amazonaws.com (54.236.173.99)
+Host is up, received echo-reply ttl 41 (0.083s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 4s
+
+PORT     STATE    SERVICE REASON      VERSION
+5984/tcp filtered couchdb no-response
+
+Nmap scan report for ec2-54-86-106-247.compute-1.amazonaws.com (54.86.106.247)
+Host is up, received echo-reply ttl 41 (0.075s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 4s
+
+PORT     STATE    SERVICE REASON      VERSION
+5984/tcp filtered couchdb no-response
+
+Nmap scan report for ec2-52-2-230-203.compute-1.amazonaws.com (52.2.230.203)
+Host is up, received echo-reply ttl 33 (0.075s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 4s
+
+PORT     STATE    SERVICE REASON      VERSION
+5984/tcp filtered couchdb no-response
+
+Nmap scan report for ec2-54-208-46-192.compute-1.amazonaws.com (54.208.46.192)
+Host is up, received echo-reply ttl 41 (0.076s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 4s
+
+PORT     STATE    SERVICE REASON      VERSION
+5984/tcp filtered couchdb no-response
+
+Nmap scan report for ec2-54-208-58-54.compute-1.amazonaws.com (54.208.58.54)
+Host is up, received echo-reply ttl 41 (0.077s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 3s
+
+PORT     STATE    SERVICE REASON                 VERSION
+5984/tcp filtered couchdb host-prohibited ttl 41
+
+Nmap scan report for ec2-54-225-178-14.compute-1.amazonaws.com (54.225.178.14)
+Host is up, received echo-reply ttl 41 (0.080s latency).
+Scanned at 2018-06-04 10:17:52 PDT for 4s
+
+PORT     STATE    SERVICE REASON      VERSION
+5984/tcp filtered couchdb no-response
+
+Read data files from: /usr/local/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Jun  4 10:17:56 2018 -- 74 IP addresses (23 hosts up) scanned in 3.76 seconds

@@ -1,0 +1,422 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    "adsintegrationvpc64": {
+      "Type": "AWS::EC2::VPC",
+      "Properties": {
+        "CidrBlock": "10.64.0.0/16",
+        "InstanceTenancy": "default",
+        "EnableDnsSupport": "true",
+        "EnableDnsHostnames": "false",
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "ads-integration-vpc-64"
+          }
+        ]
+      }
+    },
+    "vpcintegrationeip": {
+      "Type": "AWS::EC2::EIP",
+      "Properties": {
+        "Domain": "vpc"
+      }
+    },
+    "vpcintegrationinternal": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.64.1.0/24",
+        "AvailabilityZone": "us-west-2c",
+        "VpcId": {
+          "Ref": "adsintegrationvpc64"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-integration-internal"
+          }
+        ]
+      }
+    },
+    "vpcintegrationdmz": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "CidrBlock": "10.64.0.0/24",
+        "AvailabilityZone": "us-west-2c",
+        "VpcId": {
+          "Ref": "adsintegrationvpc64"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-integration-dmz"
+          }
+        ]
+      }
+    },
+    "vpcintegrationgateway": {
+      "Type": "AWS::EC2::InternetGateway",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-integration-gateway"
+          }
+        ]
+      }
+    },
+    "vpcintegrationoptionsset": {
+      "Type": "AWS::EC2::DHCPOptions",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-integration-options-set"
+          }
+        ],
+        "DomainName": "integration.us-west-2.aws.vrv ops.us-west-2.aws.vrv",
+        "DomainNameServers": [
+          "10.61.1.103"
+        ]
+      }
+    },
+    "peernetstage": {
+      "Type": "AWS::EC2::VPCPeeringConnection",
+      "Properties": {
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "peer integration and stage"
+          }
+        ],
+        "VpcId": {
+          "Ref": "adsintegrationvpc64"
+        },
+        "PeerVpcId": "vpc-6583f500"
+      }
+    },
+    "aclintegration": {
+      "Type": "AWS::EC2::NetworkAcl",
+      "Properties": {
+        "VpcId": {
+          "Ref": "adsintegrationvpc64"
+        }
+      }
+    },
+    "rtbintegrationdmz": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "adsintegrationvpc64"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-integration-dmz"
+          }
+        ]
+      }
+    },
+    "rtbintegrationint": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": {
+          "Ref": "adsintegrationvpc64"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-integration-internal"
+          }
+        ]
+      }
+    },
+    "eniintegration": {
+      "Type": "AWS::EC2::NetworkInterface",
+      "Properties": {
+        "SubnetId": {
+          "Ref": "vpcintegrationdmz"
+        },
+        "PrivateIpAddresses": [
+          {
+            "PrivateIpAddress": "10.64.0.20",
+            "Primary": "true"
+          }
+        ],
+        "GroupSet": [
+          {
+            "Ref": "sgvpcintegrationallowall"
+          }
+        ]
+      }
+    },
+    "integrationgw1": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "DisableApiTermination": "false",
+        "InstanceInitiatedShutdownBehavior": "stop",
+        "ImageId": "ami-0f21323f",
+        "InstanceType": "t2.micro",
+        "KeyName": "js-ssh",
+        "Monitoring": "false",
+        "Tags": [
+          {
+            "Key": "role",
+            "Value": "gateway"
+          },
+          {
+            "Key": "Name",
+            "Value": "integration-gw1"
+          },
+          {
+            "Key": "host",
+            "Value": "gw1"
+          },
+          {
+            "Key": "env",
+            "Value": "integration"
+          }
+        ],
+        "NetworkInterfaces": [
+          {
+            "DeleteOnTermination": "true",
+            "Description": "Primary network interface",
+            "DeviceIndex": 0,
+            "SubnetId": {
+              "Ref": "vpcintegrationinternal"
+            },
+            "PrivateIpAddresses": [
+              {
+                "PrivateIpAddress": "10.64.1.20",
+                "Primary": "true"
+              }
+            ],
+            "GroupSet": [
+              {
+                "Ref": "sgvpcintegrationallowall"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "sgvpcintegrationallowall": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "VPC allow all",
+        "VpcId": {
+          "Ref": "adsintegrationvpc64"
+        },
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "vpc-integration-allow-all"
+          }
+        ]
+      }
+    },
+    "acl1": {
+      "Type": "AWS::EC2::NetworkAclEntry",
+      "Properties": {
+        "CidrBlock": "0.0.0.0/0",
+        "Egress": "true",
+        "Protocol": "-1",
+        "RuleAction": "allow",
+        "RuleNumber": "100",
+        "NetworkAclId": {
+          "Ref": "aclintegration"
+        }
+      }
+    },
+    "acl2": {
+      "Type": "AWS::EC2::NetworkAclEntry",
+      "Properties": {
+        "CidrBlock": "0.0.0.0/0",
+        "Protocol": "-1",
+        "RuleAction": "allow",
+        "RuleNumber": "100",
+        "NetworkAclId": {
+          "Ref": "aclintegration"
+        }
+      }
+    },
+    "subnetacl1": {
+      "Type": "AWS::EC2::SubnetNetworkAclAssociation",
+      "Properties": {
+        "NetworkAclId": {
+          "Ref": "aclintegration"
+        },
+        "SubnetId": {
+          "Ref": "vpcintegrationinternal"
+        }
+      }
+    },
+    "subnetacl2": {
+      "Type": "AWS::EC2::SubnetNetworkAclAssociation",
+      "Properties": {
+        "NetworkAclId": {
+          "Ref": "aclintegration"
+        },
+        "SubnetId": {
+          "Ref": "vpcintegrationdmz"
+        }
+      }
+    },
+    "gw1": {
+      "Type": "AWS::EC2::VPCGatewayAttachment",
+      "Properties": {
+        "VpcId": {
+          "Ref": "adsintegrationvpc64"
+        },
+        "InternetGatewayId": {
+          "Ref": "vpcintegrationgateway"
+        }
+      }
+    },
+    "subnetroute1": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "rtbintegrationdmz"
+        },
+        "SubnetId": {
+          "Ref": "vpcintegrationdmz"
+        }
+      }
+    },
+    "subnetroute3": {
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+      "Properties": {
+        "RouteTableId": {
+          "Ref": "rtbintegrationint"
+        },
+        "SubnetId": {
+          "Ref": "vpcintegrationinternal"
+        }
+      }
+    },
+    "route1": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "VpcPeeringConnectionId": { 
+          "Ref": "peernetstage"
+        },
+        "DestinationCidrBlock": "10.61.0.0/16",
+        "RouteTableId": {
+          "Ref": "rtbintegrationdmz"
+        }
+      }
+    },
+    "route2": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "RouteTableId": {
+          "Ref": "rtbintegrationdmz"
+        },
+        "GatewayId": {
+          "Ref": "vpcintegrationgateway"
+        }
+      },
+      "DependsOn": "gw1"
+    },
+    "route3": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "VpcPeeringConnectionId": {
+          "Ref": "peernetstage"
+        }, 
+        "DestinationCidrBlock": "10.61.0.0/16",
+        "RouteTableId": {
+          "Ref": "rtbintegrationint"
+        }
+      }
+    },
+    "route4": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "RouteTableId": {
+          "Ref": "rtbintegrationint"
+        },
+        "InstanceId": {
+          "Ref": "integrationgw1"
+        }
+      }
+    },
+    "route5": {
+      "Type": "AWS::EC2::Route",
+      "Properties": {
+        "VpcPeeringConnectionId": {
+          "Ref": "peernetstage"
+        },
+        "DestinationCidrBlock": "10.64.0.0/16",
+        "RouteTableId": "rtb-b3cbb4d6"
+      }
+    },
+    "dchpassoc1": {
+      "Type": "AWS::EC2::VPCDHCPOptionsAssociation",
+      "Properties": {
+        "VpcId": {
+          "Ref": "adsintegrationvpc64"
+        },
+        "DhcpOptionsId": {
+          "Ref": "vpcintegrationoptionsset"
+        }
+      }
+    },
+    "assoc1": {
+      "Type": "AWS::EC2::EIPAssociation",
+      "Properties": {
+        "AllocationId": {
+          "Fn::GetAtt" : [ "vpcintegrationeip", "AllocationId" ]
+        },
+        "NetworkInterfaceId": {
+          "Ref": "eniintegration"
+        }
+      }
+    },
+    "eniattach1": {
+      "Type": "AWS::EC2::NetworkInterfaceAttachment",
+      "Properties": {
+        "DeleteOnTermination": "true",
+        "DeviceIndex": "1",
+        "NetworkInterfaceId": {
+          "Ref": "eniintegration"
+        },
+        "InstanceId": {
+          "Ref": "integrationgw1"
+        }
+      },
+      "DependsOn": "route4"
+    },
+    "ingress1": {
+      "Type": "AWS::EC2::SecurityGroupIngress",
+      "Properties": {
+        "GroupId": {
+          "Ref": "sgvpcintegrationallowall"
+        },
+        "IpProtocol": "-1",
+        "CidrIp": "0.0.0.0/0"
+      }
+    },
+    "egress1": {
+      "Type": "AWS::EC2::SecurityGroupEgress",
+      "Properties": {
+        "GroupId": {
+          "Ref": "sgvpcintegrationallowall"
+        },
+        "IpProtocol": "-1",
+        "CidrIp": "0.0.0.0/0"
+      }
+    }
+  },
+  "Description": "Template for VPC creation",
+  "Outputs": {
+    "adsintegrationvpc64Id": {
+      "Value": {
+        "Ref": "adsintegrationvpc64"
+      }
+    }
+  }
+}

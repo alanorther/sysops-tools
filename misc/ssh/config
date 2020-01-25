@@ -1,0 +1,8 @@
+Host *.vervemobile.com *.aws.vrv *.vervemobile.uk 10.*
+  ForwardAgent yes
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_rsa
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  ServerAliveInterval 240
