@@ -33,7 +33,6 @@ iam = boto3.client('iam')
 
 response = iam.get_access_key_last_used(
         AccessKeyId = access_key_id
-        #AccessKeyId = 'AKIAJB3AUX57TMSO2HUA'
         )
 
 print(response['AccessKeyLastUsed'])
