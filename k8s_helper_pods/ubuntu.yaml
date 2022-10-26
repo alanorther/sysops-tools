@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu
+  namespace: dev-apps
+spec:
+#  nodeName: gke-dev-cluster-dev-nsq-node-pool-8fbcc515-ium2
+  tolerations:
+  - effect: NoSchedule
+    key: dev-app-node-pool
+    operator: Equal
+    value: "true"
+  containers:
+  - image: ubuntu
+    command: [ "/bin/bash", "-c", "--" ]
+    args: [ "trap : TERM INT; sleep infinity & wait" ]
+#    command:
+#      - sleep
+#      - "60000"
+    imagePullPolicy: IfNotPresent
+    name: ubuntu
+#    volumeMounts:
+#        - mountPath: /data
+#          name: data
+  restartPolicy: Always
+#  volumes:
+#  - name: data
+#    persistentVolumeClaim:
+#      claimName: data-nsq-nsqd-1        
+
